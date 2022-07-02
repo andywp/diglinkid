@@ -1,17 +1,19 @@
 .well-known
 .htaccess
 .htaccess.bk
-index.php
+/index.php
 *.txt
-uploads/cache/*
-uploads/backgrounds/*
-uploads/qrcode/*
-database/*
-app/config/*
-app/config/*.zip
+/uploads/cache/*
+/uploads/backgrounds/*
+/uploads/qrcode/*
+/database
+/app/config/config.php
+/app/config/app
+/themes/altum/views-x
 *.log
 /.vscode
 .DS_Store
 .env
 .env.backup
+*.zip
 

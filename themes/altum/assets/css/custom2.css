@@ -1,0 +1,21 @@
+.bg-diglink {
+    background-color: #2B2E83;
+}
+.text-diglink {
+    color: #2B2E83;
+}
+.text-black {
+    color: #000;
+}
+
+.nav-custom .nav-link:hover {
+	color: var(--primary-900);
+	background: var(--primary-700);
+	border-color: var(--primary-700);
+}
+
+.nav-custom .nav-link.active {
+	color: var(--primary-900);
+	background: var(--primary-300);
+	border-color: var(--primary-900);
+}

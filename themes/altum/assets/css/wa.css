@@ -1,0 +1,125 @@
+.preview {
+	background-color: #376eac;
+	transition: all .5s;
+	width: 100%;
+	height: 100vh;
+}
+.hp {
+    background-image: url(../images/phone.png);
+    background-size: cover;
+    height: 620px;
+    width: 300px;
+    padding: 76px 13px 114px 20px;
+    margin: 0 auto;
+}
+.contact-bar {
+    height: 55px;
+    background: #005e54;
+    color: #fff;
+    padding: 0 8px;
+    font-size: 24px;
+    position: relative;
+    z-index: 1;
+}
+.contact-bar div {
+    float: left;
+    transform: translateY(-50%);
+    position: relative;
+    top: 50%;
+}
+.contact-bar .avatar {
+    margin: 0 0 0 5px;
+    width: 36px;
+    height: 36px;
+    display: inline-block;
+}
+.contact-bar .avatar img {
+    border-radius: 50%;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1);
+    display: inline-block;
+    width: 36px;
+    height: 36px;
+    vertical-align: top;
+}
+.contact-bar .contact {
+    font-size: 17px;
+    font-weight: 600;
+    text-overflow: ellipsis;
+    letter-spacing: 0.3px;
+    margin: 0 0 0 8px;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 90px;
+}
+.contact-bar .actions {
+    float: right;
+    margin: 0 0 0 20px;
+    background-image: url(../images/icons.png);
+    width: 90px;
+    height: 54px;
+}
+.obrolan {
+    height: calc(100% - 12px);
+    position: relative;
+    background: #efe7dd url(../img/whatsapp.jpg) repeat;
+    z-index: 0;
+}
+.message {
+    color: #000;
+    clear: both;
+    line-height: 20px;
+    font-size: 14px;
+    padding: 8px;
+    position: relative;
+    margin: 8px 0;
+    max-width: 85%;
+    word-wrap: break-word;
+    z-index: -1;
+}
+.obrolan .obrolan-container:after {
+    height: calc(100% - 68px);
+    box-shadow: inset 0 10px 10px -10px #000000;
+    overflow-x: hidden;
+    padding: 0 16px;
+    margin-bottom: 5px;
+}
+
+
+.obrolan .obrolan-container:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+
+.message.sent {
+    background: #e1ffc7;
+    border-radius: 5px 0px 5px 5px;
+    float: right;
+}
+.message:first-child {
+    margin: 16px 0 8px;
+}
+.metadata {
+    display: inline-block;
+    float: right;
+    padding: 0 0 0 12px;
+    position: relative;
+    bottom: -4px;
+}
+@media (max-width: 768px){
+    .preview{
+		height: 50vh;
+	}
+	.hp {
+		background-image: url(../images/iphone_responsive.png);
+		background-size: cover;
+		height: 290px;
+		width: 299px;
+		padding: 65px 10px 43px 20px;
+		margin: 0 auto;
+	}
+	span#message {
+		font-size: 12px;
+	}
+}

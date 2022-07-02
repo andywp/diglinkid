@@ -1,0 +1,40 @@
+/* Badge colors */
+.badge-primary {
+	color: hsl(211, 100%, 35%);
+	background-color: hsl(211, 100%, 35%);
+}
+
+.badge-secondary {
+	color: hsl(208, 7%, 35%);
+	background-color: hsl(208, 7%, 35%);
+}
+
+.badge-success {
+	color: hsla(134, 50%, 30%, 1);
+	background-color: hsla(134, 50%, 30%, 1);
+}
+
+.badge-danger {
+	color: hsla(354, 70%, 35%, 1);
+	background-color: hsla(354, 70%, 35%, 1);
+}
+
+.badge-warning {
+	color: hsla(40, 80%, 30%, 1);
+	background-color: hsla(45, 100%, 55%, 1);
+}
+
+.badge-info {
+	color: hsla(188, 60%, 30%, 1);
+	background-color: hsla(188, 78%, 55%, 1);
+}
+
+.badge-light {
+	color: hsla(210, 15%, 35%, 1);
+	background-color: hsl(210, 17%, 30%, 1);
+}
+
+.badge-dark {
+	color: hsla(210, 10%, 90%, 1);
+	background-color: hsla(210, 10%, 20%, 1);
+}

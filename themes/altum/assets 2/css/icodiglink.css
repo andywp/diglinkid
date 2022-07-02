@@ -1,0 +1,105 @@
+@font-face {
+  font-family: 'icodiglink';
+  src:  url('fonts/icodiglink.eot?nfmd3g');
+  src:  url('fonts/icodiglink.eot?nfmd3g#iefix') format('embedded-opentype'),
+    url('fonts/icodiglink.ttf?nfmd3g') format('truetype'),
+    url('fonts/icodiglink.woff?nfmd3g') format('woff'),
+    url('fonts/icodiglink.svg?nfmd3g#icodiglink') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="dig-ico"], [class*=" dig-ico"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icodiglink' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.dig-ico-belibli-belibli:before {
+  content: "\e900";
+}
+.dig-ico-libli-libli:before {
+  content: "\e901";
+}
+.dig-ico-bukalapak:before {
+  content: "\e902";
+}
+.dig-ico-bukalapak-2:before {
+  content: "\e903";
+}
+.dig-ico-gofood:before {
+  content: "\e904";
+}
+.dig-icogo-food-2:before {
+  content: "\e905";
+}
+.dig-ico-grab-food-03:before {
+  content: "\e906";
+}
+.dig-ico-grab-food-17:before {
+  content: "\e907";
+}
+.dig-ico-jdis:before {
+  content: "\e908";
+}
+.dig-ico-katalog-menu-2:before {
+  content: "\e909";
+}
+.dig-ico-katalog-menu-05:before {
+  content: "\e90a";
+}
+.dig-ico-lazada-2:before {
+  content: "\e90b";
+}
+.dig-ico-lazada:before {
+  content: "\e90c";
+}
+.dig-ico-map:before {
+  content: "\e90d";
+}
+.dig-ico-Map-2:before {
+  content: "\e90e";
+}
+.dig-ico-shopee:before {
+  content: "\e90f";
+}
+.dig-ico-shopee-2:before {
+  content: "\e910";
+}
+.dig-ico-tiktok:before {
+  content: "\e911";
+}
+.dig-ico-tokopedia:before {
+  content: "\e912";
+}
+.dig-ico-tokopedia-2:before {
+  content: "\e913";
+}
+.dig-ico-tokotalk:before {
+  content: "\e914";
+}
+.dig-ico-tokotalk-2:before {
+  content: "\e915";
+}
+.dig-ico-zalora:before {
+  content: "\e916";
+}
+.dig-ico-zalora-2:before {
+  content: "\e917";
+}
+.dig-ico-zilinggo:before {
+  content: "\e918";
+}
+.dig-ico-zilinggo-2:before {
+  content: "\e919";
+}
