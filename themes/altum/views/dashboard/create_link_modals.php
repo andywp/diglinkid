@@ -59,8 +59,8 @@
 -->
 
 <!-- new modal create link -->
-<div class="modal fade" id="create_link" tabindex="-1" aria-labelledby="exampleModalLabel" style="display: none;" aria-hidden="true">
-    <div class="modal-dialog">
+<div class="modal fade" id="create_link" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog"  role="document">
         <form name="create_link" method="post" role="form">
             <input type="hidden" name="token" value="<?= \Altum\Middlewares\Csrf::get() ?>" required="required" />
             <input type="hidden" name="request_type" value="create" />
@@ -69,7 +69,9 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel aaa"><?= $this->language->create_link_modal->header ?></h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
                 <div class="modal-body">
                     <p><?= $this->language->create_link_modal->subheader ?></p>
@@ -102,7 +104,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="submit" name="submit" class="btn btn-outline-primary"><?= $this->language->create_link_modal->input->submit ?></button>
-                    <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Close</button>
                 </div>
             </div>
         </form>
@@ -168,8 +170,8 @@
 -->
 
 <!-- new create biolink -->
-<div class="modal fade" id="create_biolink" tabindex="-1" aria-labelledby="exampleModalLabel" style="display: none;" aria-hidden="true">
-    <div class="modal-dialog">
+<div class="modal fade" id="create_biolink" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog"  role="document">
         <form name="create_link" method="post" role="form">
             <input type="hidden" name="token" value="<?= \Altum\Middlewares\Csrf::get() ?>" required="required" />
             <input type="hidden" name="request_type" value="create" />
@@ -178,7 +180,9 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel"><?= $this->language->create_biolink_modal->header ?></h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
@@ -204,7 +208,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="submit" name="submit" class="btn btn-outline-primary"><?= $this->language->create_biolink_modal->input->submit ?></button>
-                    <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Close</button>
                 </div>
             </div>
         </form>

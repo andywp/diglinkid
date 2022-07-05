@@ -41,6 +41,7 @@ echo '</pre>'; */
 <?php } ?>
 
 <body class="link-body <?= $link->design->background_class ?>">
+<?php if(!$_GET['preview']): ?>
 	<?php if($aktive == 1){ ?>
 		<?php 
 			if(isset($link->settings->google_tag_manager)){ 
@@ -57,6 +58,7 @@ echo '</pre>'; */
 			} 
 		?>
 	<?php } ?>
+<?php endif; ?>
 
     <div class="container animated fadeIn">
         <div class="row d-flex justify-content-center text-center">

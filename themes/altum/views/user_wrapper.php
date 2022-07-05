@@ -85,8 +85,9 @@
 
         <!--app-->
         <script src="<?= SITE_URL . ASSETS_URL_PATH ?>onedash/js/app.js"></script>
+        <!--
         <script src="<?= SITE_URL . ASSETS_URL_PATH ?>onedash/js/index.js"></script>
-        
+            -->
         <?php foreach(['libraries/popper.min.js', 'libraries/bootstrap.min.js', 'main.js', 'functions.js', 'libraries/fontawesome.min.js'] as $file): ?>
             <script src="<?= SITE_URL . ASSETS_URL_PATH ?>js/<?= $file ?>?v=<?= PRODUCT_CODE ?>"></script>
         <?php endforeach ?>

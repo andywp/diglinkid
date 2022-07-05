@@ -10,6 +10,6 @@ use Altum\Title;
 class Diglink extends Controller {
 
     public function index(){
-        echo 'suog wkwkwk';exit();
+       // echo 'suog wkwkwk';exit();
     }
 }

@@ -28,7 +28,7 @@ echo '</pre>'; */
 <html lang="<?= $this->language->language_code ?>" class="link-html ">
     <head>
 
-        <title><?= \Altum\Title::get() ?></title>
+        <title><?= \Altum\Title::get() ?> sdsds</title>
         <base href="<?= SITE_URL; ?>">
         <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -49,21 +49,24 @@ echo '</pre>'; */
             <?= $this->settings->head_js ?>
         <?php endif ?>
         <link rel="canonical" href="<?= @$this->link->full_url ?>" />
-		<?php if($aktive == 1){ ?>
-		<?php if(isset($links->google_tag_manager)){ 
-				if($links->google_tag_manager !=''){
-		?>
-			<!-- Google Tag Manager aa-->
-			<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-			new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-			j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-			'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-			})(window,document,'script','dataLayer','<?= $links->google_tag_manager ?>');</script>
-			<!-- End Google Tag Manager -->
+
+        <?php if(!$_GET['preview']): ?>
+            <?php if($aktive == 1){ ?>
+            <?php if(isset($links->google_tag_manager)){ 
+                    if($links->google_tag_manager !=''){
+            ?>
+                <!-- Google Tag Manager aa adsasad-->
+                <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+                new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+                j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+                'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+                })(window,document,'script','dataLayer','<?= $links->google_tag_manager ?>');</script>
+                <!-- End Google Tag Manager -->
+            
+            <?php } }?>
+            <?php } ?>
 		
-		<?php } }?>
-		<?php } ?>
-		
+        <?php endif; ?>
 		
     </head>
 
