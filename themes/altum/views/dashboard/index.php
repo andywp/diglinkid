@@ -63,26 +63,151 @@
         <p class="text-muted"><?= $this->language->dashboard->projects->subheader ?></p>
     </div>
     <div class="col-auto p-0">
+        <!--
         <?php if($this->user->package_settings->projects_limit != -1 && $data->projects_result->num_rows >= $this->user->package_settings->projects_limit): ?>
             <button type="button" data-confirm="<?= $this->language->project->error_message->projects_limit ?>"  class="btn btn-primary rounded-pill"><i class="fas fa-plus-circle"></i> <?= $this->language->dashboard->projects->create ?></button>
         <?php else: ?>
             <button type="button" data-toggle="modal" data-target="#create_project" class="btn btn-primary rounded-pill"><i class="fas fa-plus-circle"></i> <?= $this->language->dashboard->projects->create ?></button>
         <?php endif ?>
+        -->
+
+        <div class="dropdown">
+            <button type="button" data-toggle="dropdown" class="btn btn-outline-primary dropdown-toggle dropdown-toggle-simple">
+                <i class="lni lni-circle-plus"></i> <?= $this->language->project->links->create ?>
+            </button>
+
+            <div class="dropdown-menu dropdown-menu-right">
+                <a href="#" class="dropdown-item" data-toggle="modal" data-target="#create_biolink">
+                    <i class="fa fa-circle fa-sm" style="color: <?= $this->language->link->biolink->color ?>"></i>
+
+                    <?= $this->language->link->biolink->name ?>
+                </a>
+
+                <a href="#" class="dropdown-item" data-toggle="modal" data-target="#create_link">
+                    <i class="fa fa-circle fa-sm" style="color: <?= $this->language->link->link->color ?>"></i>
+
+                    <?= $this->language->link->link->name ?>
+                </a>
+            </div>
+        </div>
+
+
     </div>
 </div>
 <hr/>
 
 <section class="pages">
     <div class="row">
-        <div class="col-md-4">
-            <div class="card card-page">
-                <div class="card-body d-flex justify-content-center align-content-center flex-wrap">
-                    <div class="mypages">
-                        <iframe loading="'lazy'"  scrolling="no" src="https://diglink.id/awp?preview&link_id=4466" frameborder="0" class="iframe"></iframe>
+        <div class="col-md-3">
+            <div class="card radius-10 card-page">
+                <div class="card-body pb-3">
+                    <div class="d-flex justify-content-center align-content-center flex-wrap">
+                        <div class="d-flex align-items-center">
+                            <h6 class="mb-0">Link Name</h6>
+                        </div>
+                        <div class="fs-5 ms-auto dropdown">
+                                <div class="dropdown-toggle dropdown-toggle-nocaret cursor-pointer" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-three-dots"></i>
+                            </div>
+                            <ul class="dropdown-menu" style="">
+                                <li><a class="dropdown-item" href="#">Edit</a></li>
+                                <li><a class="dropdown-item" href="#">Statistik</a></li>
+                                <li><a class="dropdown-item" href="#">QR Code</a></li>
+                                <li><a class="dropdown-item" href="#">Delete</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-center">
+                        <div class="mypages mb-5">
+                            <iframe loading="'lazy'"  scrolling="no" src="https://diglink.id/awp?preview&link_id=4466" frameborder="0" class="iframe"></iframe>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+        
+        <div class="col-md-3">
+            <div class="card radius-10 card-page">
+                <div class="card-body pb-3">
+                    <div class="d-flex justify-content-center align-content-center flex-wrap">
+                        <div class="d-flex align-items-center">
+                            <h6 class="mb-0">Link Name</h6>
+                        </div>
+                        <div class="fs-5 ms-auto dropdown">
+                                <div class="dropdown-toggle dropdown-toggle-nocaret cursor-pointer" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-three-dots"></i>
+                            </div>
+                            <ul class="dropdown-menu" style="">
+                                <li><a class="dropdown-item" href="#">Edit</a></li>
+                                <li><a class="dropdown-item" href="#">Statistik</a></li>
+                                <li><a class="dropdown-item" href="#">QR Code</a></li>
+                                <li><a class="dropdown-item" href="#">Delete</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-center">
+                        <div class="mypages mb-5">
+                            <iframe loading="'lazy'"  scrolling="no" src="https://diglink.id/awp?preview&link_id=4466" frameborder="0" class="iframe"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card radius-10 card-page">
+                <div class="card-body pb-3">
+                    <div class="d-flex justify-content-center align-content-center flex-wrap">
+                        <div class="d-flex align-items-center">
+                            <h6 class="mb-0">Link Name</h6>
+                        </div>
+                        <div class="fs-5 ms-auto dropdown">
+                                <div class="dropdown-toggle dropdown-toggle-nocaret cursor-pointer" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-three-dots"></i>
+                            </div>
+                            <ul class="dropdown-menu" style="">
+                                <li><a class="dropdown-item" href="#">Edit</a></li>
+                                <li><a class="dropdown-item" href="#">Statistik</a></li>
+                                <li><a class="dropdown-item" href="#">QR Code</a></li>
+                                <li><a class="dropdown-item" href="#">Delete</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-center">
+                        <div class="mypages mb-5">
+                            <iframe loading="'lazy'"  scrolling="no" src="https://diglink.id/awp?preview&link_id=4466" frameborder="0" class="iframe"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card radius-10 card-page">
+                <div class="card-body pb-3">
+                    <div class="d-flex justify-content-center align-content-center flex-wrap">
+                        <div class="d-flex align-items-center">
+                            <h6 class="mb-0">Link Name</h6>
+                        </div>
+                        <div class="fs-5 ms-auto dropdown">
+                                <div class="dropdown-toggle dropdown-toggle-nocaret cursor-pointer" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-three-dots"></i>
+                            </div>
+                            <ul class="dropdown-menu" style="">
+                                <li><a class="dropdown-item" href="#">Edit</a></li>
+                                <li><a class="dropdown-item" href="#">Statistik</a></li>
+                                <li><a class="dropdown-item" href="#">QR Code</a></li>
+                                <li><a class="dropdown-item" href="#">Delete</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-center">
+                        <div class="mypages mb-5">
+                            <iframe loading="'lazy'"  scrolling="no" src="https://diglink.id/awp?preview&link_id=4466" frameborder="0" class="iframe"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+
     </div>
 </section>
 

@@ -1,12 +1,15 @@
 <?php defined('ALTUMCODE') || die() ?>
+
+
+
     <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">  
         <div class="breadcrumb-title pe-3"><?= sprintf($this->language->link->header->header, $data->link->url) ?></div>
         <div class="ps-3">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb mb-0 p-0">
                     <li class="breadcrumb-item"><a href="<?= url('dashboard') ?>"><i class="lni lni-home"></i></a></li>
-                    <li class="breadcrumb-item"><a href="<?= url('project') ?>">My Projects</a></li>
-                    <li class="breadcrumb-item"><a href="<?= url('project/'.$data->link->project_id) ?>">Project <?= $data->link->project_id ?></a></li>
+                    <li class="breadcrumb-item"><a href="<?= url('project') ?>">My Page</a></li>
+                    <!--<li class="breadcrumb-item"><a href="<?= url('project/'.$data->link->project_id) ?>">Project <?= $data->link->project_id ?></a></li> -->
                     <li class="breadcrumb-item active" aria-current="page"><?= sprintf($this->language->link->header->header, $data->link->url) ?></li>
                 </ol>
             </nav>
@@ -25,6 +28,23 @@
     </div>
 <section class="wrapper image-wrapper bg-image bg-overlay bg-overlay-400 bg-content text-dark" data-image-src="./assets/img/photos/bg4.jpg">   
     <div class="container pt-18 pb-16" style="z-index: 5; position:relative">
+        <!-- new-->
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+
+                    </div>
+                    <div class="col-md-6">
+
+                    </div>
+                </div>
+            </div>      
+        </div>
+
+
+        <!-- / new -->
+
         <input type="hidden" id="base_controller_url" name="base_controller_url" value="<?= url('link/' . $data->link->link_id) ?>" />
         <header class="mb-4">
             <div class="container">

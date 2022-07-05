@@ -12,7 +12,7 @@
               <a href="<?= SITE_URL; ?>"><img src="<?= url(ASSETS_URL_PATH . 'images/logo_white.png') ?>" style="height:50px"/></a>
               <button type="button" class="btn-close btn-close-white offcanvas-close offcanvas-nav-close" aria-label="Close"></button>
             </div>
-            <?php if($_SESSION['user_id'] != '' || $_SESSION['user_id'] != null) {?>
+            <?php if(@$_SESSION['user_id'] != '' || @$_SESSION['user_id'] != null) {?>
             <ul class="navbar-nav">
               <li class="nav-item">
                   <a class="nav-link" href="dashboard">Dashboard</a>
@@ -48,7 +48,7 @@
           <!-- /.navbar-collapse -->
           <div class="navbar-other ms-lg-4">
             <ul class="navbar-nav flex-row align-items-center ms-auto" data-sm-skip="true">
-              <?php if($_SESSION['user_id'] != '' || $_SESSION['user_id'] != null) {?>
+              <?php if(@$_SESSION['user_id'] != '' || @$_SESSION['user_id'] != null) {?>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#!" aria-haspopup="true" aria-expanded="false">
                         <img src="<?= get_gravatar($this->user->email) ?>" class="navbar-avatar mr-1" />

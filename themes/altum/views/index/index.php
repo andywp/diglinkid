@@ -4,6 +4,18 @@
 use Altum\Middlewares\Authentication;
 
 ?>
+<?php ob_start() ?>
+<style>
+    /*Testimonial*/
+    #testimonial p {
+        font-size: 14px;
+    }
+
+
+</style>
+
+<?php \Altum\Event::add_content(ob_get_clean(), 'head') ?>
+
     <section class="wrapper image-wrapper bg-image bg-overlay bg-overlay-400 bg-content text-white" data-image-src="./assets/img/photos/bg4.jpg">   
       <div class="container pt-18 pb-16" style="z-index: 5; position:relative">
         <div class="row gx-0 gy-12 align-items-center">
@@ -12,13 +24,13 @@ use Altum\Middlewares\Authentication;
                 Powerful Link in Bio<br/>
                 for <span class="typer text-primary text-nowrap display-1" data-delay="100" data-words="Creators, Brands, Influencers"></span><span class="cursor text-primary" data-owner="typer"></span></h1> 
             <div class="d-flex justify-content-center justify-content-lg-start" data-cues="slideInDown" data-group="page-title-buttons" data-delay="900">
-                <?php if($_SESSION['user_id'] == '' || $_SESSION['user_id'] == null) {?>
+                <?php if(@$_SESSION['user_id'] == '' || @$_SESSION['user_id'] == null) {?>
                     <span><a href="register" class="btn btn-lg bg-soft-primary rounded-pill text-diglink mb-4 me-2 btn-lg">Start for Free</a></span>
                 <?php } else { ?>
                     <span><a href="dashboard" class="btn btn-lg bg-soft-primary rounded-pill text-diglink mb-4 me-2 btn-lg">Dashboard</a></span>
                 <?php } ?>
             </div>
-            <?php if($_SESSION['user_id'] == '' || $_SESSION['user_id'] == null) {?>
+            <?php if(@$_SESSION['user_id'] == '' || @$_SESSION['user_id'] == null) {?>
             <p data-cues="slideInDown" data-group="page-title" data-delay="600">Already on DigLink? <a href="login" class="text-white hover">Sign In</a></p>
             <?php } ?>
           </div>
@@ -97,7 +109,7 @@ use Altum\Middlewares\Authentication;
             <div class="col-lg-6">
                 <h2 class="display-4 mb-7">Works Anywhere</h2>
                 <p>Share your link on any social or digital platform: Instagram, YouTube, Facebook or TikTok, in messengers or via SMS.</p>
-                <?php if($_SESSION['user_id'] == '' || $_SESSION['user_id'] == null) {?>
+                <?php if(@$_SESSION['user_id'] == '' || @$_SESSION['user_id'] == null) {?>
                     <span><a href="register" class="btn btn-lg bg-diglink rounded-pill text-white mb-4 me-2 btn-lg">Start for Free</a></span>
                 <?php } ?>
             </div>
@@ -108,7 +120,7 @@ use Altum\Middlewares\Authentication;
             <div class="col-lg-6">
                 <h2 class="display-4 mb-7">Get detailed social analytics</h2>
                 <p>Identify, organize and manage your audience on social media.</p>
-                <?php if($_SESSION['user_id'] == '' || $_SESSION['user_id'] == null) {?>
+                <?php if(@$_SESSION['user_id'] == '' || @$_SESSION['user_id'] == null) {?>
                     <span><a href="register" class="btn btn-lg bg-diglink rounded-pill text-white mb-4 me-2 btn-lg">Start for Free</a></span>
                 <?php } ?>
             </div>
@@ -133,7 +145,7 @@ use Altum\Middlewares\Authentication;
             <div class="col-lg-6">
                 <h2 class="display-4 mb-7">Manage your links as you wish</h2>
                 <p>Optimize your links. HeyLink.me allows you to connect any links and effectively manage your audience.</p>
-                <?php if($_SESSION['user_id'] == '' || $_SESSION['user_id'] == null) {?>
+                <?php if(@$_SESSION['user_id'] == '' || @$_SESSION['user_id'] == null) {?>
                     <span><a href="register" class="btn btn-lg bg-diglink rounded-pill text-white mb-4 me-2 btn-lg">Start for Free</a></span>
                 <?php } ?>
             </div>
@@ -157,7 +169,40 @@ use Altum\Middlewares\Authentication;
         <div class="position-relative mt-5 mb-14">
           <div class="row gx-md-5 gy-5 text-center">
             <div class="col-md-12">
-                <div class="carousel owl-carousel clients mb-0" data-margin="30" data-loop="true" data-dots="false" data-autoplay="true" data-autoplay-timeout="3000" data-responsive='{"0":{"items": "2"}, "768":{"items": "3"}, "992":{"items": "4"}, "1200":{"items": "4"}, "1400":{"items": "5"}}'>
+                <div id="parner" class="carousel owl-carousel clients mb-0" data-margin="20" data-loop="true" data-dots="false" data-autoplay="true" data-autoplay-timeout="3000" data-responsive='{"0":{"items": "2"}, "768":{"items": "3"}, "992":{"items": "4"}, "1200":{"items": "4"}, "1400":{"items": "5"}}'>
+                    <?php
+                        $client=[
+                                    'ABAME.png',
+                                    'BAA.png',
+                                    'bursa-kain.png',
+                                    'canddypop.png',
+                                    'jayross.png',
+                                    'JK.png',
+                                    'jnc.png',
+                                    'Lawlaka.png',
+                                    'maima.png',
+                                    'Margonda.png',
+                                    'Margonda.png',
+                                    'Proudly.png',
+                                    'ramen.png',
+                                    'Rurik.png',
+                                    'senja.png',
+                                    'Sira.png',
+                                    'SKM.png',
+                                    'vintagehouse.png',
+                                    'ZI&GLO.png'
+                                ];
+
+                        foreach($client as $clients):
+
+                    ?>
+                         <div class="item px-5"><img src="<?= url(ASSETS_URL_PATH.'img/partner/'.$clients) ?>" alt="diglink.id" /></div>
+
+                    <?php
+                        endforeach;
+                    ?>
+                
+                    <!--
                     <div class="item px-5"><img src="./assets/img/client/diglink-client-1.png" alt="" /></div>
                     <div class="item px-5"><img src="./assets/img/client/diglink-client-2.png" alt="" /></div>
                     <div class="item px-5"><img src="./assets/img/client/diglink-client-3.png" alt="" /></div>
@@ -169,6 +214,7 @@ use Altum\Middlewares\Authentication;
                     <div class="item px-5"><img src="./assets/img/client/diglink-client-9.png" alt="" /></div>
                     <div class="item px-5"><img src="./assets/img/client/diglink-client-10.png" alt="" /></div>
                     <div class="item px-5"><img src="./assets/img/client/diglink-client-11.png" alt="" /></div>
+                    -->
                 </div>
                 <!-- /.owl-carousel -->
             </div>
@@ -177,17 +223,17 @@ use Altum\Middlewares\Authentication;
           <!--/.row -->
         </div>
         <!-- /.position-relative -->
-        <div class="row gx-lg-8 gx-xl-12 gy-10 align-items-center mb-14">
-          <div class="col-lg-12">
-            <div class="carousel owl-carousel gap-small" data-margin="0" data-dots="true" data-autoplay="false" data-autoplay-timeout="5000" data-responsive='{"0":{"items": "1"}, "768":{"items": "2"}, "992":{"items": "2"}, "1200":{"items": "3"}}'>
+
+        <div class="col-lg-12">
+            <div id="testimonial" class="carousel owl-carousel gap-small" data-margin="0" data-dots="true" data-autoplay="false" data-autoplay-timeout="5000" data-responsive='{"0":{"items": "1"}, "768":{"items": "2"}, "992":{"items": "2"}, "1200":{"items": "3"}}'>
                 <div class="item">
                 <div class="item-inner">
                     <div class="card">
-                    <div class="card-body">
+                    <div class="card-body p-3">
                         <blockquote class="icon mb-0">
                         <p>"Dari banyaknya platform link di bio, gw prefer pake Diglink. Soalnya dengan pake Diglink, gw bisa pasang facebook pixel dan google analytics, yang berguna banget buat naikin conversion. Buat setting dan pemasangannya juga simple banget. Dan yg paling penting, team Diglink juga sangat membantu dan servicenya top notch banget. Mantap 👍"</p>
                         <div class="blockquote-details">
-                            <img class="rounded-circle w-12" src="./assets/img/avatars/Tommy-Surya-Teja.png" srcset="./assets/img/avatars/Tommy-Surya-Teja.png" alt="Tommy Surya Teja" />
+                            <img class="rounded-circle w-12" src="<?= url(ASSETS_URL_PATH.'img/testimonial/Tommy-Surya-Teja.jpeg') ?>" srcset="<?= url(ASSETS_URL_PATH.'img/testimonial/Tommy-Surya-Teja.jpeg') ?>" alt="Tommy Surya Teja" />
                             <div class="info">
                             <h5 class="mb-1">Tommy Surya Teja</h5>
                             <p class="mb-0">Founder of Zalmon Fabric</p>
@@ -205,11 +251,11 @@ use Altum\Middlewares\Authentication;
                 <div class="item">
                 <div class="item-inner">
                     <div class="card">
-                    <div class="card-body">
+                    <div class="card-body p-3">
                         <blockquote class="icon mb-0">
                         <p>“Sebagai KOL (Key Opinion Leader), memakai Diglink sungguh memudahkan keperluan marketing dari bisnis gua. Gua bisa pake Diglink di TikTok dan Instagram gua, dan karena Diglink support Facebook Pixel dan Google analytics, gua jadi gampang banget untuk ngiklanin website gua ke followers gua. Team Diglink sendiri juga selalu ready dan siap membantu seluruh pertanyaan atau request yang kami punya. Puass banget pake Diglink”</p>
                         <div class="blockquote-details">
-                            <img class="rounded-circle w-12" src="./assets/img/avatars/Reynaldi-Francois.png" srcset="./assets/img/avatars/Reynaldi-Francois.png 2x" alt="Reynaldi Francois" />
+                            <img class="rounded-circle w-12" src="<?= url(ASSETS_URL_PATH.'img/testimonial/Reynaldi-Francois.jpeg') ?>" srcset=<?= url(ASSETS_URL_PATH.'img/testimonial/Reynaldi-Francois.jpeg') ?> 2x" alt="Reynaldi Francois" />
                             <div class="info">
                             <h5 class="mb-1">Reynaldi Francois</h5>
                             <p class="mb-0">Branding and Marketing Strategist - Co-Founder of Zando</p>
@@ -227,7 +273,7 @@ use Altum\Middlewares\Authentication;
                 <div class="item">
                 <div class="item-inner">
                     <div class="card">
-                    <div class="card-body">
+                    <div class="card-body p-3">
                         <blockquote class="icon mb-0">
                         <p>“Adanya Diglink sangat memudahkan sekali untuk bisa integrasikan social media, marketplace, dan whatsapp ke dalam satu chanel.
 sehingga memudahkan audience untuk mencari informasi tentang brand kita atau berkunjung ke tokonya kita dan itu semua dalam satu wadah DIGLINK.
@@ -235,7 +281,7 @@ dan yang paling penting menyediakan pixel untuk tracking dan bisa menjadi landin
 semoga kedepan bakalan ada lagi fitur - fitur menarik dari diglink
 ”</p>
                         <div class="blockquote-details">
-                            <img class="rounded-circle w-12" src="./assets/img/avatars/Muhammad-Nizar.png" srcset="./assets/img/avatars/Muhammad-Nizar.png 2x" alt="" />
+                            <img class="rounded-circle w-12" src="<?= url(ASSETS_URL_PATH.'img/testimonial/Muhammad-Nizar.jpeg') ?>" srcset="<?= url(ASSETS_URL_PATH.'img/testimonial/Muhammad-Nizar.jpeg') ?> 2x" alt="" />
                             <div class="info">
                             <h5 class="mb-1">Muhammad Nizar</h5>
                             <p class="mb-0">owner Pro Aktif Creative Consultant</p>
@@ -322,7 +368,7 @@ semoga kedepan bakalan ada lagi fitur - fitur menarik dari diglink
                                             </li>
                                         </ul>
                                     </div>
-                                    <?php if($row->package_id == 'free'): ?>
+                                    <?php if(@$row->package_id == 'free'): ?>
                                         <button class="btn btn-success rounded-pill w-100 mb-2 text-white"><?= $this->language->package->button->already_free ?></button>
                                     <?php else: ?>
                                         <a href="<?= Authentication::check() ? url('pay/free') : url('register?redirect=pay/free') ?>" class="btn bg-diglink rounded-pill w-100 mb-2 text-white"><?= $this->language->package->button->choose ?></a>
@@ -358,6 +404,7 @@ semoga kedepan bakalan ada lagi fitur - fitur menarik dari diglink
                                                 <?php while($row2 = $result2->fetch_object()):
                                                 $id = array($row->package_id);
                                                 $package_features_id = json_decode($row2->package_id, true);
+                                                $package_features_id =!empty($package_features_id)?$package_features_id:array();
                                                 if (in_array($id[0], $package_features_id)){
                                                     echo '<li><i class="uil uil-check"></i><span>'.$row2->name.'</span></li>';
                                                 ?>
@@ -365,7 +412,7 @@ semoga kedepan bakalan ada lagi fitur - fitur menarik dari diglink
                                                 <?php endwhile ?>
                                             </ul>
                                         </div>
-                                        <?php if($row->package_id == $this->user->package_id): ?>
+                                        <?php if(@$row->package_id == @$this->user->package_id): ?>
                                             <button class="btn btn-success rounded-pill w-100 mb-2 text-white"><?= $this->language->package->button->already_free ?></button>
                                         <?php else: ?>
                                             <a href="<?= Authentication::check() ? url('pay/' . $row->package_id) : url('register?redirect=pay/' . $row->package_id) ?>" class="btn <?php if($row->name == "Profesional") { ?>btn-primary<?php } else { ?>bg-diglink text-white<?php } ?> rounded-pill w-100 mb-2"><?= $this->language->package->button->choose ?></a>

@@ -31426,7 +31426,7 @@ fieldset:disabled .btn.btn-circle {
 
 .banner--stick:not(.navbar-dark),
 .banner--stick.transparent {
-  box-shadow: 0rem 0rem 1.25rem rgba(30, 34, 40, 0.04);
+  box-shadow: 0rem 0rem 1.25rem rgba(30, 34, 40, 0.40);
   background: rgba(255, 255, 255, 0.97);
 }
 

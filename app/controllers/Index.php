@@ -23,7 +23,7 @@ class Index extends Controller {
             die('Ready to use as a custom domain.');
         }
 
-        if($_SESSION['user_id'] != '' || $_SESSION['user_id'] != null) {
+        if(@$_SESSION['user_id'] != '' || @$_SESSION['user_id'] != null) {
             redirect('dashboard');
         } else {
             /* Main View */

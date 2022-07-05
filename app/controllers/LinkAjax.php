@@ -182,9 +182,9 @@ class LinkAjax extends Controller {
         /* Check if custom domain is set */
         $domain_id = $this->get_domain_id($_POST['domain_id']);
 
-        if(!Database::exists('project_id', 'projects', ['user_id' => $this->user->user_id, 'project_id' => $_POST['project_id']])) {
-            die();
-        }
+        /* if(!Database::exists('project_id', 'projects', ['user_id' => $this->user->user_id, 'project_id' => $_POST['project_id']])) {
+            die('wkwkwkw');
+        } */
 
         /* Make sure that the user didn't exceed the limit */
         $user_total_biolinks = Database::$database->query("SELECT COUNT(*) AS `total` FROM `links` WHERE `user_id` = {$this->user->user_id} AND `type` = 'biolink' AND `subtype` = 'base'")->fetch_object()->total;
