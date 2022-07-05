@@ -39,8 +39,8 @@
                     <!-- /column -->
                     <div class="col-md-12 col-lg-3">
                         <div class="widget">
-                            <p class="mb-0">Powered by :</p>
-                            <a target="_blank" href="https://digiworks.id/"><img class="mb-4 w-50" src="https://diglink.id/home/wp-content/uploads/2020/06/logo-digi-02-1.png" alt=""/></a>
+                            <p class="mb-1">Powered by :</p>
+                            <a target="_blank" href="https://digiworks.id/"><img class="mb-4 w-50" src="<?= url(ASSETS_URL_PATH . 'img/logo dw-01.png') ?>" alt="digiworks"/></a>
                         </div>
                         <!-- /.widget -->
                     </div>
