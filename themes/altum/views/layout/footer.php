@@ -18,8 +18,8 @@
                     <!-- /column -->
                     <div class="col-md-4 col-lg-3">
                         <div class="widget">
-                            <h4 class="widget-title text-white mb-3">Get in Touch</h4>
-                            <address class="pe-xl-15 pe-xxl-17">Jl Purbasari - Kompleks Arcamanik Residence No 4, Cisaranten Kulon, Arcamanik, Sukamiskin, Arcamanik, Bandung City, West Java 40293</address>
+                            <h4 class="widget-title text-white mb-3">Address</h4>
+                            <address class="pe-xl-15 pe-xxl-17">Jl. Sarijadi Baru III No.15, Sukarasa, Kec. Sukasari, Kota Bandung, Jawa Barat 40152</address>
                             <a href="mailto:info@diglink.id">info@diglink.id</a><br /> +62 877-0075-4622
                         </div>
                         <!-- /.widget -->

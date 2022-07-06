@@ -17,8 +17,10 @@
         
         <!-- Bootstrap CSS -->
         <link href="<?= SITE_URL . ASSETS_URL_PATH ?>onedash/css/custom.css" rel="stylesheet" />
+
         <link href="<?= SITE_URL . ASSETS_URL_PATH ?>onedash/css/bootstrap.min.css" rel="stylesheet" />
         <link href="<?= SITE_URL . ASSETS_URL_PATH ?>onedash/css/bootstrap-extended.css" rel="stylesheet" />
+
         <link href="<?= SITE_URL . ASSETS_URL_PATH ?>onedash/css/style.css" rel="stylesheet" />
         <link href="<?= SITE_URL . ASSETS_URL_PATH ?>onedash/css/icons.css" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
@@ -68,11 +70,12 @@
         <input type="hidden" name="global_token" value="<?= \Altum\Middlewares\Csrf::get('global_token') ?>" />
         <input type="hidden" name="number_decimal_point" value="<?= $this->language->global->number->decimal_point ?>" />
         <input type="hidden" name="number_thousands_separator" value="<?= $this->language->global->number->thousands_separator ?>" />
-        
+
+
+        <script src="<?= SITE_URL . ASSETS_URL_PATH ?>onedash/js/jquery.min.js"></script>
         <!-- Bootstrap bundle JS -->
         <script src="<?= SITE_URL . ASSETS_URL_PATH ?>onedash/js/bootstrap.bundle.min.js"></script>
         <!--plugins-->
-        <script src="<?= SITE_URL . ASSETS_URL_PATH ?>onedash/js/jquery.min.js"></script>
         <script src="<?= SITE_URL . ASSETS_URL_PATH ?>onedash/plugins/simplebar/js/simplebar.min.js"></script>
         <script src="<?= SITE_URL . ASSETS_URL_PATH ?>onedash/plugins/metismenu/js/metisMenu.min.js"></script>
         <script src="<?= SITE_URL . ASSETS_URL_PATH ?>onedash/plugins/perfect-scrollbar/js/perfect-scrollbar.js"></script>
@@ -88,15 +91,16 @@
         <!--
         <script src="<?= SITE_URL . ASSETS_URL_PATH ?>onedash/js/index.js"></script>
             -->
-        <?php foreach(['libraries/popper.min.js', 'libraries/bootstrap.min.js', 'main.js', 'functions.js', 'libraries/fontawesome.min.js'] as $file): ?>
+        <?php foreach([/* 'libraries/popper.min.js', 'libraries/bootstrap.min.js', */ 'main.js', 'functions.js', 'libraries/fontawesome.min.js'] as $file): ?>
             <script src="<?= SITE_URL . ASSETS_URL_PATH ?>js/<?= $file ?>?v=<?= PRODUCT_CODE ?>"></script>
         <?php endforeach ?>
-
+        <!--
         <?php if(\Altum\Routing\Router::$controller_key == 'dashboard' || \Altum\Routing\Router::$controller_key == 'project'): ?>
             <script src="<?= SITE_URL . ASSETS_URL_PATH ?>onedash/plugins/datatable/js/jquery.dataTables.min.js"></script>
             <script src="<?= SITE_URL . ASSETS_URL_PATH ?>onedash/plugins/datatable/js/dataTables.bootstrap5.min.js"></script>
             <script src="<?= SITE_URL . ASSETS_URL_PATH ?>onedash/js/table-datatable.js"></script>
         <?php endif ?>
+        -->
 
         <?= \Altum\Event::get_content('javascript') ?>
         

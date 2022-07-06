@@ -67,23 +67,23 @@
         <?php if($this->user->package_settings->projects_limit != -1 && $data->projects_result->num_rows >= $this->user->package_settings->projects_limit): ?>
             <button type="button" data-confirm="<?= $this->language->project->error_message->projects_limit ?>"  class="btn btn-primary rounded-pill"><i class="fas fa-plus-circle"></i> <?= $this->language->dashboard->projects->create ?></button>
         <?php else: ?>
-            <button type="button" data-toggle="modal" data-target="#create_project" class="btn btn-primary rounded-pill"><i class="fas fa-plus-circle"></i> <?= $this->language->dashboard->projects->create ?></button>
+            <button type="button" data-bs-toggle="dropdown"="modal" data-target="#create_project" class="btn btn-primary rounded-pill"><i class="fas fa-plus-circle"></i> <?= $this->language->dashboard->projects->create ?></button>
         <?php endif ?>
         -->
 
         <div class="dropdown">
-            <button type="button" data-toggle="dropdown" class="btn btn-outline-primary dropdown-toggle dropdown-toggle-simple">
+            <button type="button" data-bs-toggle="dropdown" class="btn btn-outline-primary dropdown-toggle dropdown-toggle-simple">
                 <i class="lni lni-circle-plus"></i> <?= $this->language->project->links->create ?>
             </button>
 
             <div class="dropdown-menu dropdown-menu-right">
-                <a href="#" class="dropdown-item" data-toggle="modal" data-target="#create_biolink">
+                <a href="#" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#create_biolink">
                     <i class="fa fa-circle fa-sm" style="color: <?= $this->language->link->biolink->color ?>"></i>
 
                     <?= $this->language->link->biolink->name ?>
                 </a>
 
-                <a href="#" class="dropdown-item" data-toggle="modal" data-target="#create_link">
+                <a href="#" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#create_link">
                     <i class="fa fa-circle fa-sm" style="color: <?= $this->language->link->link->color ?>"></i>
 
                     <?= $this->language->link->link->name ?>
@@ -210,30 +210,7 @@
 
     </div>
 
-    <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-  Launch demo modal
-</button>
 
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
 </div>
 
 </section>
@@ -274,7 +251,7 @@
                             ?>
                             <tr>
                                 <td class="clickable" data-href="<?= url('project/' . $row->project_id) ?>"><?= $row->name ?></td>
-                                <td class="clickable" data-href="<?= url('project/' . $row->project_id) ?>"><span data-toggle="tooltip" title="<?= $this->language->project->links->clicks ?>"><i class="lni lni-bar-chart custom-row-statistic-icon"></i> <span class="custom-row-statistic-number"><?= nr($row->clicks) ?></span></span></td>
+                                <td class="clickable" data-href="<?= url('project/' . $row->project_id) ?>"><span data-bs-toggle="dropdown"="tooltip" title="<?= $this->language->project->links->clicks ?>"><i class="lni lni-bar-chart custom-row-statistic-icon"></i> <span class="custom-row-statistic-number"><?= nr($row->clicks) ?></span></span></td>
                                 <td class="text-muted clickable" data-href="<?= url('project/' . $row->project_id) ?>"><span><?= \Altum\Date::get($row->date, 2) ?></span></td>
                                 <td>
                                     <div class="table-actions d-flex align-items-center gap-3 fs-6">

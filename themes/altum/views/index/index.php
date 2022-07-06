@@ -231,7 +231,7 @@ use Altum\Middlewares\Authentication;
                     <div class="card">
                     <div class="card-body p-3">
                         <blockquote class="icon mb-0">
-                        <p>"Dari banyaknya platform link di bio, gw prefer pake Diglink. Soalnya dengan pake Diglink, gw bisa pasang facebook pixel dan google analytics, yang berguna banget buat naikin conversion. Buat setting dan pemasangannya juga simple banget. Dan yg paling penting, team Diglink juga sangat membantu dan servicenya top notch banget. Mantap 👍"</p>
+                        <p>"There are so many options of landingpage, I prefer to use Diglink. Because, Diglink can provide us a system to install Facebook Pixel and Google Analytics which really useful for increasing conversion. It's also very simple to set up and install. And most important thing is, the Diglink team is very helpful and the services is so nice. Great 👍"</p>
                         <div class="blockquote-details">
                             <img class="rounded-circle w-12" src="<?= url(ASSETS_URL_PATH.'img/testimonial/Tommy-Surya-Teja.jpeg') ?>" srcset="<?= url(ASSETS_URL_PATH.'img/testimonial/Tommy-Surya-Teja.jpeg') ?>" alt="Tommy Surya Teja" />
                             <div class="info">
@@ -253,7 +253,7 @@ use Altum\Middlewares\Authentication;
                     <div class="card">
                     <div class="card-body p-3">
                         <blockquote class="icon mb-0">
-                        <p>“Sebagai KOL (Key Opinion Leader), memakai Diglink sungguh memudahkan keperluan marketing dari bisnis gua. Gua bisa pake Diglink di TikTok dan Instagram gua, dan karena Diglink support Facebook Pixel dan Google analytics, gua jadi gampang banget untuk ngiklanin website gua ke followers gua. Team Diglink sendiri juga selalu ready dan siap membantu seluruh pertanyaan atau request yang kami punya. Puass banget pake Diglink”</p>
+                        <p>“As a KOL (Key Opinion Leader), using Diglink really makes the marketing easier for my business . I can use Diglink on my TikTok and Instagram. Diglink also supports Facebook Pixel and Google analytics, it's really easy for me to advertise my website to my followers. The Diglink team is always ready to help with any questions or requests we have. Very satisfying.”</p>
                         <div class="blockquote-details">
                             <img class="rounded-circle w-12" src="<?= url(ASSETS_URL_PATH.'img/testimonial/Reynaldi-Francois.jpeg') ?>" srcset=<?= url(ASSETS_URL_PATH.'img/testimonial/Reynaldi-Francois.jpeg') ?> 2x" alt="Reynaldi Francois" />
                             <div class="info">
@@ -270,29 +270,48 @@ use Altum\Middlewares\Authentication;
                 <!-- /.item-inner -->
                 </div>
                 <!-- /.item -->
+
                 <div class="item">
-                <div class="item-inner">
-                    <div class="card">
-                    <div class="card-body p-3">
-                        <blockquote class="icon mb-0">
-                        <p>“Adanya Diglink sangat memudahkan sekali untuk bisa integrasikan social media, marketplace, dan whatsapp ke dalam satu chanel.
-sehingga memudahkan audience untuk mencari informasi tentang brand kita atau berkunjung ke tokonya kita dan itu semua dalam satu wadah DIGLINK.
-dan yang paling penting menyediakan pixel untuk tracking dan bisa menjadi landing page untuk akhirnya dibantu analisis nya.
-semoga kedepan bakalan ada lagi fitur - fitur menarik dari diglink
-”</p>
-                        <div class="blockquote-details">
-                            <img class="rounded-circle w-12" src="<?= url(ASSETS_URL_PATH.'img/testimonial/Muhammad-Nizar.jpeg') ?>" srcset="<?= url(ASSETS_URL_PATH.'img/testimonial/Muhammad-Nizar.jpeg') ?> 2x" alt="" />
-                            <div class="info">
-                            <h5 class="mb-1">Muhammad Nizar</h5>
-                            <p class="mb-0">owner Pro Aktif Creative Consultant</p>
+                    <div class="item-inner">
+                        <div class="card">
+                        <div class="card-body p-3">
+                            <blockquote class="icon mb-0">
+                            <p>“Diglink makes it very easy to integrate social media, marketplace, and whatsapp into one channel. It easier for the audience to find information about our brand or visit our shop and it's all in one in perfect DIGLINK. And the most importantly provide pixels for tracking and can be a landing page with complete analysis. Hopefully in the future there will be more interesting features from Diglink.”</p>
+                            <div class="blockquote-details">
+                                <img class="rounded-circle w-12" src="<?= url(ASSETS_URL_PATH.'img/testimonial/Muhammad-Nizar.jpeg') ?>" srcset="<?= url(ASSETS_URL_PATH.'img/testimonial/Muhammad-Nizar.jpeg') ?> 2x" alt="Muhammad Nizar" />
+                                <div class="info">
+                                <h5 class="mb-1">Muhammad Nizar</h5>
+                                <p class="mb-0">Owner Pro Aktif Creative Consultant</p>
+                                </div>
                             </div>
+                            </blockquote>
                         </div>
-                        </blockquote>
+                        <!-- /.card-body -->
+                        </div>
+                        <!-- /.card -->
                     </div>
-                    <!-- /.card-body -->
-                    </div>
-                    <!-- /.card -->
+                <!-- /.item-inner -->
                 </div>
+
+                <div class="item">
+                    <div class="item-inner">
+                        <div class="card">
+                        <div class="card-body p-3">
+                            <blockquote class="icon mb-0">
+                            <p>“Diglink makes it very easy to integrate social media, marketplace, and whatsapp into one channel. It easier for the audience to find information about our brand or visit our shop and it's all in one in perfect DIGLINK. And the most importantly provide pixels for tracking and can be a landing page with complete analysis. Hopefully in the future there will be more interesting features from Diglink.”</p>
+                            <div class="blockquote-details">
+                                <img class="rounded-circle w-12" src="<?= url(ASSETS_URL_PATH.'img/testimonial/Novica-Maulidiasari.jpg') ?>" srcset="<?= url(ASSETS_URL_PATH.'img/testimonial/Novica-Maulidiasari.jpg') ?> 2x" alt="Novica Maulidiasari" />
+                                <div class="info">
+                                <h5 class="mb-1">Novica Maulidiasari</h5>
+                                <p class="mb-0">Owner Rurik</p>
+                                </div>
+                            </div>
+                            </blockquote>
+                        </div>
+                        <!-- /.card-body -->
+                        </div>
+                        <!-- /.card -->
+                    </div>
                 <!-- /.item-inner -->
                 </div>
                

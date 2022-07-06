@@ -69,8 +69,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel aaa"><?= $this->language->create_link_modal->header ?></h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
                     </button>
                 </div>
                 <div class="modal-body">
@@ -104,7 +103,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="submit" name="submit" class="btn btn-outline-primary"><?= $this->language->create_link_modal->input->submit ?></button>
-                    <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Close</button>
                 </div>
             </div>
         </form>
@@ -180,8 +179,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel"><?= $this->language->create_biolink_modal->header ?></h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
                     </button>
                 </div>
                 <div class="modal-body">
@@ -208,7 +206,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="submit" name="submit" class="btn btn-outline-primary"><?= $this->language->create_biolink_modal->input->submit ?></button>
-                    <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Close</button>
                 </div>
             </div>
         </form>
