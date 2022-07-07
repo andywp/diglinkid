@@ -13,12 +13,12 @@
 
     <div class="notification-container"></div>
 
-    <div class="form-group">
+    <div class="form-group mb-3">
         <label><i class="fa fa-signature"></i> <?= $this->language->create_biolink_link_modal->input->location_url ?></label>
         <input type="text" class="form-control" name="location_url" value="<?= $row->location_url ?>" placeholder="<?= $this->language->create_biolink_link_modal->input->location_url_placeholder ?>" required="required" />
     </div>
 
-    <div class="form-group">
+    <div class="form-group mb-3">
         <label><i class="fa fa-link"></i> <?= $this->language->create_biolink_link_modal->input->url ?></label>
         <div class="input-group">
             <div class="input-group-prepend">
@@ -37,7 +37,7 @@
 
     <div class="row mt-3 schedule_container <?= !$this->user->package_settings->scheduling ? 'container-disabled': null ?>" style="display: none;">
         <div class="col">
-            <div class="form-group">
+            <div class="form-group mb-3">
                 <label><i class="fa fa-clock"></i> <?= $this->language->link->settings->start_date ?></label>
                 <input
                         type="text"
@@ -51,7 +51,7 @@
         </div>
 
         <div class="col">
-            <div class="form-group">
+            <div class="form-group mb-3">
                 <label><i class="fa fa-clock"></i> <?= $this->language->link->settings->end_date ?></label>
                 <input
                         type="text"
@@ -65,16 +65,16 @@
         </div>
     </div>
 
-    <div class="form-group">
+    <div class="form-group mb-3">
         <label><i class="fa fa-paragraph"></i> <?= $this->language->create_biolink_link_modal->input->name ?></label>
         <input type="text" name="name" class="form-control" value="<?= $row->settings->name ?>" required="required" />
     </div>
 
-    <div class="form-group">
+    <div class="form-group mb-3">
         <label><i class="fa fa-globe"></i> <?= $this->language->create_biolink_link_modal->input->icon ?></label>
         <div class="input-group">
             <span class="input-group-prepend">
-                <button class="btn btn-secondary" data-icon="<?= $row->settings->icon ?>" data-iconset="fontawesome5" role="iconpicker"></button>
+                <button class="btn btn-secondary" type="button" data-icon="<?= $row->settings->icon ?>" data-iconset="fontawesome5" role="iconpicker"></button>
             </span>
 
             <input type="text" name="icon" class="form-control" value="<?= $row->settings->icon ?>" placeholder="<?= $this->language->create_biolink_link_modal->input->icon_placeholder ?>" />
@@ -83,13 +83,13 @@
     </div>
 
     <div class="<?= !$this->user->package_settings->custom_colored_links ? 'container-disabled': null ?>">
-        <div class="form-group">
+        <div class="form-group mb-3">
             <label><i class="fa fa-paint-brush"></i> <?= $this->language->create_biolink_link_modal->input->text_color ?></label>
             <input type="hidden" name="text_color" class="form-control" value="<?= $row->settings->text_color ?>" required="required" />
             <div class="text_color_pickr"></div>
         </div>
 
-        <div class="form-group">
+        <div class="form-group mb-3">
             <label><i class="fa fa-fill"></i> <?= $this->language->create_biolink_link_modal->input->background_color ?></label>
             <input type="hidden" name="background_color" class="form-control" value="<?= $row->settings->background_color ?>" required="required" />
             <div class="background_color_pickr"></div>
@@ -106,7 +106,7 @@
             <label class="custom-control-label clickable" for="outline_<?= $row->link_id ?>"><?= $this->language->create_biolink_link_modal->input->outline ?></label>
         </div>
 
-        <div class="form-group">
+        <div class="form-group mb-3">
             <label><?= $this->language->create_biolink_link_modal->input->border_radius ?></label>
             <select name="border_radius" class="form-control">
                 <option value="straight" <?= $row->settings->border_radius == 'straight' ? 'selected="true"' : null ?>><?= $this->language->create_biolink_link_modal->input->border_radius_straight ?></option>
@@ -115,7 +115,7 @@
             </select>
         </div>
 
-        <div class="form-group">
+        <div class="form-group mb-3">
             <label><?= $this->language->create_biolink_link_modal->input->animation ?></label>
             <select name="animation" class="form-control">
                 <option value="false" <?= !$row->settings->animation ? 'selected="true"' : null ?>>-</option>
@@ -132,6 +132,6 @@
     </div>
 
     <div class="text-center mt-4">
-        <button type="submit" name="submit" class="btn btn-primary"><?= $this->language->global->update ?></button>
+        <button type="submit" name="submit" class="btn btn-outline-primary"><?= $this->language->global->update ?></button>
     </div>
 </form>

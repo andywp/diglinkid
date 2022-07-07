@@ -6,8 +6,8 @@ const display_notifications = (messages, type, selector) => {
     for(let message of messages) {
 
         html += `
-            <div class="alert alert-${type} animated fadeIn">
-                <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <div class="alert alert-${type} animated fadeIn alert-dismissible fade show" role="alert">
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 ${message}
             </div>`;
 

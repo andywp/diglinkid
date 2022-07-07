@@ -7,21 +7,21 @@
         <div class="d-flex justify-content-between">
             <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
                 <li class="nav-item">
-                    <a class="nav-link <?= !isset($_GET['tab']) || (isset($_GET['tab']) && $_GET['tab'] == 'settings') ? 'active' : null ?>" id="settings-tab" data-toggle="pill" href="#settings" role="tab" aria-controls="settings" aria-selected="true"><?= $this->language->link->header->settings_tab ?></a>
+                    <a class="nav-link <?= !isset($_GET['tab']) || (isset($_GET['tab']) && $_GET['tab'] == 'settings') ? 'active' : null ?>" id="settings-tab" data-bs-toggle="pill" href="#settings" role="tab" aria-controls="settings" aria-selected="true"><?= $this->language->link->header->settings_tab ?></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link <?= isset($_GET['tab']) && $_GET['tab'] == 'links'? 'active' : null ?>" id="links-tab" data-toggle="pill" href="#links" role="tab" aria-controls="links" aria-selected="false"><?= $this->language->link->header->links_tab ?></a>
+                    <a class="nav-link <?= isset($_GET['tab']) && $_GET['tab'] == 'links'? 'active' : null ?>" id="links-tab" data-bs-toggle="pill" href="#links" role="tab" aria-controls="links" aria-selected="false"><?= $this->language->link->header->links_tab ?></a>
                 </li>
             </ul>
 
             <div class="dropdown">
-                <button type="button" data-toggle="dropdown" class="btn btn-primary rounded-pill dropdown-toggle dropdown-toggle-simple"><i class="fas fa-plus-circle"></i> <?= $this->language->project->links->create ?></button>
+                <button type="button" data-bs-toggle="dropdown" class="btn btn-primary rounded-pill dropdown-toggle dropdown-toggle-simple"><i class="fas fa-plus-circle"></i> <?= $this->language->project->links->create ?></button>
 
                 <div class="dropdown-menu dropdown-menu-right">
                     <?php $biolink_link_types = require APP_PATH . 'includes/biolink_link_types.php'; ?>
 
                     <?php foreach($biolink_link_types as $key): ?>
-                    <a href="#" class="dropdown-item" data-toggle="modal" data-target="#create_biolink_<?= $key ?>">
+                    <a href="#" class="dropdown-item" data-bs-toggle="modal" data-target="#create_biolink_<?= $key ?>">
                         <i class="fa fa-circle fa-sm" style="color: <?= $this->language->link->biolink->{$key}->color ?>"></i>
 
                         <?= $this->language->link->biolink->{$key}->name ?>
@@ -83,7 +83,7 @@
                                     </label>
                                     <p id="image_file_status" style="display: none;">
                                         <?= $this->language->link->settings->image_status ?>
-                                        <span id="image_file_remove" class="clickable" data-toggle="tooltip" title="<?= $this->language->link->settings->image_remove ?>"><i class="fa fa-trash-alt"></i></span>
+                                        <span id="image_file_remove" class="clickable" data-bs-toggle="tooltip" title="<?= $this->language->link->settings->image_remove ?>"><i class="fa fa-trash-alt"></i></span>
                                     </p>
                                 </div>
 
@@ -156,7 +156,7 @@
                                         <input id="background_type_image_input" type="file" name="background" class="form-control" />
                                         <p id="background_type_image_status" style="display: none;">
                                             <?= $this->language->link->settings->image_status ?>
-                                            <span id="background_type_image_remove" class="clickable" data-toggle="tooltip" title="<?= $this->language->link->settings->image_remove ?>"><i class="fa fa-trash-alt"></i></span>
+                                            <span id="background_type_image_remove" class="clickable" data-bs-toggle="tooltip" title="<?= $this->language->link->settings->image_remove ?>"><i class="fa fa-trash-alt"></i></span>
                                         </p>
                                     </div>
                                 
@@ -169,7 +169,7 @@
                                         <input id="background_type_image_input_mobile" type="file" name="background_mobile" class="form-control" />
                                         <p id="background_type_image_status_mobile" style="display: none;">
                                             <?= $this->language->link->settings->image_remove ?>
-                                            <span id="background_type_image_moble_remove" class="clickable" data-toggle="tooltip" title="<?= $this->language->link->settings->image_remove ?>"><i class="fa fa-trash-alt"></i></span>
+                                            <span id="background_type_image_moble_remove" class="clickable" data-bs-toggle="tooltip" title="<?= $this->language->link->settings->image_remove ?>"><i class="fa fa-trash-alt"></i></span>
                                         </p>
                                     </div>
 								</div>
@@ -259,14 +259,14 @@
                         <div class="link custom-row <?= $row->is_enabled ? null : 'custom-row-inactive' ?> my-3" data-link-id="<?= $row->link_id ?>">
                             <div class="d-flex align-items-center">
                                 <div class="custom-row-side-controller">
-                                    <span data-toggle="tooltip" title="<?= $this->language->link->links->link_sort ?>">
+                                    <span data-bs-toggle="tooltip" title="<?= $this->language->link->links->link_sort ?>">
                                         <i class="fa fa-bars text-muted custom-row-side-controller-grab drag"></i>
                                     </span>
                                 </div>
 
                                 <div class="col-1 mr-2 p-0 d-none d-lg-block">
 
-                                    <span class="fa-stack fa-1x" data-toggle="tooltip" title="<?= $this->language->link->biolink->{$row->subtype}->name ?>">
+                                    <span class="fa-stack fa-1x" data-bs-toggle="tooltip" title="<?= $this->language->link->biolink->{$row->subtype}->name ?>">
                                       <i class="fas fa-circle fa-stack-2x" style="color: <?= $this->language->link->biolink->{$row->subtype}->color ?>"></i>
                                       <i class="fas <?= $this->language->link->biolink->{$row->subtype}->icon ?> fa-stack-1x fa-inverse"></i>
                                     </span>
@@ -294,19 +294,19 @@
 
                                 <div class="col-2">
                                     <a href="<?= url('link/' . $row->link_id . '/statistics') ?>">
-                                        <span data-toggle="tooltip" title="<?= $this->language->project->links->clicks ?>"><i class="fa fa-chart-bar custom-row-statistic-icon"></i> <span class="custom-row-statistic-number"><?= nr($row->clicks) ?></span></span>
+                                        <span data-bs-toggle="tooltip" title="<?= $this->language->project->links->clicks ?>"><i class="fa fa-chart-bar custom-row-statistic-icon"></i> <span class="custom-row-statistic-number"><?= nr($row->clicks) ?></span></span>
                                     </a>
                                 </div>
 
                                 <div class="col-1 d-flex justify-content-end">
                                     <div class="dropdown">
-                                        <a href="#" data-toggle="dropdown" class="text-secondary dropdown-toggle dropdown-toggle-simple">
+                                        <a href="#" data-bs-toggle="dropdown" class="text-secondary dropdown-toggle dropdown-toggle-simple">
                                             <i class="fas fa-ellipsis-v"></i>
 
                                             <div class="dropdown-menu dropdown-menu-right">
                                                 <a href="#"
                                                    class="dropdown-item"
-                                                   data-toggle="collapse"
+                                                   data-bs-toggle="collapse"
                                                    data-target="#link_expanded_content<?= $row->link_id ?>"
                                                    aria-expanded="false"
                                                    aria-controls="link_expanded_content<?= $row->link_id ?>"
@@ -404,7 +404,7 @@
     $('#image_file_input').on('change', event => {
         $('#image_file_status').show();
 
-        $('[data-toggle="tooltip"]').tooltip();
+        $('[data-bs-toggle="tooltip"]').tooltip();
 
         generate_image_preview(event.currentTarget);
     });

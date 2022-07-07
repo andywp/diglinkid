@@ -4,18 +4,34 @@ const display_notifications = (messages, type, selector) => {
     type = type == 'error' ? 'danger' : type;
 
     for(let message of messages) {
+        
+        //${message}+_noti();
+
+        window[type+"_noti"](message);
 
         html += `
-            <div class="alert alert-${type} animated fadeIn">
-                <button type="button" class="close" data-dismiss="alert">&times;</button>
-                ${message}
-            </div>`;
+                <div class="alert alert-${type} animated fadeIn alert-dismissible fade show" role="alert">
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    ${message}
+                </div>`;
 
     }
 
     $(selector).html(html);
 
 };
+
+const popup_notifications =(messages, type)=>{
+    let html = '';
+    type = type == 'error' ? 'danger' : type;
+    for(let message of messages) {
+        window[type+"_noti"](message);
+
+    }
+}
+
+
+
 
 const fade_out_redirect = ({ url = false, selector = 'body', wait_time = 70, full = false }) => {
 

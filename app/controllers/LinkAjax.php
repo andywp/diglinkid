@@ -270,10 +270,10 @@ class LinkAjax extends Controller {
 
         $this->check_location_url($_POST['location_url']);
 
-        if(!$project_id = Database::simple_get('project_id', 'links', ['user_id' => $this->user->user_id, 'link_id' => $_POST['link_id'], 'type' => 'biolink', 'subtype' => 'base'])) {
+        /* if(!$project_id = Database::simple_get('project_id', 'links', ['user_id' => $this->user->user_id, 'link_id' => $_POST['link_id'], 'type' => 'biolink', 'subtype' => 'base'])) {
             die();
-        }
-
+        } */
+        $project_id=0;
         $url = string_generate(10);
         $type = 'biolink';
         $subtype = 'link';
@@ -295,6 +295,7 @@ class LinkAjax extends Controller {
         $stmt = Database::$database->prepare("INSERT INTO `links` (`project_id`, `biolink_id`, `user_id`, `type`, `subtype`, `url`, `location_url`, `settings`, `date`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
         $stmt->bind_param('sssssssss', $project_id, $_POST['link_id'], $this->user->user_id, $type, $subtype, $url, $_POST['location_url'], $settings, \Altum\Date::$date);
         $stmt->execute();
+        //var_dump($stmt->error);
         $stmt->close();
 
         Response::json('', 'success', ['url' => url('link/' . $_POST['link_id'] . '?tab=links')]);
@@ -317,11 +318,11 @@ class LinkAjax extends Controller {
 		exit(); */
 		@$_POST['keterangan']=trim(Database::clean_string($_POST['keterangan']));
 		
-		
+		$project_id=0;
 		/*cek this link id*/
-		if(!$project_id = Database::simple_get('project_id', 'links', ['user_id' => $this->user->user_id, 'link_id' => $_POST['link_id'], 'type' => 'biolink', 'subtype' => 'base'])) {
+		/* if(!$project_id = Database::simple_get('project_id', 'links', ['user_id' => $this->user->user_id, 'link_id' => $_POST['link_id'], 'type' => 'biolink', 'subtype' => 'base'])) {
             die();
-        }
+        } */
 		$type = 'biolink';
         $subtype = 'whatsapp_form';
 		
@@ -342,9 +343,10 @@ class LinkAjax extends Controller {
 
         $this->check_location_url($_POST['location_url']);
 
-        if(!$project_id = Database::simple_get('project_id', 'links', ['user_id' => $this->user->user_id, 'link_id' => $_POST['link_id'], 'type' => 'biolink', 'subtype' => 'base'])) {
+        /* if(!$project_id = Database::simple_get('project_id', 'links', ['user_id' => $this->user->user_id, 'link_id' => $_POST['link_id'], 'type' => 'biolink', 'subtype' => 'base'])) {
             die();
-        }
+        } */
+        $project_id =0;
 
         $url = string_generate(10);
         $type = 'biolink';
@@ -859,35 +861,38 @@ class LinkAjax extends Controller {
 
     /* Function to bundle together all the checks of an url */
     private function check_location_url($url) {
+        if($_SERVER['HTTP_HOST'] != 'localhost'):
 
-        if(empty(trim($url))) {
-            Response::json($this->language->global->error_message->empty_fields, 'error');
-        }
-
-        $url_details = parse_url($url);
-
-        if(!isset($url_details['scheme']) || (isset($url_details['scheme']) && !in_array($url_details['scheme'], ['http', 'https']))) {
-            Response::json($this->language->link->error_message->invalid_location_url, 'error');
-        }
-
-        /* Make sure the domain is not blacklisted */
-        if(in_array(get_domain($url), $this->settings->links->blacklisted_domains)) {
-            Response::json($this->language->link->error_message->blacklisted_domain, 'error');
-        }
-
-        /* Check the url with phishtank to make sure its not a phishing site */
-        if($this->settings->links->phishtank_is_enabled) {
-            if(phishtank_check($url, $this->settings->links->phishtank_api_key)) {
-                Response::json($this->language->link->error_message->blacklisted_location_url, 'error');
+            if(empty(trim($url))) {
+                Response::json($this->language->global->error_message->empty_fields, 'error');
             }
-        }
 
-        /* Check the url with google safe browsing to make sure it is a safe website */
-        if($this->settings->links->google_safe_browsing_is_enabled) {
-            //if(google_safe_browsing_check($url, $this->settings->links->google_safe_browsing_api_key)) {
-            //    Response::json($this->language->link->error_message->blacklisted_location_url, 'error');
-            //}
-        }
+            $url_details = parse_url($url);
+
+            if(!isset($url_details['scheme']) || (isset($url_details['scheme']) && !in_array($url_details['scheme'], ['http', 'https']))) {
+                Response::json($this->language->link->error_message->invalid_location_url, 'error');
+            }
+
+            /* Make sure the domain is not blacklisted */
+            if(in_array(get_domain($url), $this->settings->links->blacklisted_domains)) {
+                Response::json($this->language->link->error_message->blacklisted_domain, 'error');
+            }
+
+            /* Check the url with phishtank to make sure its not a phishing site */
+            if($this->settings->links->phishtank_is_enabled) {
+                if(phishtank_check($url, $this->settings->links->phishtank_api_key)) {
+                    Response::json($this->language->link->error_message->blacklisted_location_url, 'error');
+                }
+            }
+
+            /* Check the url with google safe browsing to make sure it is a safe website */
+            if($this->settings->links->google_safe_browsing_is_enabled) {
+                //if(google_safe_browsing_check($url, $this->settings->links->google_safe_browsing_api_key)) {
+                //    Response::json($this->language->link->error_message->blacklisted_location_url, 'error');
+                //}
+            }
+
+        endif;
     }
 
     /* Check if custom domain is set and return the proper value */

@@ -10,6 +10,7 @@
         <link rel="icon" href="<?= SITE_URL . ASSETS_URL_PATH ?>images/favicon.png" type="image/png" />
 
         <!--plugins-->
+        <link rel="stylesheet" href="<?= SITE_URL . ASSETS_URL_PATH ?>onedash/plugins/notifications/css/lobibox.min.css">
         <link href="<?= SITE_URL . ASSETS_URL_PATH ?>onedash/plugins/vectormap/jquery-jvectormap-2.0.2.css" rel="stylesheet"/>
         <link href="<?= SITE_URL . ASSETS_URL_PATH ?>onedash/plugins/simplebar/css/simplebar.css" rel="stylesheet" />
         <link href="<?= SITE_URL . ASSETS_URL_PATH ?>onedash/plugins/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet" />
@@ -37,7 +38,11 @@
         <link href="<?= SITE_URL . ASSETS_URL_PATH ?>onedash/css/header-colors.css" rel="stylesheet" />
 
         <link rel="stylesheet" href="<?= SITE_URL . ASSETS_URL_PATH ?>onedash/css/toastr.css" as="style" onload="this.rel='stylesheet'">
-         <link href="<?= SITE_URL . ASSETS_URL_PATH ?>css/diglink.css" rel="stylesheet" />
+        <link href="<?= SITE_URL . ASSETS_URL_PATH ?>css/custom.css" rel="stylesheet"   media="screen">
+        <link href="<?= SITE_URL . ASSETS_URL_PATH ?>css/link-custom.css" rel="stylesheet"  media="screen">
+        <link href="<?= SITE_URL . ASSETS_URL_PATH ?>css/animate.min.css" rel="stylesheet"  media="screen">
+        <link href="<?= SITE_URL . ASSETS_URL_PATH ?>css/icodiglink.css" rel="stylesheet"  media="screen">
+        <link href="<?= SITE_URL . ASSETS_URL_PATH ?>css/diglink.css" rel="stylesheet" />
 
         <?= \Altum\Event::get_content('head') ?>
         <style>
@@ -91,7 +96,7 @@
         <!--
         <script src="<?= SITE_URL . ASSETS_URL_PATH ?>onedash/js/index.js"></script>
             -->
-        <?php foreach([/* 'libraries/popper.min.js', 'libraries/bootstrap.min.js', */ 'main.js', 'functions.js', 'libraries/fontawesome.min.js'] as $file): ?>
+        <?php foreach([/* 'libraries/popper.min.js', 'libraries/bootstrap.min.js', */ 'main.js', 'functions.js', 'libraries/fontawesome.min.js','libraries/clipboard.min.js'] as $file): ?>
             <script src="<?= SITE_URL . ASSETS_URL_PATH ?>js/<?= $file ?>?v=<?= PRODUCT_CODE ?>"></script>
         <?php endforeach ?>
         <!--
@@ -101,6 +106,13 @@
             <script src="<?= SITE_URL . ASSETS_URL_PATH ?>onedash/js/table-datatable.js"></script>
         <?php endif ?>
         -->
+
+        <!-- Notifikasi --> 
+        <script src="<?= SITE_URL . ASSETS_URL_PATH ?>onedash/plugins/notifications/js/lobibox.min.js"></script>
+        <script src="<?= SITE_URL . ASSETS_URL_PATH ?>onedash/plugins/notifications/js/notifications.min.js"></script>
+        <script src="<?= SITE_URL . ASSETS_URL_PATH ?>onedash/plugins/notifications/js/notification-custom-script.js"></script>
+
+        
 
         <?= \Altum\Event::get_content('javascript') ?>
         

@@ -15,12 +15,12 @@
 
             <div class="notification-container"></div>
 
-            <div class="form-group">
+            <div class="form-group mb-3">
                 <label><i class="fa fa-signature"></i> <?= $this->language->link->settings->location_url ?></label>
                 <input type="text" class="form-control" name="location_url" value="<?= $data->link->location_url ?>" required="required" placeholder="<?= $this->language->link->settings->location_url_placeholder ?>" />
             </div>
 
-            <div class="form-group">
+            <div class="form-group mb-3">
                 <label><i class="fa fa-link"></i> <?= $this->language->link->settings->url ?></label>
                 <div class="input-group">
                     <div class="input-group-prepend">
@@ -48,7 +48,7 @@
 
             <div id="schedule_container" class="row mt-3 <?= !$this->user->package_settings->scheduling ? 'container-disabled': null ?>" style="display: none;">
                 <div class="col">
-                    <div class="form-group">
+                    <div class="form-group mb-3">
                         <label><i class="fa fa-clock"></i> <?= $this->language->link->settings->start_date ?></label>
                         <input
                                 type="text"
@@ -62,7 +62,7 @@
                 </div>
 
                 <div class="col">
-                    <div class="form-group">
+                    <div class="form-group mb-3">
                         <label><i class="fa fa-clock"></i> <?= $this->language->link->settings->end_date ?></label>
                         <input
                                 type="text"
@@ -77,7 +77,7 @@
             </div>
 
             <div class="text-center mt-4">
-                <button type="submit" name="submit" class="btn btn-primary"><?= $this->language->global->update ?></button>
+                <button type="submit" name="submit" class="btn btn-outline-primary"><?= $this->language->global->update ?></button>
             </div>
         </form>
 

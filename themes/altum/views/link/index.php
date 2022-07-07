@@ -17,43 +17,24 @@
         <div class="ms-auto">
             <?php if(($data->link->type == 'biolink' && $data->link->subtype == 'base') || $data->link->type == 'link'): ?>
                 <?php if($data->method != 'statistics'): ?>
-                <a href="<?= url('link/' . $data->link->link_id . '/statistics') ?>" class="btn btn-primary rounded-pill mr-3"><i class="lni lni-bar-chart"></i> <?= $this->language->link->statistics->link ?></a>
+                <a href="<?= url('link/' . $data->link->link_id . '/statistics') ?>" class="btn btn-sm btn-outline-primary px-5"><i class="lni lni-bar-chart"></i> <?= $this->language->link->statistics->link ?></a>
                 <?php endif ?>
 
                 <?php if($data->method != 'settings'): ?>
-                <a href="<?= url('link/' . $data->link->link_id . '/settings') ?>" class="btn btn-primary rounded-pill mr-3"><i class="lni lni-cog"></i> <?= $this->language->link->settings->link ?></a>
+                <a href="<?= url('link/' . $data->link->link_id . '/settings') ?>" class="btn btn-sm btn-outline-primary px-5"><i class="lni lni-cog"></i> <?= $this->language->link->settings->link ?></a>
                 <?php endif ?>
             <?php endif ?>
         </div>
     </div>
 <section class="wrapper image-wrapper bg-image bg-overlay bg-overlay-400 bg-content text-dark" data-image-src="./assets/img/photos/bg4.jpg">   
-    <div class="container pt-18 pb-16" style="z-index: 5; position:relative">
+    <div class="pt-18 pb-16" style="z-index: 5; position:relative">
         <!-- new-->
         <div class="card">
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-md-6">
-
-                    </div>
-                    <div class="col-md-6">
-
-                    </div>
-                </div>
-            </div>      
-        </div>
-
-
-        <!-- / new -->
-
-        <input type="hidden" id="base_controller_url" name="base_controller_url" value="<?= url('link/' . $data->link->link_id) ?>" />
-        <header class="mb-4">
-            <div class="container">
-
+            <div class="card-body overflow-hidden">
                 <div class="d-flex flex-column flex-md-row justify-content-between">
                     <div class="d-flex align-items-center">
-                        <h1 class="h3 mr-3 text-dark"><?= sprintf($this->language->link->header->header, $data->link->url) ?></h1>
-
-                        <div class="custom-control custom-switch mr-3" data-toggle="tooltip" title="<?= $this->language->project->links->is_enabled_tooltip ?>">
+                        <h1 class="h3 me-3 text-dark"><?= sprintf($this->language->link->header->header, $data->link->url) ?></h1>
+                        <div class="custom-control custom-switch me-3" data-toggle="tooltip" title="<?= $this->language->project->links->is_enabled_tooltip ?>">
                             <input
                                     type="checkbox"
                                     class="custom-control-input"
@@ -64,11 +45,9 @@
                             >
                             <label class="custom-control-label clickable" for="link_is_enabled_<?= $data->link->link_id ?>"></label>
                         </div>
-
                         <div class="dropdown">
-                            <a href="#" data-toggle="dropdown" class="text-secondary dropdown-toggle dropdown-toggle-simple">
+                            <a href="#" class="dropdown-toggle dropdown-toggle-nocaret cursor-pointer" data-bs-toggle="dropdown" aria-expanded="false">
                                 <i class="fas fa-ellipsis-v"></i>
-
                                 <div class="dropdown-menu dropdown-menu-right">
                                     <a href="<?= url('link/' . $data->link->link_id) ?>" class="dropdown-item"><i class="fa fa-pencil-alt"></i> <?= $this->language->global->edit ?></a>
                                     <a href="<?= url('link/' . $data->link->link_id . '/statistics') ?>" class="dropdown-item"><i class="fa fa-chart-bar"></i> <?= $this->language->link->statistics->link ?></a>
@@ -78,29 +57,36 @@
                         </div>
                     </div>
                 </div>
+                <input type="hidden" id="base_controller_url" name="base_controller_url" value="<?= url('link/' . $data->link->link_id) ?>" />
+                <header class="mb-2">
+                    <div class="">
+                        <div class="d-flex align-items-baseline">
+                            <span class="mr-3" data-toggle="tooltip" title="<?= $this->language->link->{$data->link->type}->name ?>">
+                                <i class="fa fa-circle fa-sm" style="color: <?= $this->language->link->{$data->link->type}->color ?>"></i>
+                            </span>
+                            <p class="text-dark mb-0">
+                                <?= sprintf($this->language->link->header->subheader, '<strong><a href="' . $data->link->full_url . '" target="_blank">' . $data->link->full_url . '</a></strong>') ?>
+                                <button
+                                        type="button"
+                                        class="btn btn-link"
+                                        data-toggle="tooltip"
+                                        title="<?= $this->language->global->clipboard_copy ?>"
+                                        aria-label="<?= $this->language->global->clipboard_copy ?>"
+                                        data-clipboard-text="<?= $data->link->full_url ?>"
+                                >
+                                    <i class="fa fa-sm fa-copy"></i>
+                                </button>
+                            </p>
+                        </div>
+                    </div>
+                </header>
+            </div>      
+        </div>
 
-                <div class="d-flex align-items-baseline">
-                    <span class="mr-3" data-toggle="tooltip" title="<?= $this->language->link->{$data->link->type}->name ?>">
-                        <i class="fa fa-circle fa-sm" style="color: <?= $this->language->link->{$data->link->type}->color ?>"></i>
-                    </span>
 
-                    <p class="text-dark mb-0">
-                        <?= sprintf($this->language->link->header->subheader, '<strong><a href="' . $data->link->full_url . '" target="_blank">' . $data->link->full_url . '</a></strong>') ?>
+        <!-- / new -->
 
-                        <button
-                                type="button"
-                                class="btn btn-link"
-                                data-toggle="tooltip"
-                                title="<?= $this->language->global->clipboard_copy ?>"
-                                aria-label="<?= $this->language->global->clipboard_copy ?>"
-                                data-clipboard-text="<?= $data->link->full_url ?>"
-                        >
-                            <i class="fa fa-sm fa-copy"></i>
-                        </button>
-                    </p>
-                </div>
-            </div>
-        </header>
+        
         <?php require THEME_PATH . 'views/partials/ads_header.php' ?>
    
         <?php display_notifications() ?>

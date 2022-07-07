@@ -3,14 +3,10 @@
 <div class="modal fade" id="create_biolink_mail" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
-
             <div class="modal-header">
-                <h5 class="modal-title"><?= $this->language->create_biolink_mail_modal->header ?></h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
+                <h5 class="modal-title" id="exampleModalLabel"><?= $this->language->create_biolink_mail_modal->header ?></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-
             <p class="text-muted modal-subheader"><?= $this->language->create_biolink_mail_modal->subheader ?></p>
 
             <div class="modal-body">
@@ -24,7 +20,8 @@
                     <div class="notification-container"></div>
 
                     <div class="text-center mt-4">
-                        <button type="submit" name="submit" class="btn btn-primary"><?= $this->language->create_biolink_mail_modal->input->submit ?></button>
+                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" name="submit" class="btn btn-outline-primary"><?= $this->language->create_biolink_mail_modal->input->submit ?></button>
                     </div>
                 </form>
             </div>

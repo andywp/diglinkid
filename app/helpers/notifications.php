@@ -11,8 +11,8 @@ function display_notifications() {
                 $csstype = ($type == 'error') ? 'danger' : $type;
 
                 echo '
-					<div class="alert alert-' . $csstype . ' animated fadeInDown">
-						<button type="button" class="close" data-dismiss-bs="alert">&times;</button>
+					<div class="alert alert-' . $csstype . ' alert-dismissible fade show animated fadeInDown" role="alert">
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 					    ' . $message . '
 					</div>
 				';

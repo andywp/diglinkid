@@ -9,12 +9,12 @@
 
     <div class="notification-container"></div>
 
-    <div class="form-group">
+    <div class="form-group mb-3">
         <label><i class="fa fa-signature"></i> <?= $this->language->create_biolink_vimeo_modal->input->location_url ?></label>
         <input type="text" class="form-control" name="location_url" value="<?= $row->location_url ?>" placeholder="<?= $this->language->create_biolink_vimeo_modal->input->location_url_placeholder ?>" required="required" />
     </div>
 
     <div class="text-center mt-4">
-        <button type="submit" name="submit" class="btn btn-primary"><?= $this->language->global->update ?></button>
+        <button type="submit" name="submit" class="btn btn-outline-primary"><?= $this->language->global->update ?></button>
     </div>
 </form>

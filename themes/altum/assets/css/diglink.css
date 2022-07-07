@@ -12,9 +12,25 @@
     position: relative;
     box-shadow: 0 6.73418px 10.1013px rgba(0,0,0,.05);
 }
-
-
-
+.nav-pills .nav-link {
+    font-weight: bold;
+    color: #372b70;
+}
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+    background-color: #372b70;
+}
+.pickr{
+    border: 1px solid #ced4da;
+}
+.text-muted {
+    color: #858585 !important;
+}
+.small, small {
+    font-size: 0.8em;
+}
+span#image_file_remove {
+    color: #da2a2a;
+}
 @media screen and (max-width: 600px) {
     .card-page .card-body{
         height: 350px;
