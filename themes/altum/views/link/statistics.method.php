@@ -1,36 +1,64 @@
-<div class="mb-3 d-flex justify-content-between align-items-center">
-    <h2 class="h4 mr-3"><?= $this->language->link->statistics->header ?></h2>
+<?php ob_start() ?>
 
-    <div>
-        <form class="form-inline" id="datepicker_form">
-            <label>
-                <div id="datepicker_selector" class="text-muted clickable">
-                    <span class="mr-1">
-                        <?php if($data->date->start_date == $data->date->end_date): ?>
-                            <?= \Altum\Date::get($data->date->start_date, 2) ?>
-                        <?php else: ?>
-                            <?= \Altum\Date::get($data->date->start_date, 2) . ' - ' . \Altum\Date::get($data->date->end_date, 2) ?>
-                        <?php endif ?>
-                    </span>
-                    <i class="fa fa-caret-down"></i>
-                </div>
+<?php \Altum\Event::add_content(ob_get_clean(), 'head') ?>
 
-                <input
-                        type="text"
-                        id="datepicker_input"
-                        data-range="true"
-                        data-min="<?= (new \DateTime($data->link->date))->format('Y-m-d') ?>"
-                        name="date_range"
-                        value="<?= $data->date->input_date_range ? $data->date->input_date_range : '' ?>"
-                        placeholder=""
-                        autocomplete="off"
-                        class="custom-control-input"
-                >
+<div class="card border ">
+    <div class="card-body">
+        <div class="mb-3 d-flex justify-content-between align-items-center">
+            <h2 class="h4 mr-3"><?= $this->language->link->statistics->header ?></h2>
 
-            </label>
-        </form>
+            <div>
+                <form class="form-inline" id="datepicker_form">
+                    <label>
+                        <div id="datepicker_selector" class="text-muted clickable">
+                            <span class="mr-1">
+                                <?php if($data->date->start_date == $data->date->end_date): ?>
+                                    <?= \Altum\Date::get($data->date->start_date, 2) ?>
+                                <?php else: ?>
+                                    <?= \Altum\Date::get($data->date->start_date, 2) . ' - ' . \Altum\Date::get($data->date->end_date, 2) ?>
+                                <?php endif ?>
+                            </span>
+                            <i class="fa fa-caret-down"></i>
+                        </div>
+
+                        <input
+                                type="text"
+                                id="datepicker_input"
+                                data-range="true"
+                                data-min="<?= (new \DateTime($data->link->date))->format('Y-m-d') ?>"
+                                name="date_range"
+                                value="<?= $data->date->input_date_range ? $data->date->input_date_range : '' ?>"
+                                placeholder=""
+                                autocomplete="off"
+                                class="custom-control-input"
+                        >
+
+                    </label>
+                </form>
+            </div>
+        </div>
+
+
     </div>
 </div>
+
+
+<div class="row">
+    <div class="col-12 col-lg-6 d-flex">
+        <div class="card radius-10 w-100">
+            <div class="card-body">
+                <div class="d-flex align-items-center">
+                    <h6 class="mb-0">Revenue</h6>
+                </div>
+                <div id="chart5">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 
 <?php if(!count($data->logs)): ?>
 
@@ -143,7 +171,7 @@
 <?php ob_start() ?>
 <script src="<?= url(ASSETS_URL_PATH . 'js/libraries/Chart.bundle.min.js') ?>"></script>
 <script src="<?= url(ASSETS_URL_PATH . 'js/libraries/datepicker.min.js') ?>"></script>
-
+<script src="<?= url(ASSETS_URL_PATH . 'onedash/plugins/apexcharts-bundle/js/apexcharts.min.js') ?>"></script>
 <script>
     /* Datepicker */
     $.fn.datepicker.language['altum'] = <?= json_encode(require APP_PATH . 'includes/datepicker_translations.php') ?>;
@@ -329,5 +357,106 @@
         }
     });
     <?php endif ?>
+
+
+
+    /* new statistik */
+    var options = {
+    series: [{
+        name: "Revenue",
+		data: [240, 460, 171, 657, 160, 471, 340, 230, 458, 98]
+    },{
+        name: "wkwk",
+		data: [140, 660, 171, 657, 160, 471, 340, 230, 458, 98]
+    }],
+    chart: {
+         type: "area",
+       // width: 130,
+	    stacked: true,
+        height: 280,
+        toolbar: {
+            show: !1
+        },
+        zoom: {
+            enabled: !1
+        },
+        dropShadow: {
+            enabled: 0,
+            top: 3,
+            left: 14,
+            blur: 4,
+            opacity: .12,
+            color: "#3461ff"
+        },
+        sparkline: {
+            enabled: !1
+        }
+    },
+    markers: {
+        size: 0,
+        colors: ["#3461ff"],
+        strokeColors: "#fff",
+        strokeWidth: 2,
+        hover: {
+            size: 7
+        }
+    },
+    plotOptions: {
+        bar: {
+            horizontal: !1,
+            columnWidth: "25%",
+            //endingShape: "rounded"
+        }
+    },
+    dataLabels: {
+        enabled: !1
+    },
+    stroke: {
+        show: !0,
+        width: [2.5],
+		//colors: ["#3461ff"],
+        curve: "smooth"
+    },
+	fill: {
+		type: 'gradient',
+		gradient: {
+		  shade: 'light',
+		  type: 'vertical',
+		  shadeIntensity: 0.5,
+		  gradientToColors: ['#3361ff'],
+		  inverseColors: false,
+		  opacityFrom: 0.7,
+		  opacityTo: 0.1,
+		 // stops: [0, 100]
+		}
+	},
+	colors: ["#3361ff"],
+    xaxis: {
+        categories: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+    },
+	responsive: [
+		{
+		  breakpoint: 1000,
+		  options: {
+			chart: {
+				type: "area",
+			   // width: 130,
+				stacked: true,
+			}
+		  }
+		}
+	  ],
+	legend: {
+		show: false
+	  },
+    tooltip: {
+        theme: "dark"        
+    }
+  };
+
+  var chart = new ApexCharts(document.querySelector("#chart5"), options);
+  chart.render();
+
+
 </script>
 <?php \Altum\Event::add_content(ob_get_clean(), 'javascript') ?>

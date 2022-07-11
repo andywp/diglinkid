@@ -90,7 +90,7 @@ const ajax_call_helper = (event, controller, request_type, success_callback = ()
             }
 
             else if(data.status == 'success') {
-
+                success_noti(data['message'][0]);
                 success_callback(event, data);
 
             }

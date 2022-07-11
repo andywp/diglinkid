@@ -52,7 +52,9 @@ class LinkAjax extends Controller {
 
             Database::$database->query("UPDATE `links` SET `is_enabled` = {$new_is_enabled} WHERE `user_id` = {$this->user->user_id} AND `link_id` = {$_POST['link_id']}");
 
-            Response::json('', 'success');
+            $pesan=($_POST['link_id'] == 1)?'success enable this link':'success disable this link';
+
+            Response::json($pesan, 'success');
         }
     }
 

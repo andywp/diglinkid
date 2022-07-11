@@ -22,6 +22,10 @@
         <link href="<?= SITE_URL . ASSETS_URL_PATH ?>onedash/css/bootstrap.min.css" rel="stylesheet" />
         <link href="<?= SITE_URL . ASSETS_URL_PATH ?>onedash/css/bootstrap-extended.css" rel="stylesheet" />
 
+        <!-- bootstrap4-toggle -->
+        <link href="<?= SITE_URL . ASSETS_URL_PATH ?>onedash/plugins/bootstrap4-toggle-master/css/bootstrap4-toggle.min.css" rel="stylesheet" />
+
+
         <link href="<?= SITE_URL . ASSETS_URL_PATH ?>onedash/css/style.css" rel="stylesheet" />
         <link href="<?= SITE_URL . ASSETS_URL_PATH ?>onedash/css/icons.css" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
@@ -81,6 +85,7 @@
         <!-- Bootstrap bundle JS -->
         <script src="<?= SITE_URL . ASSETS_URL_PATH ?>onedash/js/bootstrap.bundle.min.js"></script>
         <!--plugins-->
+        <script src="<?= SITE_URL . ASSETS_URL_PATH ?>onedash/plugins/bootstrap4-toggle-master/js/bootstrap4-toggle.min.js"></script>
         <script src="<?= SITE_URL . ASSETS_URL_PATH ?>onedash/plugins/simplebar/js/simplebar.min.js"></script>
         <script src="<?= SITE_URL . ASSETS_URL_PATH ?>onedash/plugins/metismenu/js/metisMenu.min.js"></script>
         <script src="<?= SITE_URL . ASSETS_URL_PATH ?>onedash/plugins/perfect-scrollbar/js/perfect-scrollbar.js"></script>

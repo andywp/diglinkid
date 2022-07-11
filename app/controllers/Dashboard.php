@@ -40,12 +40,34 @@ class Dashboard extends Controller {
         \Altum\Event::add_content($view->run($data), 'modals');
 
 
+        /* get link by user */
+        $links_result = Database::$database->query("
+                SELECT 
+                    `links`.`*`, `domains`.`scheme`, `domains`.`host`
+                FROM 
+                    `links`
+                LEFT JOIN 
+                    `domains` ON `links`.`domain_id` = `domains`.`domain_id`
+                WHERE 
+                    `links`.`user_id` = {$this->user->user_id} AND 
+                    (`links`.`subtype` = 'base' OR `links`.`subtype` = '')
+                ORDER BY
+                    `links`.`type`
+            ");
+
+        $rowLink = $links_result->fetch_all(MYSQLI_ASSOC);
+
+        /* //get link by user */
+
+
+
 
         /* Prepare the View */
         $data = [
             'projects_result'       => $projects_result,
             'links_total'           => $links_total,
-            'links_clicks_total'    => $links_clicks_total
+            'links_clicks_total'    => $links_clicks_total,
+            'data'                  => $rowLink
         ];
 
         $view = new \Altum\Views\View('dashboard/index', (array) $this);

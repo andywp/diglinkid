@@ -389,6 +389,10 @@
                                                                     <i class="fa fa-bell"></i> <?= $this->language->link->links->switch_status ?>
                                                                 </a>
                                                                 <a href="#" class="dropdown-item" data-delete="<?= $this->language->global->info_message->confirm_delete ?>" data-row-id="<?= $row->link_id ?>"><i class="fa fa-times"></i> <?= $this->language->global->delete ?></a>
+
+                                                                
+
+
                                                             </div>
                                                         </a>
                                                     </div>

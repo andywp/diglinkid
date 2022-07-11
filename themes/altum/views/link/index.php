@@ -34,10 +34,11 @@
                 <div class="d-flex flex-column flex-md-row justify-content-between">
                     <div class="d-flex align-items-center">
                         <h1 class="h3 me-3 text-dark"><?= sprintf($this->language->link->header->header, $data->link->url) ?></h1>
-                        <div class="custom-control custom-switch me-3" data-toggle="tooltip" title="<?= $this->language->project->links->is_enabled_tooltip ?>">
+
+                        <div class="custom-control custom-switch form-check form-switch me-3" data-toggle="tooltip" title="<?= $this->language->project->links->is_enabled_tooltip ?>">
                             <input
                                     type="checkbox"
-                                    class="custom-control-input"
+                                    class="form-check-input"
                                     id="link_is_enabled_<?= $data->link->link_id ?>"
                                     data-row-id="<?= $data->link->link_id ?>"
                                     onchange="ajax_call_helper(event, 'link-ajax', 'is_enabled_toggle')"
@@ -45,6 +46,7 @@
                             >
                             <label class="custom-control-label clickable" for="link_is_enabled_<?= $data->link->link_id ?>"></label>
                         </div>
+                       
                         <div class="dropdown">
                             <a href="#" class="dropdown-toggle dropdown-toggle-nocaret cursor-pointer" data-bs-toggle="dropdown" aria-expanded="false">
                                 <i class="fas fa-ellipsis-v"></i>
