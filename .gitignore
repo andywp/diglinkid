@@ -10,6 +10,7 @@
 /app/config/config.php
 /app/config/app
 /themes/altum/views-x
+/vendor.beckup/
 *.log
 /.vscode
 .DS_Store

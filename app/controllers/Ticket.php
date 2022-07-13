@@ -11,6 +11,14 @@ class Ticket extends Controller {
 	public function index() {
 		Authentication::guard();
 		$view = new \Altum\Views\View('ticket/index', (array) $this);
+
+		/*load data ticket client */
+		$query="select  * from  ticket where 1 order by id DESC";
+		$Tiket=$this->database->query($query)->fetch_all(MYSQLI_ASSOC);
+		echo '<pre>';
+		print_r($Tiket);
+		exit();
+
 		$data = [
 			  'user'    => $this->user,
 		];

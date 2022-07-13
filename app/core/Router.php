@@ -225,7 +225,12 @@ class Router {
                 ],
             ],
 			'ticket'	=> [
-				'controller' => 'Ticket'
+				'controller' => 'Ticket',
+                'settings' => [
+                    'menu_no_margin' => true,
+                    'body_white' => false,
+                    'wrapper' => 'user_wrapper'
+                ]
 			]
         ],
 
