@@ -14,7 +14,7 @@
     </div>
     <!--navigation-->
     <ul class="metismenu" id="menu">
-        <li class="<?= \Altum\Routing\Router::$controller == 'Dashboard' ? 'active mm-active' : null ?>">
+        <li class="<?= \Altum\Routing\Router::$controller == 'Dashboard' ||  \Altum\Routing\Router::$controller == 'Link' ? 'active mm-active' : null ?>">
             <a class="nav-link d-flex flex-row <?= \Altum\Routing\Router::$controller == 'Dashboard' ? 'active' : null ?>" href="<?= url('dashboard') ?>">
                 <div class="parent-icon">
                     <i class="lni lni-home"></i>
@@ -30,6 +30,7 @@
                 <div class="menu-title">My diglink</div>
             </a>
         </li>
+        <!--
         <li class="<?= \Altum\Routing\Router::$controller == 'Project' || \Altum\Routing\Router::$controller == 'Link' ? 'active mm-active' : null ?>">
             <a class="nav-link d-flex flex-row <?= \Altum\Routing\Router::$controller == 'Project' || \Altum\Routing\Router::$controller == 'Link' ? 'active' : null ?>" href="<?= url('project') ?>">
                 <div class="parent-icon">
@@ -38,6 +39,7 @@
                 <div class="menu-title">My Projects</div>
             </a>
         </li>
+        -->
         <li class="<?= \Altum\Routing\Router::$controller == 'Wa' ? 'active mm-active' : null ?>">
             <a class="nav-link d-flex flex-row <?= \Altum\Routing\Router::$controller == 'Wa' ? 'active' : null ?>" href="<?= url('wa-generator') ?>">
                 <div class="parent-icon">

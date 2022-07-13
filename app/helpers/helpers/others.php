@@ -455,7 +455,7 @@ function get_country_from_country_code($code) {
         'UA' => 'Ukraine',
         'AE' => 'United Arab Emirates',
         'GB' => 'United Kingdom',
-        'US' => 'United States of America',
+        'US' => 'United States',
         'UM' => 'United States Minor Outlying Islands',
         'VI' => 'United States Virgin Islands',
         'UY' => 'Uruguay, Eastern Republic of',
@@ -476,3 +476,6 @@ function get_country_from_country_code($code) {
         return $country_list[$code];
     }
 }
+
+
+

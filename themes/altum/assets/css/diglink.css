@@ -88,6 +88,14 @@ label {
     height: 100%;
 }
 
+/* statistik */
+.list-statistik span {
+    font-size: 11px;
+}
+.traffic-widget p {
+    font-size: 12px;
+}
+
 @media screen and (max-width: 600px) {
     .card-page .card-body{
         height: 350px;

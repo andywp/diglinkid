@@ -43,20 +43,6 @@
 </div>
 
 
-<div class="row">
-    <div class="col-12 col-lg-6 d-flex">
-        <div class="card radius-10 w-100">
-            <div class="card-body">
-                <div class="d-flex align-items-center">
-                    <h6 class="mb-0">Revenue</h6>
-                </div>
-                <div id="chart5">
-
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 
 
 
@@ -70,9 +56,7 @@
 
 <?php else: ?>
 
-    <div class="chart-container">
-        <canvas id="clicks_chart"></canvas>
-    </div>
+    <!--
 
     <div class="row my-5">
         <div class="col-12 col-md mr-md-4 custom-row">
@@ -165,6 +149,75 @@
             <?php endforeach ?>
         </div>
     </div>
+    -->
+
+    <div class="row">
+    <div class="col-12 d-flex">
+        <div class="card radius-10 w-100">
+            <div class="card-body">
+                <div class="chart-container">
+                    <canvas id="clicks_chart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-md-6">
+        <!-- OS -->
+        <div class="card radius-10 w-100">
+            <div class="card-body">
+                <div class="d-flex align-items-center">
+                    <h6 class="mb-0">Operating Systems</h6>
+                </div>
+                <div id="chart6"></div>
+            </div>
+        </div>
+        <!-- /OS -->
+
+        <!-- referal -->
+        <div class="card radius-10 w-100">
+            <div class="card-body">
+                <div class="d-flex align-items-center">
+                    <h6 class="mb-0">Browsers</h6>
+                </div>
+                <div id="chart7"></div>
+            </div>
+        </div>
+       
+    </div>   
+    <div class="col-md-6">
+         <!-- /Referal -->
+         <div class="card radius-10 w-100">
+            <div class="card-body">
+                <div class="d-flex align-items-center">
+                    <h6 class="mb-0">Referers</h6>
+                </div>
+                <div id="chart8"></div>
+            </div>
+        </div>
+        <div class="card radius-10 w-100">
+            <div class="card-body">
+                <div class="d-flex align-items-center">
+                    <h6 class="mb-0">Visitor Map</h6>
+                </div>
+                <div class="mb-3">
+                    <div id="regions_div" style="height: 200px;" ></div>
+                </div>
+                <div class="traffic-widget">
+                    <?php foreach($data->maps['data'] as $k=>$v): ?>
+                    <div class="progress-wrapper mb-1">
+                        <p class="mb-0"><img class="me-2" src="<?= url(ASSETS_URL_PATH . 'img/flags/'.strtolower($k).'.gif') ?>" height="10px" width="20px"> <?= $v['name'] ?> <span class="float-end"><?= $v['count'] ?></span></p>
+                    </div>
+                    <?php endforeach; ?>
+                   
+                </div>
+            </div>
+        </div>
+    </div> 
+</div>
 
 <?php endif ?>
 
@@ -172,6 +225,7 @@
 <script src="<?= url(ASSETS_URL_PATH . 'js/libraries/Chart.bundle.min.js') ?>"></script>
 <script src="<?= url(ASSETS_URL_PATH . 'js/libraries/datepicker.min.js') ?>"></script>
 <script src="<?= url(ASSETS_URL_PATH . 'onedash/plugins/apexcharts-bundle/js/apexcharts.min.js') ?>"></script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script>
     /* Datepicker */
     $.fn.datepicker.language['altum'] = <?= json_encode(require APP_PATH . 'includes/datepicker_translations.php') ?>;
@@ -209,12 +263,12 @@
     let clicks_chart = document.getElementById('clicks_chart').getContext('2d');
 
     let gradient = clicks_chart.createLinearGradient(0, 0, 0, 250);
-    gradient.addColorStop(0, 'rgba(56, 178, 172, 0.6)');
-    gradient.addColorStop(1, 'rgba(56, 178, 172, 0.05)');
+    gradient.addColorStop(0, 'rgba(51, 102, 255, 0.6)');
+    gradient.addColorStop(1, 'rgba(51, 102, 255, 0.05)');
 
     let gradient_white = clicks_chart.createLinearGradient(0, 0, 0, 250);
-    gradient_white.addColorStop(0, 'rgba(255, 255, 255, 0.6)');
-    gradient_white.addColorStop(1, 'rgba(255, 255, 255, 0.05)');
+    gradient_white.addColorStop(0, 'rgba(255, 102, 51, 0.6)');
+    gradient_white.addColorStop(1, 'rgba(255, 102, 51, 0.05)');
 
     new Chart(clicks_chart, {
         type: 'line',
@@ -224,14 +278,14 @@
                 label: <?= json_encode($this->language->link->statistics->impression) ?>,
                 data: <?= $data->logs_chart['impression'] ?? '[]' ?>,
                 backgroundColor: gradient,
-                borderColor: '#38B2AC',
+                borderColor: '#3461ff',
                 fill: true
             },
             {
                 label: <?= json_encode($this->language->link->statistics->unique) ?>,
                 data: <?= $data->logs_chart['unique'] ?? '[]' ?>,
                 backgroundColor: gradient_white,
-                borderColor: '#ebebeb',
+                borderColor: '#ff6632',
                 fill: true
             }]
         },
@@ -279,89 +333,13 @@
         }
     });
 
-    <?php $browser_colors = Colors\RandomColor::many(count($data->logs_data['browser']), ['hue'=>'blue']); ?>
-
-    let browser_chart = document.getElementById('browser_chart').getContext('2d');
-
-    new Chart(browser_chart, {
-        type: 'doughnut',
-        data: {
-            labels: <?= json_encode(array_keys($data->logs_data['browser'])) ?>,
-            datasets: [{
-                label: '',
-                data: <?= json_encode(array_values($data->logs_data['browser'])) ?? '[]' ?>,
-                backgroundColor: <?= json_encode($browser_colors) ?>,
-                borderColor: <?= json_encode($browser_colors) ?>,
-                fill: true
-            }]
-        },
-        options: {
-            tooltips: {
-                mode: 'index',
-                intersect: false,
-                callbacks: {
-                    label: (tooltipItem, data) => {
-                        let value = data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index];
-
-                        return `${nr(value)} ${data.labels[tooltipItem.index]}`;
-                    }
-                }
-            },
-            title: {
-                display: false,
-            },
-            legend: {
-                display: true
-            },
-            responsive: true,
-            maintainAspectRatio: false
-        }
-    });
-
-    <?php $os_colors = Colors\RandomColor::many(count($data->logs_data['os']), ['hue'=>'red']); ?>
-
-    let os_chart = document.getElementById('os_chart').getContext('2d');
-
-    new Chart(os_chart, {
-        type: 'doughnut',
-        data: {
-            labels: <?= json_encode(array_keys($data->logs_data['os'])) ?>,
-            datasets: [{
-                label: '',
-                data: <?= json_encode(array_values($data->logs_data['os'])) ?? '[]' ?>,
-                backgroundColor: <?= json_encode($os_colors) ?>,
-                borderColor: <?= json_encode($os_colors) ?>,
-                fill: true
-            }]
-        },
-        options: {
-            tooltips: {
-                mode: 'index',
-                intersect: false,
-                callbacks: {
-                    label: (tooltipItem, data) => {
-                        let value = data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index];
-
-                        return `${nr(value)} ${data.labels[tooltipItem.index]}`;
-                    }
-                }
-            },
-            title: {
-                display: false,
-            },
-            legend: {
-                display: true
-            },
-            responsive: true,
-            maintainAspectRatio: false
-        }
-    });
-    <?php endif ?>
+    
+    
 
 
 
     /* new statistik */
-    var options = {
+   /*  var options = {
     series: [{
         name: "Revenue",
 		data: [240, 460, 171, 657, 160, 471, 340, 230, 458, 98]
@@ -455,8 +433,117 @@
   };
 
   var chart = new ApexCharts(document.querySelector("#chart5"), options);
-  chart.render();
+  chart.render(); */
 
 
+  /*raveral */
+  var options = {
+        height: 180,
+        width: 180,
+        legend: {
+          fontSize: "12px"
+        },
+		series: <?= $data->os['data'] ?>,
+		chart: {
+			foreColor: '#9ba7b2',
+			height: 330,
+			type: 'pie',
+		},
+		colors: <?= $data->os['backgroundColor'] ?>,
+		labels:<?= $data->os['labels'] ?>,
+		responsive: [{
+			breakpoint: 480,
+			options: {
+				chart: {
+					height: 360
+				},
+				legend: {
+					position: 'bottom'
+				}
+			}
+		}]
+	};
+	var chart = new ApexCharts(document.querySelector("#chart6"), options);
+	chart.render();
+
+
+
+  /*Browser */
+    var options = {
+        height: 180,
+        width: "100%",
+        legend: {
+          fontSize: "12px"
+        },
+		series: <?= $data->browser['data'] ?>,
+		chart: {
+			foreColor: '#9ba7b2',
+			height: 330,
+			type: 'pie',
+		},
+		colors: <?= $data->browser['backgroundColor'] ?>,
+		labels:<?= $data->browser['labels'] ?>,
+		responsive: [{
+			breakpoint: 480,
+			options: {
+				chart: {
+					height: 360
+				},
+				legend: {
+					position: 'bottom'
+				}
+			}
+		}]
+	};
+	var chart = new ApexCharts(document.querySelector("#chart7"), options);
+	chart.render();
+
+
+    /*Referers chart */
+    var options = {
+		series: <?= $data->referal['data'] ?>,
+		chart: {
+			foreColor: '#9ba7b2',
+			height: 330,
+			type: 'pie',
+		},
+		colors: <?= $data->referal['backgroundColor'] ?>,
+		labels:<?= $data->referal['labels'] ?>,
+		responsive: [{
+			breakpoint: 480,
+			options: {
+				chart: {
+					height: 360
+				},
+				legend: {
+					position: 'bottom'
+				}
+			}
+		}]
+	};
+	var chart = new ApexCharts(document.querySelector("#chart8"), options);
+	chart.render();
+
+   
+    /*vistor map */
+    google.load("visualization", "1", {packages:["geochart"]});
+    google.setOnLoadCallback(drawRegionsMap);
+
+    function drawRegionsMap() {
+
+        var data = google.visualization.arrayToDataTable(<?= $data->maps['json'] ?>);
+
+    var options = {
+        datalessRegionColor: '#2B2E83',
+        colorAxis: {colors: ['#000']},
+        
+    };
+
+    var chart = new google.visualization.GeoChart(document.getElementById("regions_div"));
+
+    chart.draw(data, options);
+    }
+		
+    <?php endif ?>
 </script>
 <?php \Altum\Event::add_content(ob_get_clean(), 'javascript') ?>
