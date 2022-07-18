@@ -7,25 +7,101 @@ use Altum\Middlewares\Authentication;
 use Altum\Title;
 use Altum\Middlewares\Csrf;
 use Altum\Response;
+use Illuminate\Database\Capsule\Manager as DB;
+use Carbon\Carbon;
+
 class Ticket extends Controller {
 	public function index() {
 		Authentication::guard();
 		$view = new \Altum\Views\View('ticket/index', (array) $this);
 
 		/*load data ticket client */
-		$query="select  * from  ticket where 1 order by id DESC";
-		$Tiket=$this->database->query($query)->fetch_all(MYSQLI_ASSOC);
-		echo '<pre>';
-		print_r($Tiket);
-		exit();
-
+		$rawData=DB::table('ticket')->get();
 		$data = [
 			  'user'    => $this->user,
+			  'data'	=> $rawData
 		];
         $this->add_view_content('content', $view->run($data));
 	}
+
+
+	public function open(){
+		Authentication::guard();
+		$view = new \Altum\Views\View('ticket/open', (array) $this);
+		$data = [
+			'user'    => $this->user
+	  	];
+
+		$this->add_view_content('content', $view->run($data));
+	}
+
+	public function submit(){
+		$error=true;
+		$alert='';
+		$id=0;
+		Authentication::guard();
+		if(!Csrf::check()){
+			$alert='invalid token';
+		}elseif($_POST['message'] ==''){
+			$alert='TIket message is required';
+		}else{
+			$_POST['subject']=Database::clean_string($_POST['subject']);
+			$_POST['dep']=Database::clean_string($_POST['dep']);
+			$_POST['priority']=Database::clean_string($_POST['priority']);
+			//$_POST['message']=Database::clean_string($_POST['message']);
+			//echo Carbon::now();
+			//print_r($this->user);
+			//exit();
+			try {
+			$tiketID=DB::table('ticket')->insertGetId(
+							[
+								'user_id'  	=> $this->user->user_id,
+								'name'		=> $this->user->password,
+								'email'		=> $this->user->email,
+								'subject'	=> $_POST['subject'],
+								'department'	=> $_POST['dep'],
+								'priority'	=> $_POST['priority'],
+								'message'	=> $_POST['message'],
+								'status'	=> 'Open',
+								'date_create' => Carbon::now()
+							]
+					);
+			} catch (Illuminate\Database\QueryException $e) {
+				//dd($e);
+			}
+			if($tiketID){
+				$error=false;
+				$alert='Success submit ticket';
+				$id=$tiketID;
+			}else{
+				$alert='Error submit ticket';
+			}
+		}
+		$return=[
+			'error' => $error,
+			'alert' => $alert,
+			'id'	=> $id
+		];
+		echo json_encode($return);
+		exit();
+	}
+
+
+	public function viewticket(){
+		$this->t_id =  isset($this->params[0]) ? $this->params[0] : false;
+		Authentication::guard();
+		$view = new \Altum\Views\View('ticket/viewticket', (array) $this);
+		$data = [
+			'user'    => $this->user
+	  	];
+
+		$this->add_view_content('content', $view->run($data));
+		
+	}
+
 	
-	public function saved(){
+	public function submit_old(){
+		
 		Authentication::guard();
 		$error=true;
 		$alert='';

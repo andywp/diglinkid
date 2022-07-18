@@ -30,6 +30,7 @@ use PayPal\Api\Transaction;
 use PayPal\Api\WebProfile;
 use PayPal\Common\PayPalModel;
 
+
 class Pay extends Controller {
 
     public function index() {

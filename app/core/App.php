@@ -46,7 +46,7 @@ class App {
         Title::initialize($settings->title);
 
         /* Set the date timezone */
-        date_default_timezone_set('UTC');
+        date_default_timezone_set('Asia/Jakarta');
         Date::$timezone = date_default_timezone_get();
 
         /* Check for a potential logged in account and do some extra checks */

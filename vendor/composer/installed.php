@@ -5,7 +5,7 @@
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => 'e630d4d3383a4643076bade532e59f4eb493054b',
+        'reference' => '16f75cb2b35eae9a80d2e8a1440cc6c28d582161',
         'name' => 'diglink.id/biolink',
         'dev' => true,
     ),
@@ -34,7 +34,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => 'e630d4d3383a4643076bade532e59f4eb493054b',
+            'reference' => '16f75cb2b35eae9a80d2e8a1440cc6c28d582161',
             'dev_requirement' => false,
         ),
         'doctrine/inflector' => array(

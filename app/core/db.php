@@ -1,21 +1,27 @@
 <?php
+use Illuminate\Database\Capsule\Manager as Capsule;
+/* use Illuminate\Events\Dispatcher;
+use Illuminate\Container\Container; */
 
-namespace Altum\Db;
 
-class Db {
+$DB = new Capsule();
+$DB->addConnection([
+    'driver'    => 'mysql',
+    'host'      => DATABASE_SERVER,
+    'database'  => DATABASE_NAME,
+    'username'  => DATABASE_USERNAME,
+    'password'  => DATABASE_PASSWORD,
+    'charset'   => 'utf8',
+    'collation' => 'utf8_unicode_ci',
+    'prefix'    => '',
+]);
 
-     public static $db;
-    public static function initialize() {
-        
-        self::$db 		= NewADOConnection('mysqli');
-		if (!self::$db->Connect(DATABASE_SERVER,DATABASE_USERNAME,DATABASE_PASSWORD,DATABASE_NAME)){
-			die( mysql_error() . ' Error while connecting to Database Server');
-		}
-        $ADODB_FETCH_MODE 	= ADODB_FETCH_ASSOC;
-        
-        return self::$db;
-    } 
-    
-    
+// Set the event dispatcher used by Eloquent models... (optional)
+//$DB->setEventDispatcher(new Dispatcher(new Container));
 
-}
+//Make this Capsule instance available globally.
+$DB->setAsGlobal();
+
+// Setup the Eloquent ORM.
+
+$DB->bootEloquent();

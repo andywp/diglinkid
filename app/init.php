@@ -1,4 +1,5 @@
 <?php
+@date_default_timezone_set('Asia/Jakarta');
 define('ALTUMCODE', 1);
 define('ROOT_PATH', realpath(__DIR__ . '/..') . '/');
 define('APP_PATH', ROOT_PATH . 'app/');
@@ -25,6 +26,7 @@ require_once APP_PATH . 'includes/product.php';
 require_once APP_PATH . 'traits/Paramsable.php';
 
 /* Require the core files */
+
 require_once APP_PATH . 'core/App.php';
 require_once APP_PATH . 'core/Router.php';
 require_once APP_PATH . 'core/Controller.php';
@@ -65,4 +67,5 @@ require_once APP_PATH . 'helpers/numbers.php';
 
 /* Autoload for vendor */
 require_once ROOT_PATH . 'vendor/autoload.php';
+require_once APP_PATH . 'core/DB.php';
 
