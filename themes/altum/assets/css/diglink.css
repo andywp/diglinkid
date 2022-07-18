@@ -107,6 +107,10 @@ label {
 .table-list tr,.table-list td {
     cursor: pointer;
 }
+.is_new.odd {
+    font-weight: 700;
+    font-style: italic;
+}
 @media screen and (max-width: 600px) {
     .card-page .card-body{
         height: 350px;

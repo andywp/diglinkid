@@ -11,12 +11,14 @@ use Illuminate\Database\Capsule\Manager as DB;
 use Carbon\Carbon;
 
 class Ticket extends Controller {
+	public $ticket;
+
 	public function index() {
 		Authentication::guard();
 		$view = new \Altum\Views\View('ticket/index', (array) $this);
-
+		//print_r( $this->user->user_id);exit();
 		/*load data ticket client */
-		$rawData=DB::table('ticket')->get();
+		$rawData=DB::table('ticket')->where('user_id', $this->user->user_id)->orderBy('last_replay','DESC')->get();
 		$data = [
 			  'user'    => $this->user,
 			  'data'	=> $rawData
@@ -48,10 +50,8 @@ class Ticket extends Controller {
 			$_POST['subject']=Database::clean_string($_POST['subject']);
 			$_POST['dep']=Database::clean_string($_POST['dep']);
 			$_POST['priority']=Database::clean_string($_POST['priority']);
-			//$_POST['message']=Database::clean_string($_POST['message']);
-			//echo Carbon::now();
-			//print_r($this->user);
-			//exit();
+			$time=Carbon::now();
+
 			try {
 			$tiketID=DB::table('ticket')->insertGetId(
 							[
@@ -63,7 +63,8 @@ class Ticket extends Controller {
 								'priority'	=> $_POST['priority'],
 								'message'	=> $_POST['message'],
 								'status'	=> 'Open',
-								'date_create' => Carbon::now()
+								'date_create' => $time,
+								'last_replay' => $time
 							]
 					);
 			} catch (Illuminate\Database\QueryException $e) {
@@ -90,14 +91,98 @@ class Ticket extends Controller {
 	public function viewticket(){
 		$this->t_id =  isset($this->params[0]) ? $this->params[0] : false;
 		Authentication::guard();
-		$view = new \Altum\Views\View('ticket/viewticket', (array) $this);
+		
+
+		$ticket=DB::table('ticket')->where('id',$this->t_id)->first();
+		$replay=DB::table('ticket_reply')->where('ticket_id',$this->t_id )->orderBy('replay_id')->get();
+		$data = ['data' => $ticket];
+		$view = new \Altum\Views\View('ticket/replay_ticket_modal', (array) $this);
+		\Altum\Event::add_content($view->run($data), 'modals');	
+		
 		$data = [
-			'user'    => $this->user
+			'user'    	=> $this->user,
+			'ticket'	=> $ticket,
+			'replay'	=> $replay
 	  	];
 
+		
+
+		$view = new \Altum\Views\View('ticket/viewticket', (array) $this);
 		$this->add_view_content('content', $view->run($data));
 		
 	}
+
+
+	public function reply(){
+		$error=true;
+		$alert='';
+		$id=0;
+
+		//print_r($_POST);exit();
+		//print_r($this->user);
+		Authentication::guard();
+		if(!Csrf::check()){
+			$alert='invalid token. please relaod';
+		}elseif($_POST['message'] ==''){
+			$alert='TIket message is required';
+		}else{
+			$ticket_id = (int) $_POST['tid'];
+			$user_id = $this->user->user_id;
+			$user_name = $this->user->name;
+			$type = 'user';
+			$replay_message = $_POST['message'];
+			$date_create = Carbon::now();
+
+			DB::table('ticket_reply')->insert([
+				'ticket_id' => $ticket_id,
+				'user_id' 	=> $user_id,
+				'user_name' => $user_name,
+				'type'		=> $type,
+				'replay_message' => $replay_message,
+				'date_create' => $date_create
+			]);
+
+			DB::table('ticket')->where('id',$ticket_id)->update(['last_replay' => $date_create, 'status' => 'Customer-Replay', 'open' => 0 ]);
+			$error=false;
+			$alert='Success replay ticket';
+			$id=$ticket_id;
+		}
+
+		$return=[
+			'error' => $error,
+			'alert' => $alert,
+			'id'	=> $id
+		];
+		echo json_encode($return);
+		exit();
+	}
+
+
+	public function close(){
+		Authentication::guard();
+		//print_r($_POST);
+
+		$id =(int) $_POST['id'];
+		DB::table('ticket')->where('id',$id)->update(['status' => 'Closed']);
+		$return=[
+			'error' => false,
+			'alert' => '',
+		];
+
+		exit(json_encode($return));
+	}
+
+	public function isopen(){
+		$id =(int) $_POST['id'];
+		DB::table('ticket')->where('id',$id)->update(['open' => 0]);
+		$return=[
+			'error' => false,
+			'alert' => '',
+		];
+
+		exit(json_encode($return));
+	}
+
 
 	
 	public function submit_old(){

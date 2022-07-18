@@ -18,10 +18,12 @@
 			<a href="<?= url('ticket/open') ?>" class="btn btn-outline-primary">Open Ticket</a>
 	</div> -->
 </div>
+
+
 <div class="mt-3 d-flex justify-content-between">
     <div class="col">
-        <h6>Konfirmasi Pembayaran - 549249</h6>
-        <p class="text-muted">Ticket #55623751</p>
+        <h6><?= $data->ticket->subject ?> - <?= $data->ticket->id ?></h6>
+        <p class="text-muted">Ticket #<?= $data->ticket->id ?></p>
     </div>
 </div>
 <hr />
@@ -42,24 +44,30 @@
                                     <ul class="list-group list-group-flush">
                                         <li class="list-group-item ">
                                             <div class="title ">Requestor</div>
-                                            <div class="ticket-requestor-name ">Andi Wijang Prasetyo</div>
+                                            <div class="ticket-requestor-name "><?= $data->ticket->name ?></div>
                                             <div class="badge bg-success">Owner</div>
                                         </li>
                                         <li class="list-group-item">
                                             <div class="title ">Department</div>
-                                            <div class="ticket-requestor-name ">Support</div>
+                                            <div class="ticket-requestor-name "><?= $data->ticket->department ?></div>
                                         </li>
                                         <li class="list-group-item">
                                             <div class="title ">Submitted</div>
-                                            <div class="ticket-requestor-name ">05/09/2020 (00:40)</div>
+                                            <div class="ticket-requestor-name "><?= $data->ticket->date_create ?></div>
                                         </li>
+                                        <?php if( $data->ticket->last_replay !=  '0000-00-00 00:00:00' ): ?>
                                         <li class="list-group-item">
                                             <div class="title ">Last Updated</div>
-                                            <div class="ticket-requestor-name ">1 year ago</div>
+                                            <div class="ticket-requestor-name "><?= $data->ticket->last_replay ?></div>
                                         </li>
+                                        <?php endif; ?>
                                         <li class="list-group-item">
                                             <div class="title ">Status/Priority</div>
-                                            <div class="ticket-requestor-name "><span class="badge bg-success">Close</span> Medium</div>
+                                            <div class="ticket-requestor-name "><span class="badge bg-success"><?= $data->ticket->status ?></span> <?= $data->ticket->priority ?></div>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <button type="button" class="btn btn-success btn-sm w-100 mb-2" data-bs-toggle="modal" data-bs-target="#replayTicket" data-bs-target="#staticBackdrop" <?= ($data->ticket->status == 'Closed' )?'disabled':'' ?> ><i class="fas fa-edit"></i> Replay</button>
+                                            <button type="button" id="closeTicket" data-id="<?= $data->ticket->id ?>" class="btn btn-danger btn-sm w-100" ><i class="fas fa-times"></i> Close</button>
                                         </li>
                                     </ul>
                                 </div>
@@ -72,51 +80,79 @@
         <div class="col-md-9">
             <div class="card border">
                 <div class="card-body  p-0">
-                    <div class="ticket-reply markdown-content staff border-bottom p-2">
+                    <div class="ticket-reply markdown-content  border-bottom p-2">
                         <div class="posted-by p-3 ">
-                            Posted by <span class="posted-by-name fw-bold">admin diglink</span> On <span class="posted-on">05/09/2020 (01:51)</span> <span class="badge bg-info float-md-end">Operator</span>
+                            Posted by <span class="posted-by-name fw-bold"><?= $data->ticket->name ?></span> On <span class="posted-on"><?= $data->ticket->date_create ?></span> <span class="badge bg-success float-md-end">Owner</span>
                         </div>
                         <div class="message p-3">
-                            <p>Halo andi wijang,</p>
-                            <p>Layanan domain dan hosting Anda telah berhasil kami perpanjang. <br>
-                                Silakan cek inbox email Anda untuk informasi selengkapnya.</p>
-                            <p>Silakan hubungi kami jika membutuhkan bantuan lainnya.<br>
-                                Terimakasih atas kepercayaan anda kepada DomaiNesia.</p>
-                            <p>Salam,<br>
-                                Aswandhi A.<br>
-                                DomaiNesia<br>
-                                Twitter: @domainesia | Facebook: DomaiNesia | Instagram : @domainesia</p>
-                            <p>Suka dengan layanan DomaiNesia? Beri tahu orang lain dengan mengulas DomaiNesia di Google <a href="https://dnva.me/ulasdigoogle" class="autoLinked" target="_blank" rel="noreferrer noopener">https://dnva.me/ulasdigoogle</a> dan Facebook <a href="https://dnva.me/ulasdifacebook" class="autoLinked" target="_blank" rel="noreferrer noopener">https://dnva.me/ulasdifacebook</a>, terima kasih!</p>
+                            <?= $data->ticket->message ?>
                             <div class="clearfix">
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="card-body p-0">
-                    <div class="ticket-reply markdown-content p-2">
-                        <div class="posted-by p-3">
-                            Posted by <span class="posted-by-name fw-bold">admin diglink</span> On <span class="posted-on">05/09/2020 (01:51)</span> <span class="badge bg-info float-md-end">Operator</span>
-                        </div>
-                        <div class="message p-3">
-                            <p>Halo andi wijang,</p>
-                            <p>Layanan domain dan hosting Anda telah berhasil kami perpanjang. <br>
-                                Silakan cek inbox email Anda untuk informasi selengkapnya.</p>
-                            <p>Silakan hubungi kami jika membutuhkan bantuan lainnya.<br>
-                                Terimakasih atas kepercayaan anda kepada DomaiNesia.</p>
-                            <p>Salam,<br>
-                                Aswandhi A.<br>
-                                DomaiNesia<br>
-                                Twitter: @domainesia | Facebook: DomaiNesia | Instagram : @domainesia</p>
-                            <p>Suka dengan layanan DomaiNesia? Beri tahu orang lain dengan mengulas DomaiNesia di Google <a href="https://dnva.me/ulasdigoogle" class="autoLinked" target="_blank" rel="noreferrer noopener">https://dnva.me/ulasdigoogle</a> dan Facebook <a href="https://dnva.me/ulasdifacebook" class="autoLinked" target="_blank" rel="noreferrer noopener">https://dnva.me/ulasdifacebook</a>, terima kasih!</p>
-                            <div class="clearfix">
+                 
+                <?php foreach($data->replay as $r): ?>
+                    <div class="card-body p-0">
+                        <div id="replay<?= $r->replay_id ?>" class="ticket-reply markdown-content p-2 <?=  ($r->type == 'admin')?'staff':'client';  ?>">
+                            <div class="posted-by p-3">
+                                Posted by <span class="posted-by-name fw-bold"><?= $r->user_name ?></span> On <span class="posted-on"><?= $r->date_create ?></span> <?= ($r->type != 'admin')?'<span class="badge bg-success float-md-end">Owner</span>':'<span class="badge bg-info float-md-end">Operator</span>' ?> 
+                            </div>
+                            <div class="message p-3">
+                                <?= $r->replay_message ?>
+
+                                <div class="clearfix">
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                <?php endforeach; ?>
+
 
             </div>
-
-
         </div>
     </div>
 </section>
+<?php ob_start() ?>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    $( "#closeTicket").on( "click", function() {
+        let id = $(this).data('id');
+
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "do you want to close this ticket",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes'
+            }).then((result) => {
+                //console.log(result.isConfirmed,'result.isConfirmed')
+                if (result.isConfirmed) {
+                    $.ajax({
+                        type: 'POST',
+                        url: '<?= url('ticket/close') ?>',
+                        data: {id:id},
+                        dataType: 'json',
+                        success: function(data){
+                            success_noti('Ticket closed successfully');
+                            if(!data.error){
+                                window.setTimeout(function(){
+                                    location.reload();
+                                }, 3000);
+                            }
+                            else{
+                                error_noti(data.alert);
+                            }
+                            
+                        }
+                    });
+                }
+            })
+       
+    });
+
+
+</script>
+<?php \Altum\Event::add_content(ob_get_clean(), 'javascript') ?>

@@ -74,15 +74,63 @@ class AdminTicket extends Controller {
 		$view = new \Altum\Views\View('admin/ticket/view-ticket', (array) $this);
 
 		$tiket=DB::table('ticket')->where('id',$this->t_id)->first();
-	
+		$service=DB::table('users')->select('package_id','package_expiration_date','date')->where('user_id',$tiket->user_id)->first();
+
+		$replay=DB::table('ticket_reply')->where('ticket_id',$this->t_id )->orderBy('replay_id')->get();
+		//dd($replay);
+
 
 		$data = [
 			'user'    	=> $this->user,
-			'tiket'		=> $tiket
+			'tiket'		=> $tiket,
+			'service'	=> $service,
+			'replay'	=> $replay
 	  	];
 		$this->add_view_content('content', $view->run($data));
 		
 		
+	}
+
+	public function replay(){
+		$error=true;
+		$alert='';
+		$id=0;
+		//print_r($this->user);
+		Authentication::guard();
+		if(!Csrf::check()){
+			$alert='invalid token. please relaod';
+		}elseif($_POST['message'] ==''){
+			$alert='TIket message is required';
+		}else{
+			$ticket_id = (int) $_POST['tid'];
+			$user_id = $this->user->user_id;
+			$user_name = $this->user->name;
+			$type = 'admin';
+			$replay_message = $_POST['message'];
+			$date_create = Carbon::now();
+
+			DB::table('ticket_reply')->insert([
+				'ticket_id' => $ticket_id,
+				'user_id' 	=> $user_id,
+				'user_name' => $user_name,
+				'type'		=> $type,
+				'replay_message' => $replay_message,
+				'date_create' => $date_create
+			]);
+
+			DB::table('ticket')->where('id',$ticket_id)->update(['last_replay' => $date_create, 'status' => 'Answered', 'open' => 0 ]);
+			$error=false;
+			$alert='Success replay ticket';
+			$id=$ticket_id;
+		}
+
+		$return=[
+			'error' => $error,
+			'alert' => $alert,
+			'id'	=> $id
+		];
+		echo json_encode($return);
+		exit();
 	}
 
 

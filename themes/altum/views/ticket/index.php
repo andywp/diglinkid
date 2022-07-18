@@ -38,11 +38,11 @@
 					</thead>
 					<tbody>
 						<?php foreach($data->data as $r): ?>
-							<tr onclick="window.location='<?= url('ticket/viewticket/'.$r->id) ?>'" >
+							<tr data-id="<?= $r->id ?>" id="tiketid<?= $r->id ?>"  class="ticketRow <?= ($r->open != 1)?'is_new':'' ?>" >
 								<td><?= $r->department ?></td>
 								<td><?= $r->subject ?></td>
 								<td><?= $r->status ?></td>
-								<td><?= $r->date_create ?></td>
+								<td><?= $r->last_replay ?></td>
 							</tr>
 
 						<?php endforeach; ?>
@@ -63,6 +63,25 @@
 <script>
 	$( document ).ready(function() {
 		$('#table-list').DataTable();
+
+		$( ".ticketRow").on( "click", function() {
+			let id=$(this).data('id');
+			console.log('id',id);
+			$.ajax({
+				type: 'POST',
+				url: '<?= url('ticket/isopen') ?>',
+				data: {id:id},
+				dataType: 'json',
+				success: function(data){
+				}
+			});
+
+			$('#tiketid'+id).removeClass('is_new');
+
+			window.location='<?= url('ticket/viewticket/') ?>'+id;
+		});
+
+
 	});	
 </script>
 <?php \Altum\Event::add_content(ob_get_clean(), 'javascript') ?>

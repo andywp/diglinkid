@@ -8,7 +8,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
         <link rel="icon" href="<?= SITE_URL . ASSETS_URL_PATH ?>images/favicon.png" type="image/png" />
-
+        <link rel="stylesheet" href="<?= SITE_URL . ASSETS_URL_PATH ?>onedash/plugins/notifications/css/lobibox.min.css">
         <!--plugins-->
         <link href="<?= SITE_URL . ASSETS_URL_PATH ?>onedash/plugins/vectormap/jquery-jvectormap-2.0.2.css" rel="stylesheet"/>
         <link href="<?= SITE_URL . ASSETS_URL_PATH ?>onedash/plugins/simplebar/css/simplebar.css" rel="stylesheet" />
@@ -35,7 +35,7 @@
         <link href="<?= SITE_URL . ASSETS_URL_PATH ?>onedash/css/header-colors.css" rel="stylesheet" />
 
         <link rel="stylesheet" href="<?= SITE_URL . ASSETS_URL_PATH ?>onedash/css/toastr.css" as="style" onload="this.rel='stylesheet'">
-
+        <link href="<?= SITE_URL . ASSETS_URL_PATH ?>css/diglink.css" rel="stylesheet" />
         <?= \Altum\Event::get_content('head') ?>
     </head>
 
@@ -84,13 +84,16 @@
         <script src="<?= SITE_URL . ASSETS_URL_PATH ?>onedash/js/table-datatable.js"></script>
 
     <?php endif ?>
-
+    <!-- Notifikasi --> 
+    <script src="<?= SITE_URL . ASSETS_URL_PATH ?>onedash/plugins/notifications/js/lobibox.min.js"></script>
+    <script src="<?= SITE_URL . ASSETS_URL_PATH ?>onedash/plugins/notifications/js/notifications.min.js"></script>
+    <script src="<?= SITE_URL . ASSETS_URL_PATH ?>onedash/plugins/notifications/js/notification-custom-script.js"></script>
     <?= \Altum\Event::get_content('javascript') ?>
     
     <script>
         $(document).ready(function() {
-            $('#payment-table').DataTable();
-            $('#latest-users-table').DataTable();
+            //$('#payment-table').DataTable();
+           // $('#latest-users-table').DataTable();
         } );
     </script>
     
