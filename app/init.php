@@ -67,5 +67,5 @@ require_once APP_PATH . 'helpers/numbers.php';
 
 /* Autoload for vendor */
 require_once ROOT_PATH . 'vendor/autoload.php';
-require_once APP_PATH . 'core/Db.php';
+require_once APP_PATH . 'core/db.php';
 
