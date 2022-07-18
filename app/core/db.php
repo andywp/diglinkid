@@ -10,9 +10,9 @@ $DB->addConnection([
     'host'      => DATABASE_SERVER,
     'database'  => DATABASE_NAME,
     'username'  => DATABASE_USERNAME,
-    'password'  => DATABASE_PASSWORD,
+    'password'  => DATABASE_PASSWORD, 
     'charset'   => 'utf8',
-    'collation' => 'utf8_unicode_ci',
+    'collation' => 'utf8_unicode_ci', 
     'prefix'    => '',
 ]);
 
