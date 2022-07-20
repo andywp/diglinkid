@@ -71,8 +71,18 @@ class Link extends Controller {
 
             case 'statistics':
 
-                $start_date = isset($this->params[2]) ? Database::clean_string($this->params[2]) : false;
+                 $start_date = isset($this->params[2]) ? Database::clean_string($this->params[2]) : false;
                 $end_date = isset($this->params[3]) ? Database::clean_string($this->params[3]) : false;
+
+                /* new set date */
+                $dateparam = isset($this->params[2]) ? Database::clean_string($this->params[2]) :  date('m-Y');
+                $date = explode('-',$dateparam);
+                $month=$date[0];
+                $year=$date[1];
+
+
+
+
 
                 $date = \Altum\Date::get_start_end_dates($start_date, $end_date);
 
@@ -85,7 +95,7 @@ class Link extends Controller {
                     'browser'       => [],
                     'referer'       => []
                 ];
-
+      
                 $logs_result = Database::$database->query("
                     SELECT
                          `location`,
@@ -98,7 +108,7 @@ class Link extends Controller {
                          `track_links`
                     WHERE
                         `link_id` = {$this->link->link_id}
-                        AND (`date` BETWEEN '{$date->start_date_query}' AND '{$date->end_date_query}')
+                        AND  ( YEAR(`date`) = {$year} AND MONTH(`date`) = {$month} )
                     ORDER BY
                         `formatted_date`
                 ");
@@ -151,7 +161,7 @@ class Link extends Controller {
                 arsort($logs_data['os']);
                 arsort($logs_data['location']);
 
-                /* $browser=$this->get_maps($this->link->link_id,$date->start_date_query,$date->end_date_query);
+                /* $browser=$this->get_maps($this->link->link_id,$year, $month);
                 echo '<pre>';
                 print_r($browser);
                 exit(); */
@@ -159,14 +169,14 @@ class Link extends Controller {
                 $data = [
                     'link'              => $this->link,
                     'method'            => $method,
-                    'date'              => $date,
+                    'date'              => $dateparam,
                     'logs'              => $logs,
                     'logs_chart'        => $logs_chart,
                     'logs_data'         => $logs_data,
-                    'referal'           => $this->getGroubReveral($this->link->link_id,$date->start_date_query,$date->end_date_query),
-                    'os'                => $this->get_visitor_os($this->link->link_id,$date->start_date_query,$date->end_date_query),
-                    'browser'           => $this->reveral_browser($this->link->link_id,$date->start_date_query,$date->end_date_query),
-                    'maps'              => $this->get_maps($this->link->link_id,$date->start_date_query,$date->end_date_query)
+                    'referal'           => $this->getGroubReveral($this->link->link_id,$year, $month),
+                    'os'                => $this->get_visitor_os($this->link->link_id,$year, $month),
+                    'browser'           => $this->reveral_browser($this->link->link_id,$year, $month),
+                    'maps'              => $this->get_maps($this->link->link_id,$year, $month)
                 ];
 
                 break;
@@ -191,14 +201,14 @@ class Link extends Controller {
 
     }
 
-    private function getGroubReveral($link_id,$start,$end){
+    private function getGroubReveral($link_id,$year,$month){
         $data=$this->database->query("SELECT
                                                 `referer`
                                         FROM
                                                 `track_links`
                                         WHERE
                                             `link_id` = {$link_id}
-                                            AND (`date` BETWEEN '{$start}' AND '{$end}')
+                                            AND  ( YEAR(`date`) = {$year} AND MONTH(`date`) = {$month} )
                                             GROUP BY
                                             `referer` ORDER BY `referer` ASC");
         $REFERAL=$data->fetch_all(MYSQLI_ASSOC);
@@ -207,7 +217,7 @@ class Link extends Controller {
             $arrayReveral[]=!empty($r['referer'])?$this->get_base_domain($r['referer']):'';
         }
 
-        $globalCount=$this->database->query("SELECT count(id) as total FROM `track_links` WHERE `link_id` = {$link_id} AND (`date` BETWEEN '{$start}' AND '{$end}')")->fetch_object()->total;
+        $globalCount=$this->database->query("SELECT count(id) as total FROM `track_links` WHERE `link_id` = {$link_id} AND ( YEAR(`date`) = {$year} AND MONTH(`date`) = {$month} )")->fetch_object()->total;
 
         $data=array_unique($arrayReveral);
         $resultReferal=array();
@@ -219,9 +229,9 @@ class Link extends Controller {
             $backgroundColor[]=$this->color_reveral($i);
 
             if(!empty($val)){
-                $count=$this->database->query("SELECT count(id) as total FROM `track_links` WHERE `link_id` = {$link_id} AND (`date` BETWEEN '{$start}' AND '{$end}') and referer  LIKE '%{$val}%' ")->fetch_object()->total;
+                $count=$this->database->query("SELECT count(id) as total FROM `track_links` WHERE `link_id` = {$link_id} AND   ( YEAR(`date`) = {$year} AND MONTH(`date`) = {$month} ) and referer  LIKE '%{$val}%' ")->fetch_object()->total;
             }else{
-                $count=$this->database->query("SELECT count(id) as total FROM `track_links` WHERE `link_id` = {$link_id} AND (`date` BETWEEN '{$start}' AND '{$end}') and referer IS NULL ")->fetch_object()->total;
+                $count=$this->database->query("SELECT count(id) as total FROM `track_links` WHERE `link_id` = {$link_id} AND   ( YEAR(`date`) = {$year} AND MONTH(`date`) = {$month} ) and referer IS NULL ")->fetch_object()->total;
             }
             $label[]=!empty($val)?$val:'other';
             $resultReferal[]=(int)$count;
@@ -244,15 +254,15 @@ class Link extends Controller {
     }
 
 
-    private function get_visitor_os($link_id,$start,$end){
-        $globalCount=$this->database->query("SELECT count(id) as total FROM `track_links` WHERE `link_id` = {$link_id} AND (`date` BETWEEN '{$start}' AND '{$end}')")->fetch_object()->total;
+    private function get_visitor_os($link_id,$year,$month){
+        $globalCount=$this->database->query("SELECT count(id) as total FROM `track_links` WHERE `link_id` = {$link_id} AND ( YEAR(`date`) = {$year} AND MONTH(`date`) = {$month} )")->fetch_object()->total;
         $visitoOS=$this->database->query("SELECT
                                         `os`
                                 FROM
                                         `track_links`
                                 WHERE
                                     `link_id` = {$link_id}
-                                    AND (`date` BETWEEN '{$start}' AND '{$end}')
+                                    AND  ( YEAR(`date`) = {$year} AND MONTH(`date`) = {$month} )
                                     GROUP BY
                                     `os` ORDER BY `os` ASC")->fetch_all(MYSQLI_ASSOC);
         $arrayOS=array();
@@ -261,10 +271,11 @@ class Link extends Controller {
         $labelData=array();
         $label=array();
         $icon=array();
+        $resultReferal=array();
         foreach($visitoOS as $r){
             $backgroundColor[]=$this->color_reveral($i);
             $label[]=$r['os'];
-            $count=$this->database->query("SELECT count(id) as total FROM `track_links` WHERE `link_id` = {$link_id} AND (`date` BETWEEN '{$start}' AND '{$end}') and os = '{$r['os']}' ")->fetch_object()->total;
+            $count=$this->database->query("SELECT count(id) as total FROM `track_links` WHERE `link_id` = {$link_id} AND   ( YEAR(`date`) = {$year} AND MONTH(`date`) = {$month} ) and os = '{$r['os']}' ")->fetch_object()->total;
             $resultReferal[]=(int) $count;
             //$arrayOS[$r['os']]=
             $labelData[$r['os']]=[
@@ -281,20 +292,20 @@ class Link extends Controller {
                 'labels' => json_encode($label),
                 'data'  => json_encode($resultReferal),
                 'raw'   =>  $labelData,
-                'count' =>  $globalCount
+                'count' =>  $globalCount 
             ];
     }
 
 
-    private function reveral_browser($link_id,$start,$end){
-        $globalCount=$this->database->query("SELECT count(id) as total FROM `track_links` WHERE `link_id` = {$link_id} AND (`date` BETWEEN '{$start}' AND '{$end}')")->fetch_object()->total;
+    private function reveral_browser($link_id,$year,$month){
+        $globalCount=$this->database->query("SELECT count(id) as total FROM `track_links` WHERE `link_id` = {$link_id} AND  ( YEAR(`date`) = {$year} AND MONTH(`date`) = {$month} )")->fetch_object()->total;
         $visitoBorwser=$this->database->query("SELECT
                                                     `browser`
                                             FROM
                                                     `track_links`
                                             WHERE
                                                 `link_id` = {$link_id}
-                                                AND (`date` BETWEEN '{$start}' AND '{$end}')
+                                                AND ( YEAR(`date`) = {$year} AND MONTH(`date`) = {$month} )
                                                 GROUP BY
                                                 `browser` ORDER BY `browser` ASC")->fetch_all(MYSQLI_ASSOC);
         
@@ -304,10 +315,11 @@ class Link extends Controller {
         $labelData=array();
         $label=array();
         $icon=array();
+        $resultReferal=array();
         foreach($visitoBorwser as $r){
             $backgroundColor[]=$this->color_reveral($i);
             $label[]=$r['browser'];
-            $count=$this->database->query("SELECT count(id) as total FROM `track_links` WHERE `link_id` = {$link_id} AND (`date` BETWEEN '{$start}' AND '{$end}') and browser = '{$r['browser']}' ")->fetch_object()->total;
+            $count=$this->database->query("SELECT count(id) as total FROM `track_links` WHERE `link_id` = {$link_id} AND   ( YEAR(`date`) = {$year} AND MONTH(`date`) = {$month} ) and browser = '{$r['browser']}' ")->fetch_object()->total;
             $resultReferal[]=(int) $count;
             //$arrayOS[$r['os']]=
             $labelData[$r['browser']]=[
@@ -329,22 +341,22 @@ class Link extends Controller {
 
 
 
-    private function get_maps($link_id,$start,$end){
-        $globalCount=$this->database->query("SELECT count(id) as total FROM `track_links` WHERE `link_id` = {$link_id} AND (`date` BETWEEN '{$start}' AND '{$end}')")->fetch_object()->total;
+    private function get_maps($link_id,$year,$month){
+        $globalCount=$this->database->query("SELECT count(id) as total FROM `track_links` WHERE `link_id` = {$link_id} AND ( YEAR(`date`) = {$year} AND MONTH(`date`) = {$month} )")->fetch_object()->total;
         $visitoMaps=$this->database->query("SELECT
                                                     `location`
                                             FROM
                                                     `track_links`
                                             WHERE
                                                 `link_id` = {$link_id}
-                                                AND (`date` BETWEEN '{$start}' AND '{$end}')
+                                                AND ( YEAR(`date`) = {$year} AND MONTH(`date`) = {$month} )
                                                 GROUP BY
                                                 `location` ORDER BY `location` ASC")->fetch_all(MYSQLI_ASSOC);
         $dataJson=array();
         $dataJson[]=['Country','Visit'];
         $raw=array();
         foreach($visitoMaps as $r){
-            $count=$this->database->query("SELECT count(id) as total FROM `track_links` WHERE `link_id` = {$link_id} AND (`date` BETWEEN '{$start}' AND '{$end}') and location = '{$r['location']}' ")->fetch_object()->total;
+            $count=$this->database->query("SELECT count(id) as total FROM `track_links` WHERE `link_id` = {$link_id} AND    ( YEAR(`date`) = {$year} AND MONTH(`date`) = {$month} )and location = '{$r['location']}' ")->fetch_object()->total;
             $dataJson[]=[$r['location'],(int) $count];
 
             $raw[$r['location']]=[

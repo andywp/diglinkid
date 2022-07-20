@@ -5,6 +5,7 @@ namespace Altum\Controllers;
 use Altum\Middlewares\Authentication;
 use Altum\Database\Database;
 
+
 class Index extends Controller {
 
     public function index() {

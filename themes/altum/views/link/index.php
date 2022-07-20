@@ -100,7 +100,7 @@
 
 <?php ob_start() ?>
 <link href="<?= url(ASSETS_URL_PATH . 'css/pickr.min.css') ?>" rel="stylesheet" media="screen">
-<link href="<?= url(ASSETS_URL_PATH . 'css/datepicker.min.css') ?>" rel="stylesheet" media="screen">
+<!-- <link href="<?= url(ASSETS_URL_PATH . 'css/datepicker.min.css') ?>" rel="stylesheet" media="screen"> -->
 <link href="<?= url(ASSETS_URL_PATH . 'css/bootstrap-iconpicker.min.css') ?>" rel="stylesheet" media="screen">
 <?php \Altum\Event::add_content(ob_get_clean(), 'head') ?>
 

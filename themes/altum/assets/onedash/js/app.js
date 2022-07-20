@@ -32,9 +32,10 @@ $(function() {
 		}, function() {
 			$(".wrapper").removeClass("sidebar-hovered")
 		}))
+
 	})
 
-
+	$(".toggle-icon").trigger( "click" );
 
 	$(function() {
 		$("#menu").metisMenu()

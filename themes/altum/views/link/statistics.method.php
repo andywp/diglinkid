@@ -1,5 +1,7 @@
 <?php ob_start() ?>
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css" integrity="sha512-mSYUmp1HYZDFaVKK//63EcZq4iFWFjxSL+Z3T/aCt4IO9Cejm03q3NKKYN6pFQzY0SBOr8h+eCIAZHPXcpZaNw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<!-- <link href="<?= url(ASSETS_URL_PATH . 'onedash/plugins/datetimepicker/css/classic.time.css') ?>" rel="stylesheet">
+<link href="<?= url(ASSETS_URL_PATH . 'onedash/plugins/datetimepicker/css/classic.date.css') ?>" rel="stylesheet"> -->
 <?php \Altum\Event::add_content(ob_get_clean(), 'head') ?>
 
 <div class="card border ">
@@ -9,31 +11,11 @@
 
             <div>
                 <form class="form-inline" id="datepicker_form">
-                    <label>
-                        <div id="datepicker_selector" class="text-muted clickable">
-                            <span class="mr-1">
-                                <?php if($data->date->start_date == $data->date->end_date): ?>
-                                    <?= \Altum\Date::get($data->date->start_date, 2) ?>
-                                <?php else: ?>
-                                    <?= \Altum\Date::get($data->date->start_date, 2) . ' - ' . \Altum\Date::get($data->date->end_date, 2) ?>
-                                <?php endif ?>
-                            </span>
-                            <i class="fa fa-caret-down"></i>
-                        </div>
-
-                        <input
-                                type="text"
-                                id="datepicker_input"
-                                data-range="true"
-                                data-min="<?= (new \DateTime($data->link->date))->format('Y-m-d') ?>"
-                                name="date_range"
-                                value="<?= $data->date->input_date_range ? $data->date->input_date_range : '' ?>"
-                                placeholder=""
-                                autocomplete="off"
-                                class="custom-control-input"
-                        >
-
-                    </label>
+                    <div class="input-group mb-3 date"  id="datepicker_input" data-date="102/2022" data-date-format="mm/yyyy" data-date-viewmode="years" data-date-minviewmode="months">
+                        <input type="text" class="form-control" value="<?= $data->date ?>" readonly>
+                        <button class="btn btn-outline-secondary" type="button" id="button-addon2"><i class="fas fa-calendar-alt"></i></button>
+                    </div>
+                    
                 </form>
             </div>
         </div>
@@ -223,34 +205,53 @@
 
 <?php ob_start() ?>
 <script src="<?= url(ASSETS_URL_PATH . 'js/libraries/Chart.bundle.min.js') ?>"></script>
-<script src="<?= url(ASSETS_URL_PATH . 'js/libraries/datepicker.min.js') ?>"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js" integrity="sha512-T/tUfKSV1bihCnd+MxKD0Hm1uBBroVYBOYSk1knyvQ9VyZJpc/ALb4P0r6ubwVPSGB2GvjeoMAJJImBG12TiaQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="<?= url(ASSETS_URL_PATH . 'onedash/plugins/apexcharts-bundle/js/apexcharts.min.js') ?>"></script>
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+
+
 <script>
+   
+
+
     /* Datepicker */
-    $.fn.datepicker.language['altum'] = <?= json_encode(require APP_PATH . 'includes/datepicker_translations.php') ?>;
-    let datepicker = $('#datepicker_input').datepicker({
-        language: 'altum',
-        dateFormat: 'yyyy-mm-dd',
+    //$.fn.datepicker.language['altum'] = <?= json_encode(require APP_PATH . 'includes/datepicker_translations.php') ?>;
+   // let datepicker = $('#datepicker_input').datepicker({
+        //language: 'altum',
+       /*  viewMode: 'months',
+        minViewMode: "months",
+        dateFormat: 'mm-yyyy',
         autoClose: true,
         timepicker: false,
-        toggleSelected: false,
-        minDate: new Date($('#datepicker_input').data('min')),
+        toggleSelected: false, */
+       /*  minDate: new Date($('#datepicker_input').data('min')),
         maxDate: new Date(),
+ */
+        //onSelect: (formatted_date, date) => {
 
-        onSelect: (formatted_date, date) => {
-
-            if(date.length > 1) {
+            /* if(date.length > 1) {
                 let [ start_date, end_date ] = formatted_date.split(',');
 
                 if(typeof end_date == 'undefined') {
                     end_date = start_date
-                }
+                } */
 
                 /* Redirect */
-                redirect(`${$('#base_controller_url').val()}/statistics/${start_date}/${end_date}`, true);
-            }
-        }
+               // redirect(`${$('#base_controller_url').val()}/statistics/${start_date}/${end_date}`, true);
+           /*  } */
+        //}
+    //});
+
+    $('#datepicker_input').datepicker({
+		format: "mm-yyyy",
+		startView: "months", 
+		minViewMode: "months",
+		autoclose: true
+	}).on("change",function(){
+        var selected = $('#datepicker_input input').val();
+        redirect(`${$('#base_controller_url').val()}/statistics/${selected}`, true);
+
     });
 
     /* Charts */
@@ -434,6 +435,10 @@
 
   var chart = new ApexCharts(document.querySelector("#chart5"), options);
   chart.render(); */
+
+  
+
+
 
 
   /*raveral */

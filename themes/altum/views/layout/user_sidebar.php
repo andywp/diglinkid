@@ -22,6 +22,7 @@
                 <div class="menu-title"><?= $this->language->admin_index->menu ?></div>
             </a>
         </li>
+        <!--
         <li class="<?= \Altum\Routing\Router::$controller == 'diglink' || \Altum\Routing\Router::$controller == 'diglink' ? 'active mm-active' : null ?>">
             <a class="nav-link d-flex flex-row <?= \Altum\Routing\Router::$controller == 'diglink' || \Altum\Routing\Router::$controller == 'diglink' ? 'active' : null ?>" href="<?= url('diglink') ?>">
                 <div class="parent-icon">
@@ -30,6 +31,7 @@
                 <div class="menu-title">My diglink</div>
             </a>
         </li>
+        -->
         <!--
         <li class="<?= \Altum\Routing\Router::$controller == 'Project' || \Altum\Routing\Router::$controller == 'Link' ? 'active mm-active' : null ?>">
             <a class="nav-link d-flex flex-row <?= \Altum\Routing\Router::$controller == 'Project' || \Altum\Routing\Router::$controller == 'Link' ? 'active' : null ?>" href="<?= url('project') ?>">
@@ -55,6 +57,19 @@
                 </div>
                 <div class="menu-title">Support Ticket</div>
             </a>
+        </li>
+        <li>
+            <a href="javascript:;" class="has-arrow">
+                <div class="parent-icon"><i class="bi bi-droplet-fill"></i>
+                </div>
+                <div class="menu-title">Widgets</div>
+            </a>
+            <ul>
+                <li> <a href="widgets-static-widgets.html"><i class="bi bi-circle"></i>Static Widgets</a>
+                </li>
+                <li> <a href="widgets-data-widgets.html"><i class="bi bi-circle"></i>Data Widgets</a>
+                </li>
+            </ul>
         </li>
         <li>
             <a class="nav-link d-flex flex-row" href="<?= url('logout') ?>">

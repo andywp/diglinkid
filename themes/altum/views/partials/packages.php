@@ -62,7 +62,7 @@ use Altum\Middlewares\Authentication;
                                 <span>5 Links</span>
                             </li>
                         </ul>
-                        <?php if($row->package_id == $this->user->package_id): ?>
+                        <?php if(@$row->package_id == $this->user->package_id): ?>
                             <button class="pricing-action-disabled"><?= $this->language->package->button->already_free ?></button>
                         <?php else: ?>
                             <a href="<?= Authentication::check() ? url('pay/free') : url('register?redirect=pay/free') ?>" class="btn bg-diglink rounded-pill w-100 mb-2 text-white"><?= $this->language->package->button->choose ?></a>
@@ -94,11 +94,15 @@ use Altum\Middlewares\Authentication;
                                 <?php $result2 = \Altum\Database\Database::$database->query("SELECT * FROM `package_features` ORDER BY `package_features_id` ASC"); ?>
                                 <?php while($row2 = $result2->fetch_object()):
                                 $id = array($row->package_id);
-                                $package_features_id = json_decode($row2->package_id, true);
+                                @$package_features_id = json_decode($row2->package_id, true);
+                                if(!empty($package_features_id)):
                                 if (in_array($id[0], $package_features_id)){
                                     echo '<li><i class="uil uil-check"></i><span>'.$row2->name.'</span></li>';
                                 ?>
-                                <?php } ?>
+                                <?php 
+                                    } 
+                                endif;
+                                ?>
                                 <?php endwhile ?>
                             </ul>
                             <?php if($row->package_id == $this->user->package_id): ?>

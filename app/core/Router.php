@@ -123,7 +123,8 @@ class Router {
                 'controller' => 'Account',
                 'settings' => [
                     'menu_no_margin' => true,
-                    'body_white' => false
+                    'body_white' => false,
+                    'wrapper' => 'user_wrapper'
                 ]
             ],
 
@@ -131,7 +132,8 @@ class Router {
                 'controller' => 'AccountPackage',
                 'settings' => [
                     'menu_no_margin' => true,
-                    'body_white' => false
+                    'body_white' => false,
+                    'wrapper' => 'user_wrapper'
                 ]
             ],
 
@@ -139,7 +141,8 @@ class Router {
                 'controller' => 'AccountPayments',
                 'settings' => [
                     'menu_no_margin' => true,
-                    'body_white' => false
+                    'body_white' => false,
+                    'wrapper' => 'user_wrapper'
                 ]
             ],
 
@@ -147,15 +150,21 @@ class Router {
                 'controller' => 'AccountLogs',
                 'settings' => [
                     'menu_no_margin' => true,
-                    'body_white' => false
+                    'body_white' => false,
+                    'wrapper' => 'user_wrapper'
                 ]
             ],
 
             'invoice' => [
                 'controller' => 'Invoice',
-                'settings' => [
+                /* 'settings' => [
                     'wrapper' => 'invoice/invoice_wrapper',
                     'body_white' => false,
+                ] */
+                'settings' => [
+                    'menu_no_margin' => true,
+                    'body_white' => false,
+                    'wrapper' => 'user_wrapper'
                 ]
             ],
 

@@ -5,7 +5,7 @@
                 <div class="mobile-toggle-icon fs-3">
                     <i class="bi bi-list"></i>
                 </div>
-                    <a href="<?= url('package/upgrade') ?>"><span class="badge badge-success"><?= sprintf($this->language->account->package->header, $this->user->package->name) ?></span></a>
+                    <a href="<?= url('package/upgrade') ?>"><span class="badge badge-success text-dark"><?= sprintf($this->language->account->package->header, $this->user->package->name) ?></span></a>
                 <?php if($this->user->package_id != 'free'): ?>
                     <small><?= sprintf($this->language->account->package->subheader, '<strong>' . \Altum\Date::get($this->user->package_expiration_date, 2) . '</strong>') ?></small>
                 <?php endif ?>
@@ -15,6 +15,9 @@
                             <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown">
                                 <div class="user-setting d-flex align-items-center">
                                     <img src="<?= get_gravatar($this->user->email) ?>" class="user-img" alt="">
+                                    <div class="ms-3">
+                                            <h6 class="mb-0 dropdown-user-name"><?= $this->user->name ?></h6>
+                                    </div>
                                 </div>
                             </a>
                             <ul class="dropdown-menu dropdown-menu-end">
