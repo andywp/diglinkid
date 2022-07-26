@@ -11,20 +11,22 @@
 
 <?php display_notifications() ?>
 
-<div class="mt-5">
-    <table id="results" class="table table-custom">
-        <thead class="thead-black">
-        <tr>
-            <th><?= $this->language->admin_domains->table->type ?></th>
-            <th><?= $this->language->admin_domains->table->host ?></th>
-            <th><?= $this->language->admin_domains->table->links ?></th>
-            <th><?= $this->language->admin_domains->table->date ?></th>
-            <th class="disable_export"></th>
-        </tr>
-        </thead>
-        <tbody></tbody>
-    </table>
-</div>
+    <div class="mt-5 card">
+        <div class="card-body">
+            <table id="results" class="table table-custom">
+                <thead class="thead-black">
+                <tr>
+                    <th><?= $this->language->admin_domains->table->type ?></th>
+                    <th><?= $this->language->admin_domains->table->host ?></th>
+                    <th><?= $this->language->admin_domains->table->links ?></th>
+                    <th><?= $this->language->admin_domains->table->date ?></th>
+                    <th class="disable_export"></th>
+                </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
 
 <?php ob_start() ?>
 <link href="<?= url(ASSETS_URL_PATH . 'onedash/plugins/datatable/css/dataTables.bootstrap5.min.css') ?>" rel="stylesheet" media="screen">

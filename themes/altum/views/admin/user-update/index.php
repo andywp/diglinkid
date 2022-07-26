@@ -2,7 +2,7 @@
 
 <div class="d-flex justify-content-between">
     <div class="d-flex align-items-center">
-        <h1 class="h3 mr-3"><i class="fa fa-xs fa-user text-gray-700"></i> <?= $this->language->admin_user_update->header ?></h1>
+        <h1 class="h3 mx-3"><i class="fa fa-xs fa-user text-gray-700"></i> <?= $this->language->admin_user_update->header ?></h1>
 
         <?= get_admin_options_button('user', $data->user->user_id) ?>
     </div>

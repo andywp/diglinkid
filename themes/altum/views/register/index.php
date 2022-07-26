@@ -1,18 +1,19 @@
 <?php defined('ALTUMCODE') || die() ?>
 
     <section class="wrapper image-wrapper bg-image bg-overlay bg-overlay-400 bg-content" data-image-src="./assets/img/photos/bg4.jpg">   
-        <?php display_notifications() ?>
+        
 
         <div class="container pt-18 pb-16" style="z-index: 5; position:relative">
             <div class="row justify-content-md-center align-items-center" data-cue="zoomIn">
-                <div class="col-lg-6">
+                <div class="col-lg-6 order-1">
                     <figure><img src="./assets/img/concept/concept16.png" alt="" /></figure>
                 </div>
-                <div class="col-lg-5 offset-lg-1">
+                <div class="col-lg-6 order-xl-2">
                     <div class="card">
-                        <div class="card-body">
-                            <h1 class="display-5 mb-5 text-diglink text-center"><?= $this->language->register->header ?></h1>
-                            <form action="" method="post" class="mt-4" role="form">
+                        <div class="card-body p-4">
+                            <h2 class="display-5 mb-3 text-diglink text-center"><?= $this->language->register->header ?></h2>
+                            <?php display_notifications() ?>
+                            <form action="" method="post" class="mt-4" role="form"  autocomplete="off">
                                 <div class="form-group">
                                     <label class="mb-1"><?= $this->language->register->form->name ?></label>
                                     <input type="text" name="name" class="form-control" value="<?= $data->values['name'] ?>" placeholder="<?= $this->language->register->form->name_placeholder ?>" required="required" />
@@ -30,7 +31,7 @@
 
                                 <div class="form-group">
                                     <label class="mb-1"><?= $this->language->register->form->repeat_password ?></label>
-                                    <input type="password" name="repeat_password" class="form-control" value="<?= $data->values['repeat_password'] ?>" placeholder="<?= $this->language->register->form->repeat_password ?>" required="required" />
+                                    <input type="password" name="repeat_password" class="form-control" value="<?= @$data->values['repeat_password'] ?>" placeholder="<?= $this->language->register->form->repeat_password ?>" required="required"  autocomplete="off"/>
                                 </div>
 
                                 <div class="form-check">

@@ -50,7 +50,7 @@ echo '</pre>'; */
         <?php endif ?>
         <link rel="canonical" href="<?= @$this->link->full_url ?>" />
 
-        <?php if(!$_GET['preview']): ?>
+        <?php if(!@$_GET['preview']): ?>
             <?php if($aktive == 1){ ?>
             <?php if(isset($links->google_tag_manager)){ 
                     if($links->google_tag_manager !=''){

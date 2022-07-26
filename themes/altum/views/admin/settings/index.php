@@ -8,19 +8,23 @@
 
 <div class="row mt-5">
     <div class="mb-5 mb-lg-0 col-12 col-lg-3">
-        <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-            <a class="nav-link active" href="#main" data-toggle="pill" role="tab"><i class="fa fa-home"></i> <?= $this->language->admin_settings->tab->main ?></a>
-            <a class="nav-link" href="#links" data-toggle="pill" role="tab"><i class="fa fa-link"></i> <?= $this->language->admin_settings->tab->links ?></a>
-            <a class="nav-link" href="#payment" data-toggle="pill" role="tab"><i class="fa fa-dollar-sign"></i> <?= $this->language->admin_settings->tab->payment ?></a>
-            <a class="nav-link" href="#business" data-toggle="pill" role="tab"><i class="fa fa-briefcase"></i> <?= $this->language->admin_settings->tab->business ?></a>
-            <a class="nav-link" href="#captcha" data-toggle="pill" role="tab"><i class="fa fa-low-vision"></i> <?= $this->language->admin_settings->tab->captcha ?></a>
-            <a class="nav-link" href="#facebook" data-toggle="pill" role="tab"><i class="fab fa-facebook"></i> <?= $this->language->admin_settings->tab->facebook ?></a>
-            <a class="nav-link" href="#instagram" data-toggle="pill" role="tab"><i class="fab fa-instagram"></i> <?= $this->language->admin_settings->tab->instagram ?></a>
-            <a class="nav-link" href="#ads" data-toggle="pill" role="tab"><i class="fa fa-ad"></i> <?= $this->language->admin_settings->tab->ads ?></a>
-            <a class="nav-link" href="#socials" data-toggle="pill" role="tab"><i class="fab fa-instagram"></i> <?= $this->language->admin_settings->tab->socials ?></a>
-            <a class="nav-link" href="#smtp" data-toggle="pill" role="tab"><i class="fa fa-mail-bulk"></i> <?= $this->language->admin_settings->tab->smtp ?></a>
-            <a class="nav-link" href="#custom" data-toggle="pill" role="tab"><i class="fa fa-paint-brush"></i> <?= $this->language->admin_settings->tab->custom ?></a>
-            <a class="nav-link" href="#email_notifications" data-toggle="pill" role="tab"><i class="fa fa-bell"></i> <?= $this->language->admin_settings->tab->email_notifications ?></a>
+        <div class="card border-0 shadow-sm">
+            <div class="card-body">
+                <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                    <a class="nav-link active" href="#main" data-bs-toggle="pill" role="tab"><i class="fa fa-home"></i> <?= $this->language->admin_settings->tab->main ?></a>
+                    <a class="nav-link" href="#links" data-bs-toggle="pill" role="tab"><i class="fa fa-link"></i> <?= $this->language->admin_settings->tab->links ?></a>
+                    <a class="nav-link" href="#payment" data-bs-toggle="pill" role="tab"><i class="fa fa-dollar-sign"></i> <?= $this->language->admin_settings->tab->payment ?></a>
+                    <a class="nav-link" href="#business" data-bs-toggle="pill" role="tab"><i class="fa fa-briefcase"></i> <?= $this->language->admin_settings->tab->business ?></a>
+                    <a class="nav-link" href="#captcha" data-bs-toggle="pill" role="tab"><i class="fa fa-low-vision"></i> <?= $this->language->admin_settings->tab->captcha ?></a>
+                    <a class="nav-link" href="#facebook" data-bs-toggle="pill" role="tab"><i class="fab fa-facebook"></i> <?= $this->language->admin_settings->tab->facebook ?></a>
+                    <a class="nav-link" href="#instagram" data-bs-toggle="pill" role="tab"><i class="fab fa-instagram"></i> <?= $this->language->admin_settings->tab->instagram ?></a>
+                    <a class="nav-link" href="#ads" data-bs-toggle="pill" role="tab"><i class="fa fa-ad"></i> <?= $this->language->admin_settings->tab->ads ?></a>
+                    <a class="nav-link" href="#socials" data-bs-toggle="pill" role="tab"><i class="fab fa-instagram"></i> <?= $this->language->admin_settings->tab->socials ?></a>
+                    <a class="nav-link" href="#smtp" data-bs-toggle="pill" role="tab"><i class="fa fa-mail-bulk"></i> <?= $this->language->admin_settings->tab->smtp ?></a>
+                    <a class="nav-link" href="#custom" data-bs-toggle="pill" role="tab"><i class="fa fa-paint-brush"></i> <?= $this->language->admin_settings->tab->custom ?></a>
+                    <a class="nav-link" href="#email_notifications" data-bs-toggle="pill" role="tab"><i class="fa fa-bell"></i> <?= $this->language->admin_settings->tab->email_notifications ?></a>
+                </div>
+            </div>
         </div>
     </div>
 

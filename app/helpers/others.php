@@ -52,15 +52,15 @@ function get_admin_options_button($type, $target_id) {
 
         case 'user' :
             return '
-                <div class="dropdown">
-                    <a href="#" data-toggle="dropdown" class="text-secondary dropdown-toggle dropdown-toggle-simple">
+                <div class="fs-5 ms-auto dropdown">
+                    <a href="#" class=" text-secondary dropdown-toggle dropdown-toggle-nocaret cursor-pointer"  data-bs-toggle="dropdown" aria-expanded="false"  data-bs-toggle="tooltip">
                         <i class="fas fa-ellipsis-v"></i>
                         
-                        <div class="dropdown-menu dropdown-menu-right">
+                        <div class="dropdown-menu dropdown-menu-right"">
                             <a class="dropdown-item" href="admin/user-view/' . $target_id . '"><i class="fa fa-eye"></i> ' . \Altum\Language::get()->global->view . '</a>
                             <a class="dropdown-item" href="admin/user-update/' . $target_id . '"><i class="fas fa-pencil-alt"></i> ' . \Altum\Language::get()->global->edit . '</a>
                             <a class="dropdown-item" data-confirm="' . \Altum\Language::get()->global->info_message->confirm_delete . '" href="admin/users/delete/' . $target_id . \Altum\Middlewares\Csrf::get_url_query() . '"><i class="fa fa-times"></i> ' . \Altum\Language::get()->global->delete . '</a>
-                            <a href="#" data-toggle="modal" data-target="#user_login" data-user-id="' . $target_id . '" class="dropdown-item"><i class="fa fa-sign-in-alt"></i> ' . \Altum\Language::get()->global->login . '</a>
+                            <a href="#" data-bs-toggle="modal" data-bs-target="#user_login" data-user-id="' . $target_id . '" class="dropdown-item"><i class="fa fa-sign-in-alt"></i> ' . \Altum\Language::get()->global->login . '</a>
                         </div>
                     </a>
                 </div>';
@@ -70,11 +70,11 @@ function get_admin_options_button($type, $target_id) {
 
         case 'link' :
             return '
-                <div class="dropdown">
-                    <a href="#" data-toggle="dropdown" class="text-secondary dropdown-toggle dropdown-toggle-simple">
+                <div class="fs-5 ms-auto  dropstart dropdown ">
+                    <a href="#" data-bs-toggle="dropdown" class="text-secondary dropdown-toggle dropdown-toggle-nocaret cursor-pointer"  data-bs-toggle="dropdown" aria-expanded="false"  data-bs-toggle="tooltip">
                         <i class="fas fa-ellipsis-v"></i>
                         
-                        <div class="dropdown-menu dropdown-menu-right">
+                        <div class="dropdown-menu">
                             <a class="dropdown-item" data-confirm="' . \Altum\Language::get()->global->info_message->confirm_delete . '" href="admin/links/delete/' . $target_id . \Altum\Middlewares\Csrf::get_url_query() . '"><i class="fa fa-times"></i> ' . \Altum\Language::get()->global->delete . '</a>
                         </div>
                     </a>
@@ -84,8 +84,8 @@ function get_admin_options_button($type, $target_id) {
 
         case 'domain' :
             return '
-                <div class="dropdown">
-                    <a href="#" data-toggle="dropdown" class="text-secondary dropdown-toggle dropdown-toggle-simple">
+                <div class="fs-5 ms-auto  dropstart dropdown ">
+                    <a href="#" data-bs-toggle="dropdown" class="text-secondary dropdown-toggle dropdown-toggle-nocaret cursor-pointer"  data-bs-toggle="dropdown" aria-expanded="false"  data-bs-toggle="tooltip">
                         <i class="fas fa-ellipsis-v"></i>
                         
                         <div class="dropdown-menu dropdown-menu-right">
@@ -100,13 +100,13 @@ function get_admin_options_button($type, $target_id) {
 
         case 'pages_category' :
             return '
-                <div class="dropdown">
-                    <a href="#" data-toggle="dropdown" class="text-secondary dropdown-toggle dropdown-toggle-simple">
+                <div class="dropdown dropstart fs-5 ms-auto">
+                    <a href="#" data-toggle="dropdown" class="text-secondary dropdown-toggle dropdown-toggle-nocaret cursor-pointere"  data-bs-toggle="dropdown" aria-expanded="false"  data-bs-toggle="tooltip">
                         <i class="fas fa-ellipsis-v"></i>
                         
                         <div class="dropdown-menu dropdown-menu-right">
                             <a class="dropdown-item" href="admin/pages-category-update/' . $target_id . '"><i class="fas fa-pencil-alt"></i> ' . \Altum\Language::get()->global->edit . '</a>
-                            <a href="#" data-toggle="modal" data-target="#pages_category_delete" data-pages-category-id="' . $target_id . '" class="dropdown-item"><i class="fa fa-times"></i> ' . \Altum\Language::get()->global->delete . '</a>
+                            <a href="#" data-bs-toggle="modal" data-bs-target="#pages_category_delete" data-pages-category-id="' . $target_id . '" class="dropdown-item"><i class="fa fa-times"></i> ' . \Altum\Language::get()->global->delete . '</a>
                         </div>
                     </a>
                 </div>';
@@ -115,13 +115,13 @@ function get_admin_options_button($type, $target_id) {
 
         case 'page' :
             return '
-                <div class="dropdown">
-                    <a href="#" data-toggle="dropdown" class="text-secondary dropdown-toggle dropdown-toggle-simple">
+                <div class="dropdown dropstart fs-5 ms-auto">
+                    <a href="#" data-bs-toggle="dropdown" class="text-secondary dropdown-toggle dropdown-toggle-nocaret cursor-pointer" data-bs-toggle="dropdown" aria-expanded="false"  data-bs-toggle="tooltip">
                         <i class="fas fa-ellipsis-v"></i>
                         
                         <div class="dropdown-menu dropdown-menu-right">
                             <a class="dropdown-item" href="admin/page-update/' . $target_id . '"><i class="fas fa-pencil-alt"></i> ' . \Altum\Language::get()->global->edit . '</a>
-                            <a href="#" data-toggle="modal" data-target="#page_delete" data-page-id="' . $target_id . '" class="dropdown-item"><i class="fa fa-times"></i> ' . \Altum\Language::get()->global->delete . '</a>
+                            <a href="#" data-bs-toggle="modal" data-bs-target="#page_delete" data-page-id="' . $target_id . '" class="dropdown-item"><i class="fa fa-times"></i> ' . \Altum\Language::get()->global->delete . '</a>
                         </div>
                     </a>
                 </div>';
@@ -130,8 +130,8 @@ function get_admin_options_button($type, $target_id) {
 
         case 'package' :
             return '
-                <div class="dropdown">
-                    <a href="#" data-toggle="dropdown" class="text-secondary dropdown-toggle dropdown-toggle-simple">
+                <div class="dropdown dropstart fs-5 ms-auto">
+                    <a href="#" data-bs-toggle="dropdown" class="text-secondary dropdown-toggle dropdown-toggle-simple" data-bs-toggle="dropdown" aria-expanded="false"  data-bs-toggle="tooltip">
                         <i class="fas fa-ellipsis-v"></i>
                         
                         <div class="dropdown-menu dropdown-menu-right">

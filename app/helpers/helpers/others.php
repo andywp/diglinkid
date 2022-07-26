@@ -52,9 +52,9 @@ function get_admin_options_button($type, $target_id) {
 
         case 'user' :
             return '
-                <div class="dropdown">
-                    <a href="#" data-toggle="dropdown" class="text-secondary dropdown-toggle dropdown-toggle-simple">
-                        <i class="fas fa-ellipsis-v"></i>
+                <div class="dropdown aa">
+                    <a href="#" class="dropdown-toggle dropdown-toggle-nocaret cursor-pointer" data-bs-toggle="dropdown" aria-expanded="false"  data-toggle="tooltip">
+                        
                         
                         <div class="dropdown-menu dropdown-menu-right">
                             <a class="dropdown-item" href="admin/user-view/' . $target_id . '"><i class="fa fa-eye"></i> ' . \Altum\Language::get()->global->view . '</a>

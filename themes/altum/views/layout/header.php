@@ -52,7 +52,7 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#!" aria-haspopup="true" aria-expanded="false">
                         <img src="<?= get_gravatar($this->user->email) ?>" class="navbar-avatar mr-1" />
-                        <?= $this->user->name ?> <span class="caret"></span>
+                        <?= $this->user->name ?> <span class="caret"></span> 
                     </a>
                     <div class="dropdown-menu dropdown-menu-right">
                         <a class="dropdown-item" href="<?= url('account') ?>"><i class="fa fa-fw fa-sm fa-wrench mr-1"></i> <?= $this->language->account->menu ?></a>

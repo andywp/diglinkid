@@ -126,7 +126,7 @@ class Link extends Controller {
     public function process_biolink() {
 
         /* Determine the actual full url */
-        $this->link->full_url = $this->link->domain_id ? $this->link->scheme . $this->link->host . '/' . $this->link->url : url($this->link->url);
+        @$this->link->full_url = $this->link->domain_id ? $this->link->scheme . $this->link->host . '/' . $this->link->url : url($this->link->url);
 
         /* Get all the links inside of the biolink */
         $links_result = Database::$database->query("SELECT * FROM `links` WHERE `biolink_id` = {$this->link->link_id} AND `type` = 'biolink' AND `subtype` <> 'base' AND `is_enabled` = 1 ORDER BY `order` ASC");

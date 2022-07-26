@@ -29,7 +29,7 @@
                         </div>
                         <hr>
                         <div>
-                        <h6 class="card-title" ><?= $this->user->package->name ?></h6>
+                        <h6 class="card-title" ><?= $this->user->package_id ?></h6>
                         <?php if($this->user->package_id != 'free'): ?>
                             <p>
                                 <?= sprintf(

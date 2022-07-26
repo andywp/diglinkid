@@ -1,7 +1,4 @@
 <?php defined('ALTUMCODE') || die() ?>
-
-
-
     <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">  
         <div class="breadcrumb-title pe-3"><?= sprintf($this->language->link->header->header, $data->link->url) ?></div>
         <div class="ps-3">
@@ -105,8 +102,6 @@
 <?php \Altum\Event::add_content(ob_get_clean(), 'head') ?>
 
 <?php ob_start() ?>
-
-
 <script>
     let clipboard = new ClipboardJS('[data-clipboard-text]');
 

@@ -1,6 +1,13 @@
 <?php defined('ALTUMCODE') || die() ?>
+<?php ob_start() ?>
+<link rel="stylesheet" href="<?= SITE_URL . ASSETS_URL_PATH ?>onedash/plugins/select2/css/select2.min.css"/>
+<!-- <link rel="stylesheet" href="<?= SITE_URL . ASSETS_URL_PATH ?>onedash/plugins/select2/css/select2-bootstrap4.css"/> -->
+<link rel="stylesheet" href="<?= SITE_URL . ASSETS_URL_PATH ?>onedash/plugins/HiGoogleFonts/css/fonts.css"/>
+
+<?php \Altum\Event::add_content(ob_get_clean(), 'head') ?>
 
 <?php ob_start() ?>
+
 
 <div class="row">
     <div class="col-12 col-md-6">
@@ -12,7 +19,7 @@
                             <a class="nav-link <?= !isset($_GET['tab']) || (isset($_GET['tab']) && $_GET['tab'] == 'settings') ? 'active' : null ?>" id="settings-tab" data-bs-toggle="pill" href="#settings" role="tab" aria-controls="settings" aria-selected="true"><?= $this->language->link->header->settings_tab ?></a>
                         </li>
                         <li class="nav-item" role="presentation">
-                            <a class="nav-link <?= isset($_GET['tab']) && $_GET['tab'] == 'links' ? 'active' : null ?>" id="links-tab" data-bs-toggle="pill" href="#links" role="tab" aria-controls="links" aria-selected="false"><?= $this->language->link->header->links_tab ?></a>
+                            <a class="nav-link <?= isset($_GET['tab']) && $_GET['tab'] == 'links' ? 'active' : null ?>" id="links-tab" data-bs-toggle="pill" href="#links" role="tab" aria-controls="links" aria-selected="false">Blocks</a>
                         </li>
                     </ul>
 
@@ -117,7 +124,13 @@
                                         <label for="settings_description"><i class="fa fa-bars"></i>Product keyword <span class="red">example : sepatu, kulit, pria, murah</span></label>
                                         <input type="text" id="settings_category" name="category" class="form-control" value="<?= @$data->link->settings->category ?>" />
                                     </div>
-
+                                     <!-- font -picker -->
+                                     <div class="form-group mb-2">
+                                        <label><i class="fadeIn animated bx bx-font-family"></i> Font</label>
+                                        <select id="select_fontfamily" style="width: 100%;">
+                                        </select>
+                                    </div>
+                                    <!-- Font/ picker -->
                                     <div class="form-group mb-2">
                                         <label for="settings_text_color"><i class="fa fa-paint-brush"></i> <?= $this->language->link->settings->text_color ?></label>
                                         <input type="hidden" id="settings_text_color" name="text_color" class="form-control" value="<?= $data->link->settings->text_color ?>" required="required" />
@@ -211,6 +224,7 @@
                                         </div>
                                     </div>
 
+                                   
                                     <div class="<?= !$this->user->package_settings->google_analytics ? 'container-disabled' : null ?>">
                                         <div class="form-group mb-2">
                                             <label><i class="fab fa-google"></i> <?= $this->language->link->settings->google_analytics ?></label>
@@ -248,7 +262,7 @@
                                         </div>
                                     </div>
                                     <div class="text-center mt-4">
-                                        <button type="submit" name="submit" class="btn btn-outline-primary"><?= $this->language->global->update ?></button>
+                                        <button type="submit" name="submit" class="btn btn-outline-primary w-100"><?= $this->language->global->update ?></button>
                                     </div>
                                 </form>
 
@@ -448,7 +462,41 @@
 <?php ob_start() ?>
 <script src="<?= url(ASSETS_URL_PATH . 'js/libraries/sortable.js') ?>"></script>
 <script src="<?= url(ASSETS_URL_PATH . 'js/libraries/pickr.min.js') ?>"></script>
+<script src="<?= SITE_URL . ASSETS_URL_PATH ?>onedash/plugins/select2/js/select2.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js"></script>
+<script src="<?= SITE_URL . ASSETS_URL_PATH ?>onedash/plugins/HiGoogleFonts/js/fonts.js"></script>
 <script>
+    /**font */
+    $( "#select_fontfamily" ).higooglefonts({
+        fonts: ["ABeeZee", "Abel", "Abril Fatface", "Acme", "Alegreya", "Alex Brush", "Alfa Slab One", "Amaranth", "Amatic SC", "Antic Slab", "Anton", "Arbutus Slab", "Architects Daughter", "Archivo", "Archivo Black", "Archivo Narrow", "Arima Madurai", "Arimo", "Arvo", "Asap", "Assistant", "Bad Script", "Baloo Bhaina", "Bangers", "Berkshire Swash", "Boogaloo", "Bungee Shade", "Balsamiq Sans", "Barlow", "Barrio", "Bebas Neue", "Bitter", "Bree Serif", "Cabin", "Cairo", "Catamaran", "Caveat", "Caveat Brush", "Cinzel", "Cormorant Garamond", "Crimson Text", "Cantata One", "Ceviche One", "Chewy", "Contrail One", "Crete Round", "Dancing Script", "DM Sans", "Domine", "Dosis", "EB Garamond", "Exo 2", "Fascinate", "Fjalla One", "Francois One", "Freckle Face", "Fredoka One", "Galada", "Gloria Hallelujah", "Gochi Hand", "Great Vibes", "Handlee", "Heebo", "Hind", "Inconsolata", "Indie Flower", "Josefin Sans", "Kanit", "Karla", "Kaushan Script", "Lalezar", "Lato", "Libre Baskerville", "Libre Franklin", "Life Savers", "Lobster", "Lora", "Luckiest Guy", "Manrope", "Martel", "Maven Pro", "Merriweather", "Merriweather Sans", "Montserrat", "Mukta", "Mulish", "Marcellus SC", "Monoton", "Nanum Gothic", "Nanum Myeongjo", "Noto Sans", "Noto Serif", "Nunito", "Nunito Sans", "News Cycle", "Nothing You Could Do", "Open Sans", "Oswald", "Overpass", "Oxygen", "Oleo Script Swash Caps", "Oranienbaum", "Pacifico", "Patrick Hand", "Play", "Playfair Display", "Playfair Display SC", "Prompt", "Permanent Marker", "Philosopher", "Poiret One", "Press Start 2P", "Prosto One", "Questrial", "Quattrocento", "Raleway", "Rancho", "Righteous", "Roboto", "Roboto Condensed", "Roboto Slab", "Rubik", "Rye", "Satisfy", "Shadows Into Light", "Shrikhand", "Signika", "Slabo 27px", "Shojumaru", "Sigmar One", "Skranji", "Special Elite", "Tajawal", "Teko", "Titillium Web", "Tinos", "Ultra", "UnifrakturMaguntia", "VT323", "Varela Round", "Work Sans", "Yanone Kaffeesatz", "Zilla Slab"],
+        initialValue: "default",			
+		selectedCallback:function(e){
+			console.log(e,'wkikwjkjwk');
+            let font = e.replace(" ", "+");
+            //console.log(font,'font font atasss  ');
+            let link ='https://fonts.googleapis.com/css?family='+font;
+            if($('iframe').contents().find("link[href*='" + link + "']").length === 0){
+                    $('iframe').contents().find('link').after('<link href="' + link + '" rel="stylesheet" type="text/css">');
+            }
+            $('iframe').contents().find('body').css('font-family', e);
+
+
+
+
+		},
+		loadedCallback:function(e){
+			console.log(e);
+            let font = e.text.replace(" ", "+");
+            console.log(font,'font font bawahhh');
+
+			$("#biolink_preview_iframe body").css("font-family", e);
+            //<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Amatic+SC" media="all">
+		}			
+	});
+
+
+
+
     /* Settings Tab */
     /* Initiate the color picker */
     let pickr_options = {

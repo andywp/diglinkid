@@ -12,41 +12,45 @@
 
 $hal=$data->packages_result->fetch_all(MYSQLI_ASSOC)
 ?>
-<div class="mt-5 table-responsive table-custom-container">
-	<table id="results" class="table table-custom">
-		<thead>
-        <tr>
-            <th>Cupon</th>
-            <th>Start Date</th>
-            <th>End Date</th>
-            <th>Diskon</th>
-            <th></th>
-        </tr>
-        </thead>
-		<tbody>
-			
-			<?php foreach($hal as $r) { ?>
-			<tr>
-				<td><?= $r['cupon'] ?> </td>
-				<td><?= $r['start_date'] ?> </td>
-				<td><?= $r['end_date'] ?> </td>
-				<td><?= $r['diskon'] ?> %</td>
-				 <td><div class="dropdown">
-                    <a href="#" data-toggle="dropdown" class="text-secondary dropdown-toggle dropdown-toggle-simple">
-                        <i class="fas fa-ellipsis-v"></i>
-                        
-                        <div class="dropdown-menu dropdown-menu-right">
-                            <a class="dropdown-item" href="admin/cupon-edit/<?= $r['id'] ?>"><i class="fas fa-pencil-alt"></i> Edit</a>
-                            <a href="#" data-toggle="modal" data-target="#cupon-delete" data-id="<?= $r['id'] ?>" class="dropdown-item"><i class="fa fa-times"></i>Delete</a>
-                        </div>
-                    </a>
-                </div></td>
-			</tr>
-			<?php } ?>
-		</tbody>
-	</table>
-</div>
+<div class="mt-5 card">
+    <div class="card-body">
+        <div class="table-responsive table-custom-container">
+            <table id="results" class="table table-custom">
+                <thead>
+                <tr>
+                    <th>Cupon</th>
+                    <th>Start Date</th>
+                    <th>End Date</th>
+                    <th>Diskon</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                    
+                    <?php foreach($hal as $r) { ?>
+                    <tr>
+                        <td><?= $r['cupon'] ?> </td>
+                        <td><?= $r['start_date'] ?> </td>
+                        <td><?= $r['end_date'] ?> </td>
+                        <td><?= $r['diskon'] ?> %</td>
+                        <td><div class="fs-5 ms-auto dropdown">
+                            <a href="#" data-bs-toggle="dropdown" class="text-secondary  dropdown-toggle dropdown-toggle-nocaret cursor-pointer">
+                                <i class="fas fa-ellipsis-v"></i>
+                                
+                                <div class="dropdown-menu dropdown-menu-right">
+                                    <a class="dropdown-item" href="admin/cupon-edit/<?= $r['id'] ?>"><i class="fas fa-pencil-alt"></i> Edit</a>
+                                    <a href="#" data-bs-toggle="modal" data-bs-target="#cupon-delete" data-id="<?= $r['id'] ?>" class="dropdown-item"><i class="fa fa-times"></i>Delete</a>
+                                </div>
+                            </a>
+                        </div></td>
+                    </tr>
+                    <?php } ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
 
+</div>
 
 <div class="modal fade" id="cupon-delete" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
@@ -57,8 +61,8 @@ $hal=$data->packages_result->fetch_all(MYSQLI_ASSOC)
                     <i class="fa fa-sm fa-trash-alt text-gray-700"></i>
                     Delete Cupon
                 </h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="<?= $this->language->global->close ?>">
-                    <span aria-hidden="true">&times;</span>
+                <button type="button" class="btn-close" data-dismiss="modal" aria-label="<?= $this->language->global->close ?>">
+                    
                 </button>
             </div>
 

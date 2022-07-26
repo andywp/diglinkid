@@ -326,30 +326,33 @@ $logs_chart = get_chart_data($logs_chart);
 
 <hr class="my-5" />
 
-<div class="mb-5">
-    <h2 class="h4"><?= $this->language->admin_statistics->top_packages->header ?></h2>
-    <p class="text-diglink"><?= $this->language->admin_statistics->top_packages->subheader ?></p>
+<div class="card">
+    <div class="card-body">
+        <div class="mb-5">
+            <h2 class="h4"><?= $this->language->admin_statistics->top_packages->header ?></h2>
+            <p class="text-diglink"><?= $this->language->admin_statistics->top_packages->subheader ?></p>
 
-    <div class="mt-5 table-responsive table-custom-container">
-        <table class="table table-custom">
-            <thead class="thead-black">
-            <tr>
-                <th><?= $this->language->admin_statistics->top_packages->package_id ?></th>
-                <th><?= $this->language->admin_statistics->top_packages->total ?></th>
-            </tr>
-            </thead>
-            <tbody>
-            <?php
-            $result = $this->database->query("SELECT COUNT(*) AS `total`, `package_id` FROM `users` GROUP BY `package_id`");
-            while($row = $result->fetch_object()):
-                ?>
-                <tr>
-                    <td><?= (new \Altum\Models\Package(['settings' => $this->settings]))->get_package_by_id($row->package_id)->name ?></td>
-                    <td><?= $row->total ?></td>
-                </tr>
+            <div class="mt-5 table-responsive table-custom-container">
+                <table class="table table-custom">
+                    <thead class="thead-black">
+                    <tr>
+                        <th><?= $this->language->admin_statistics->top_packages->package_id ?></th>
+                        <th><?= $this->language->admin_statistics->top_packages->total ?></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <?php
+                    $result = $this->database->query("SELECT COUNT(*) AS `total`, `package_id` FROM `users` GROUP BY `package_id`");
+                    while($row = $result->fetch_object()):
+                        ?>
+                        <tr>
+                            <td><?= (new \Altum\Models\Package(['settings' => $this->settings]))->get_package_by_id($row->package_id)->name ?></td>
+                            <td><?= $row->total ?></td>
+                        </tr>
 
-            <?php endwhile ?>
-            </tbody>
-        </table>
-    </div>
+                    <?php endwhile ?>
+                    </tbody>
+                </table>
+            </div>
+        </div>
 </div>

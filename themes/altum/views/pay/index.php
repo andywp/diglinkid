@@ -10,6 +10,12 @@
             <h2 class="text-white"><?= sprintf($this->language->pay->header, $data->package->name) ?></h2>
             <div class="text-white mb-5"><?= $this->language->pay->subheader ?></div>
 
+			
+
+
+
+
+
 
             <?php if($data->package_id == 'free'): ?>
 

@@ -7,7 +7,7 @@ const display_notifications = (messages, type, selector) => {
         
         //${message}+_noti();
 
-        window[type+"_noti"](message);
+       // window[type+"_noti"](message);
 
         html += `
                 <div class="alert alert-${type} animated fadeIn alert-dismissible fade show" role="alert">

@@ -6,21 +6,25 @@
 
 <?php display_notifications() ?>
 
-<div class="mt-5 position-relative">
-    <table id="results" class="table table-custom">
-        <thead>
-        <tr>
-            <th><?= $this->language->admin_payments->table->user_email ?></th>
-            <th></th>
-            <th></th>
-            <th><?= $this->language->admin_payments->table->name ?></th>
-            <th><?= $this->language->admin_payments->table->email ?></th>
-            <th><?= $this->language->admin_payments->table->amount ?></th>
-            <th><?= $this->language->admin_payments->table->date ?></th>
-        </tr>
-        </thead>
-        <tbody></tbody>
-    </table>
+<div class="card mt-5">
+    <div class="card-body">
+        <div class="position-relative">
+            <table id="results" class="table table-custom">
+                <thead>
+                <tr>
+                    <th><?= $this->language->admin_payments->table->user_email ?></th>
+                    <th></th>
+                    <th></th>
+                    <th><?= $this->language->admin_payments->table->name ?></th>
+                    <th><?= $this->language->admin_payments->table->email ?></th>
+                    <th><?= $this->language->admin_payments->table->amount ?></th>
+                    <th><?= $this->language->admin_payments->table->date ?></th>
+                </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
 </div>
 
 <?php ob_start() ?>

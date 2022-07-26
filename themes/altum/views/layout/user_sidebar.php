@@ -59,19 +59,6 @@
             </a>
         </li>
         <li>
-            <a href="javascript:;" class="has-arrow">
-                <div class="parent-icon"><i class="bi bi-droplet-fill"></i>
-                </div>
-                <div class="menu-title">Widgets</div>
-            </a>
-            <ul>
-                <li> <a href="widgets-static-widgets.html"><i class="bi bi-circle"></i>Static Widgets</a>
-                </li>
-                <li> <a href="widgets-data-widgets.html"><i class="bi bi-circle"></i>Data Widgets</a>
-                </li>
-            </ul>
-        </li>
-        <li>
             <a class="nav-link d-flex flex-row" href="<?= url('logout') ?>">
                 <div class="parent-icon">
                     <i class="lni lni-lock"></i>

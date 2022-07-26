@@ -111,6 +111,7 @@ class LinkAjax extends Controller {
 
                 } else {
                     /* Base biolink */
+                    //print_r($_POST);
                     $this->create_biolink();
                 }
 
@@ -271,6 +272,12 @@ class LinkAjax extends Controller {
         $_POST['location_url'] = trim(Database::clean_string($_POST['location_url']));
 
         $this->check_location_url($_POST['location_url']);
+         /* Make sure that the user didn't exceed the link limit */
+         $user_total_biolinks = Database::$database->query("SELECT COUNT(*) AS `total` FROM `links` WHERE `user_id` = {$this->user->user_id} AND `type` = 'biolink' AND `subtype` = 'link'")->fetch_object()->total;
+         if($this->user->package_settings->links_limit != -1 && $user_total_biolinks >= $this->user->package_settings->links_limit) {
+             Response::json('Your plan exceeded the maximum amount of Link', 'error');
+         }
+
 
         /* if(!$project_id = Database::simple_get('project_id', 'links', ['user_id' => $this->user->user_id, 'link_id' => $_POST['link_id'], 'type' => 'biolink', 'subtype' => 'base'])) {
             die();

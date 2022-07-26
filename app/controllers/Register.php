@@ -7,6 +7,8 @@ use Altum\Database\Database;
 use Altum\Language;
 use Altum\Logger;
 use Altum\Middlewares\Authentication;
+use Illuminate\Database\Capsule\Manager as DB;
+use Carbon\Carbon;
 
 class Register extends Controller {
 
@@ -93,16 +95,25 @@ class Register extends Controller {
 
 				/* If there are no errors continue the registering process */
 				if(empty($_SESSION['error'])) {
+
+					
+
 					/* Define some needed variables */
 					$password                   = password_hash($_POST['password'], PASSWORD_DEFAULT);
 					$active 	                = (int) !$this->settings->email_confirmation;
 					$email_code                 = md5($_POST['email'] . microtime());
 					$last_user_agent            = Database::clean_string($_SERVER['HTTP_USER_AGENT']);
 					$total_logins               = $active == '1' ? 1 : 0;
-					$package_id                 = 'free';
-					$package_expiration_date    = \Altum\Date::get();
+					//$package_id                 = 'free';
+					//$package_expiration_date    = \Altum\Date::get();
 					$ip                         = get_ip();
-					$package_settings           = json_encode($this->settings->package_free->settings);
+					//$package_settings           = json_encode($this->settings->package_free->settings);
+
+					/* New Rule free akun profesional 7 hari */
+					$paket=DB::table('packages')->where('package_id',1)->first();
+					$package_id='Profesional';
+					$package_expiration_date= Carbon::now()->addDays(7);
+					$package_settings = $paket->settings;
 
 					/* Add the user to the database */
 					$stmt = Database::$database->prepare("INSERT INTO `users` (`password`, `email`, `email_activation_code`, `name`, `package_id`, `package_expiration_date`, `package_settings`, `language`, `active`, `date`, `ip`, `last_user_agent`, `total_logins`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");

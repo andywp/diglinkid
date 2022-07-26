@@ -41,7 +41,7 @@ echo '</pre>'; */
 <?php } ?>
 
 <body class="link-body <?= $link->design->background_class ?>">
-<?php if(!$_GET['preview']): ?>
+<?php if(!@$_GET['preview']): ?>
 	<?php if($aktive == 1){ ?>
 		<?php 
 			if(isset($link->settings->google_tag_manager)){ 

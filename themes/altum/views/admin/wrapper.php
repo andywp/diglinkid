@@ -49,16 +49,17 @@
         </main>
         <?= $this->views['footer'] ?>
     </div>
-
+    <?= \Altum\Event::get_content('modals') ?>
     <input type="hidden" id="url" name="url" value="<?= url() ?>" />
     <input type="hidden" name="global_token" value="<?= \Altum\Middlewares\Csrf::get('global_token') ?>" />
     <input type="hidden" name="number_decimal_point" value="<?= $this->language->global->number->decimal_point ?>" />
     <input type="hidden" name="number_thousands_separator" value="<?= $this->language->global->number->thousands_separator ?>" />
     
+    <script src="<?= SITE_URL . ASSETS_URL_PATH ?>onedash/js/jquery.min.js"></script>
     <!-- Bootstrap bundle JS -->
     <script src="<?= SITE_URL . ASSETS_URL_PATH ?>onedash/js/bootstrap.bundle.min.js"></script>
     <!--plugins-->
-    <script src="<?= SITE_URL . ASSETS_URL_PATH ?>onedash/js/jquery.min.js"></script>
+   
     <script src="<?= SITE_URL . ASSETS_URL_PATH ?>onedash/plugins/simplebar/js/simplebar.min.js"></script>
     <script src="<?= SITE_URL . ASSETS_URL_PATH ?>onedash/plugins/metismenu/js/metisMenu.min.js"></script>
     <script src="<?= SITE_URL . ASSETS_URL_PATH ?>onedash/plugins/perfect-scrollbar/js/perfect-scrollbar.js"></script>
@@ -74,7 +75,7 @@
     <!--
     <script src="<?= SITE_URL . ASSETS_URL_PATH ?>onedash/js/index.js"></script>
 -->
-    <?php foreach(['libraries/popper.min.js', 'libraries/bootstrap.min.js', 'main.js', 'functions.js', 'libraries/fontawesome.min.js'] as $file): ?>
+    <?php foreach([ 'main.js', 'functions.js', 'libraries/fontawesome.min.js'] as $file): ?>
         <script src="<?= SITE_URL . ASSETS_URL_PATH ?>js/<?= $file ?>?v=<?= PRODUCT_CODE ?>"></script>
     <?php endforeach ?>
 

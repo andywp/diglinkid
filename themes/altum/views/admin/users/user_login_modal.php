@@ -9,9 +9,7 @@
                     <i class="fa fa-sm fa-sign-in-alt text-gray-700"></i>
                     <?= $this->language->admin_user_login_modal->header ?>
                 </h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="<?= $this->language->global->close ?>">
-                    <span aria-hidden="true">&times;</span>
-                </button>
+                <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
             </div>
 
             <div class="modal-body">

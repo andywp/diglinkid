@@ -86,7 +86,6 @@
                             <div class="input-group-prepend">
                                 <?php if(count($data->domains)): ?>
                                     <select name="domain_id" class="appearance-none select-custom-altum form-control input-group-text">
-                                        <option value=""><?= url() ?></option>
                                         <?php foreach($data->domains as $row): ?>
                                         <option value="<?= $row->domain_id ?>"><?= $row->url ?></option>
                                         <?php endforeach ?>
@@ -183,13 +182,13 @@
                     </button>
                 </div>
                 <div class="modal-body">
+                    <div class="notification-container"></div>
                     <div class="form-group">
                         <label><i class="fa fa-link"></i> <?= $this->language->create_biolink_modal->input->url ?></label>
                         <div class="input-group">
                             <div class="input-group-prepend">
                                 <?php if(count($data->domains)): ?>
                                     <select name="domain_id" class="appearance-none select-custom-altum form-control input-group-text">
-                                        <option value=""><?= url() ?></option>
                                         <?php foreach($data->domains as $row): ?>
                                             <option value="<?= $row->domain_id ?>"><?= $row->url ?></option>
                                         <?php endforeach ?>
@@ -232,8 +231,8 @@
                     let notification_container = $(event.currentTarget).find('.notification-container');
 
                     notification_container.html('');
-
-                    display_notifications(data.message, 'error', notification_container);
+                    error_noti(data.message[0]);
+                    //display_notifications(data.message, 'error', notification_container);
 
                 }
 

@@ -7,21 +7,23 @@
 
 <?php display_notifications() ?>
 
-<div class="mt-5">
-    <table id="results" class="table table-custom dataTable">
-        <thead class="thead-black">
-        <tr>
-            <th><?= $this->language->admin_links->table->type ?></th>
-            <th><?= $this->language->admin_links->table->email ?></th>
-            <th><?= $this->language->admin_links->table->url ?></th>
-            <th><?= $this->language->admin_links->table->clicks ?></th>
-            <th><?= $this->language->admin_links->table->is_enabled ?></th>
-            <th><?= $this->language->admin_links->table->date ?></th>
-            <th class="disable_export"></th>
-        </tr>
-        </thead>
-        <tbody></tbody>
-    </table>
+<div class="card mt-5">
+    <div class="card-body">
+        <table id="results" class="table table-custom dataTable">
+            <thead class="thead-black">
+            <tr>
+                <th><?= $this->language->admin_links->table->type ?></th>
+                <th><?= $this->language->admin_links->table->email ?></th>
+                <th><?= $this->language->admin_links->table->url ?></th>
+                <th><?= $this->language->admin_links->table->clicks ?></th>
+                <th><?= $this->language->admin_links->table->is_enabled ?></th>
+                <th><?= $this->language->admin_links->table->date ?></th>
+                <th class="disable_export"></th>
+            </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
 </div>
 
 <input type="hidden" name="url" value="<?= url('admin/links/get') ?>" />

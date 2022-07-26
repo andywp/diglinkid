@@ -14,6 +14,8 @@ $DB->addConnection([
     'charset'   => 'utf8',
     'collation' => 'utf8_unicode_ci', 
     'prefix'    => '',
+    'strict'    => false,
+    'modes'     => []
 ]);
 
 // Set the event dispatcher used by Eloquent models... (optional)

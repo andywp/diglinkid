@@ -51,29 +51,11 @@
     </head>
 
     <body class="<?= \Altum\Routing\Router::$controller_settings['body_white'] ? 'bg-white' : null ?> ">
-		<?php
-			if(\Altum\Routing\Router::$controller == 'Register'){
-		?>
-		
-			<!-- Google Tag Manager (noscript) -->
-			<!-- <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5RW2XTR"
-			height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> -->
-			<!-- End Google Tag Manager (noscript) -->
-		
-		<?php
-				
-			}
-		
-		?>
-
         <div class="content-wrapper">
             <?php require THEME_PATH . 'views/layout/header.php' ?>
             <?= $this->views['content'] ?>
         </div>
 
-        <!-- <?php if(\Altum\Routing\Router::$controller_key != 'index'): ?>
-            <?php require THEME_PATH . 'views/partials/ads_footer.php' ?>
-        <?php endif ?> -->
 
         <?php require THEME_PATH . 'views/layout/footer.php' ?>
 

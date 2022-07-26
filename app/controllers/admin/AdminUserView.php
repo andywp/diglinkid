@@ -13,7 +13,9 @@ class AdminUserView extends Controller {
         Authentication::guard('admin');
 
         $user_id = (isset($this->params[0])) ? $this->params[0] : false;
-
+        /* Login Modal */
+        $view = new \Altum\Views\View('admin/users/user_login_modal', (array) $this);
+        \Altum\Event::add_content($view->run(), 'modals');
         /* Check if user exists */
         if(!$user = Database::get('*', 'users', ['user_id' => $user_id])) {
             $_SESSION['error'][] = $this->language->admin_user_update->error_message->invalid_account;
